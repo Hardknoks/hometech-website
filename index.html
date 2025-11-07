@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iredell Home Tech Support - Your Personal Home Tech Handyman</title>
-    <!-- Favicon link: This displays the logo in the browser tab and bookmarks -->
-    <link rel="icon" href="/3.0_no_text.PNG" type="image/png">
     
-    <!-- Load Tailwind CSS --><script src="https://cdn.tailwindcss.com"></script>
-    <!-- Load Inter Font --><link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Inter Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    
     <style>
         /* Custom styles to refine the color scheme and modern look */
         :root {
@@ -16,10 +17,6 @@
             --color-blue: #1196d2;
             --color-orange: #f29442;
             
-            /* Gradient Colors (for softer transitions or accents) */
-            --color-gradient-blue: #7092ab;
-            --color-gradient-orange: #c89377;
-
             /* Neutral Background/Text Colors */
             --color-charcoal: #3a3938; /* Main dark background */
             --color-light-gray: #f5f5f5; /* For contrast on dark backgrounds, or text */
@@ -79,8 +76,6 @@
                     colors: {
                         'brand-blue': '#1196d2',
                         'brand-orange': '#f29442',
-                        'gradient-blue': '#7092ab',
-                        'gradient-orange': '#c89377',
                         'charcoal': '#3a3938',
                     }
                 }
@@ -90,23 +85,26 @@
 </head>
 <body class="bg-charcoal">
 
-    <!-- Sticky Navigation Header --><header class="sticky top-0 z-10 bg-charcoal/90 shadow-lg border-b border-gray-700">
+    <!-- Sticky Navigation Header -->
+    <header class="sticky top-0 z-10 bg-charcoal/90 shadow-lg border-b border-gray-700">
         
         <!-- Desktop Nav Bar and Mobile Menu Button -->
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
             <!-- Logo Area -->
-            <!-- FIX: Update onclick to use hash navigation directly -->
             <button onclick="window.location.hash = '#/home'" class="flex items-center text-2xl font-bold tracking-tight text-white focus:outline-none">
-                <!-- Image Logo (3.0_no_text.PNG) -->
-                <!-- UPDATED PATH FOR GITHUB PAGES COMPATIBILITY -->
-                <img src="/3.0_no_text.PNG" alt="Iredell Home Tech Support Logo" class="w-10 h-10 mr-2">
+                <!-- Image Logo: Added onerror for stability -->
+                <!-- NOTE: The image path '/3.0_no_text.PNG' is expected to be available at the root of the hosting environment. -->
+                <img src="/3.0_no_text.PNG" 
+                     alt="Iredell Home Tech Support Logo" 
+                     class="w-10 h-10 mr-2 rounded-lg"
+                     onerror="this.onerror=null; this.src='https://placehold.co/40x40/1196d2/ffffff?text=IH';" 
+                     title="Iredell Home Tech Support">
                 
                 <span class="gradient-text-blue-orange">Iredell Home Tech Support</span>
             </button>
 
             <!-- Desktop Navigation Links (Hidden on small screens) -->
             <nav class="hidden md:flex space-x-4">
-                <!-- FIX: Update onclick to use hash navigation directly -->
                 <button id="nav-home" class="nav-link text-lg font-medium py-1 px-3 transition-colors duration-200 text-white hover:text-brand-blue" onclick="window.location.hash = '#/home'">Home</button>
                 <button id="nav-about" class="nav-link text-lg font-medium py-1 px-3 transition-colors duration-200 text-white hover:text-brand-blue" onclick="window.location.hash = '#/about'">About Us</button>
                 <button id="nav-requests" class="nav-link text-lg font-medium py-1 px-3 transition-colors duration-200 text-white hover:text-brand-blue" onclick="window.location.hash = '#/requests'">Services</button>
@@ -130,7 +128,6 @@
         <div id="mobile-menu" class="hidden md:hidden bg-charcoal absolute w-full shadow-xl border-t border-gray-700 z-10">
             <div class="px-4 pt-2 pb-3 space-y-1 flex flex-col items-start">
                 <!-- Mobile Navigation Links (Clicking closes the menu) -->
-                <!-- FIX: Update onclick to use hash navigation directly -->
                 <button id="mobile-nav-home" class="mobile-nav-link text-lg font-medium py-2 px-3 transition-colors duration-200 text-white hover:bg-gray-700 hover:text-brand-blue w-full text-left rounded-lg" onclick="window.location.hash = '#/home'; toggleMenu();">Home</button>
                 <button id="mobile-nav-about" class="mobile-nav-link text-lg font-medium py-2 px-3 transition-colors duration-200 text-white hover:bg-gray-700 hover:text-brand-blue w-full text-left rounded-lg" onclick="window.location.hash = '#/about'; toggleMenu();">About Us</button>
                 <button id="mobile-nav-requests" class="mobile-nav-link text-lg font-medium py-2 px-3 transition-colors duration-200 text-white hover:bg-gray-700 hover:text-brand-blue w-full text-left rounded-lg" onclick="window.location.hash = '#/requests'; toggleMenu();">Services</button>
@@ -139,9 +136,13 @@
         </div>
     </header>
 
-    <!-- Main Content Container --><main id="content" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex-grow">
+    <!-- Main Content Container -->
+    <main id="content" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex-grow">
         
-        <!-- ============================================== --><!-- 1. LANDING PAGE (HOME) --><!-- ============================================== --><section id="home" class="page-section pt-16 flex flex-col items-center justify-center text-center min-h-[70vh]">
+        <!-- ============================================== -->
+        <!-- 1. LANDING PAGE (HOME) -->
+        <!-- ============================================== -->
+        <section id="home" class="page-section pt-16 flex flex-col items-center justify-center text-center min-h-[70vh]">
             <div class="max-w-4xl space-y-6">
                 <h1 class="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight text-white">
                     Your Go-To for <span class="gradient-text-blue-orange">Reliable Home Tech Support</span> in Iredell County
@@ -152,18 +153,20 @@
                 <p class="text-gray-300 text-lg">
                     Experiencing PC troubles, network glitches, or need help setting up new devices? We provide friendly, expert assistance right in your Iredell County home. Get personalized service without the hassle of store visits.
                 </p>
-                <!-- FIX: Update onclick to use hash navigation directly -->
                 <button onclick="window.location.hash = '#/requests'" class="cta-button text-xl font-bold px-8 py-3 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300">
                     Get Your Tech Fixed Today
                 </button>
             </div>
         </section>
 
-        <!-- ============================================== --><!-- 2. ABOUT US PAGE --><!-- ============================================== --><section id="about" class="page-section pt-12">
+        <!-- ============================================== -->
+        <!-- 2. ABOUT US PAGE -->
+        <!-- ============================================== -->
+        <section id="about" class="page-section pt-12">
             <h2 class="text-4xl font-bold mb-8 border-b-2 border-brand-blue pb-2 inline-block">About Iredell Home Tech Support</h2>
 
             <!-- Mission Statement -->
-            <div class="bg-charcoal p-8 rounded-xl shadow-xl space-y-6 border border-gray-700 mb-10">
+            <div class="bg-gray-800 p-8 rounded-xl shadow-xl space-y-6 border border-gray-700 mb-10">
                 <p class="text-lg">
                     Iredell Home Tech Support was founded with a simple mission: to provide personalized, trustworthy, and convenient tech assistance to our neighbors across Iredell County. We understand the frustrations that come with tech issues, and our goal is to offer clear, effective solutions without the jargon or hefty price tags of larger corporate services.
                 </p>
@@ -225,11 +228,15 @@
             </div>
         </section>
 
-        <!-- ============================================== --><!-- 3. SERVICES (CUSTOMER REQUESTS) PAGE --><!-- ============================================== --><section id="requests" class="page-section pt-12">
+        <!-- ============================================== -->
+        <!-- 3. SERVICES (CUSTOMER REQUESTS) PAGE -->
+        <!-- ============================================== -->
+        <section id="requests" class="page-section pt-12">
             <h2 class="text-4xl font-bold mb-8 border-b-2 border-brand-blue pb-2 inline-block">Our Services & Get a Quote</h2>
 
             <div class="space-y-12">
-                <!-- Services List --><div class="max-w-4xl mx-auto space-y-4">
+                <!-- Services List -->
+                <div class="max-w-4xl mx-auto space-y-4">
                     <h3 class="text-2xl font-semibold text-brand-orange mb-4 text-center">How We Can Help</h3>
                     <!-- Wrapping list items in a responsive grid for better layout -->
                     <div class="grid md:grid-cols-2 gap-4 text-gray-300 text-lg">
@@ -248,11 +255,10 @@
                     </div>
                 </div>
                 
-                <!-- Call to Action Button to Contact Page (Replaced the entire form) -->
+                <!-- Call to Action Button to Contact Page -->
                 <div class="bg-gray-800 p-8 rounded-xl shadow-2xl text-center border border-gray-700 max-w-xl mx-auto">
                     <h3 class="text-3xl font-bold text-white mb-4">Ready for an Estimate?</h3>
                     <p class="text-lg text-gray-300 mb-6">Click the button below to reach out directly to your local tech handyman.</p>
-                    <!-- FIX: Update onclick to use hash navigation directly -->
                     <button onclick="window.location.hash = '#/contact'" class="cta-button text-xl font-bold px-8 py-4 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300">
                         Get an Estimate
                     </button>
@@ -260,11 +266,16 @@
             </div>
         </section>
 
-        <!-- ============================================== --><!-- 4. CONTACT US PAGE --><!-- ============================================== --><section id="contact" class="page-section pt-12">
+        <!-- ============================================== -->
+        <!-- 4. CONTACT US PAGE -->
+        <!-- ============================================== -->
+        <section id="contact" class="page-section pt-12">
             <h2 class="text-4xl font-bold mb-8 border-b-2 border-brand-blue pb-2 inline-block">Contact Us</h2>
 
             <div class="grid md:grid-cols-2 gap-10">
-                <!-- Contact Details --><div class="bg-charcoal p-8 rounded-xl shadow-xl space-y-6 border border-gray-700">
+                <!-- Contact Details -->
+                <!-- CHANGED bg-charcoal to bg-gray-800 for better visual depth -->
+                <div class="bg-gray-800 p-8 rounded-xl shadow-xl space-y-6 border border-gray-700">
                     <h3 class="text-2xl font-semibold text-brand-orange">Proudly Serving Iredell County</h3>
                     <p class="text-lg text-gray-300">
                         As a home-based business, we offer flexible service options, including on-site visits, remote assistance, or convenient drop-off/pick-up by appointment in Statesville, NC.
@@ -285,32 +296,33 @@
                     </div>
                 </div>
 
-                <!-- Simple Contact Form --><div class="bg-charcoal p-8 rounded-xl shadow-2xl border border-gray-700">
+                <!-- Simple Contact Form -->
+                <!-- CHANGED bg-charcoal to bg-gray-800 for better visual depth -->
+                <div class="bg-gray-800 p-8 rounded-xl shadow-2xl border border-gray-700">
                     <h3 class="text-2xl font-semibold text-brand-blue mb-4">Contact Us Today</h3>
                     
                     <form id="contactForm">
-                        <!-- We removed action and method, now handled by JavaScript -->
                         
                         <div id="form-message" class="hidden p-3 rounded-lg text-center mb-4 transition-all duration-300" role="status"></div>
 
                         <div class="space-y-4">
                             <div>
                                 <label for="cname" class="block text-sm font-medium text-gray-300">Name</label>
-                                <input type="text" id="cname" name="Name" required class="mt-1 block w-full rounded-lg bg-gray-800 border-gray-700 text-white p-3 focus:ring-brand-orange focus:border-brand-orange">
+                                <input type="text" id="cname" name="Name" required class="mt-1 block w-full rounded-lg bg-charcoal border-gray-700 text-white p-3 focus:ring-brand-orange focus:border-brand-orange">
                             </div>
                             <div>
                                 <label for="cemail" class="block text-sm font-medium text-gray-300">Email Address</label>
-                                <input type="email" id="cemail" name="Email" required class="mt-1 block w-full rounded-lg bg-gray-800 border-gray-700 text-white p-3 focus:ring-brand-orange focus:border-brand-orange">
+                                <input type="email" id="cemail" name="Email" required class="mt-1 block w-full rounded-lg bg-charcoal border-gray-700 text-white p-3 focus:ring-brand-orange focus:border-brand-orange">
                             </div>
                             <!-- Phone Number Field -->
                             <div>
                                 <label for="cphone" class="block text-sm font-medium text-gray-300">Phone Number (Optional)</label>
-                                <input type="tel" id="cphone" name="Phone Number" class="mt-1 block w-full rounded-lg bg-gray-800 border-gray-700 text-white p-3 focus:ring-brand-orange focus:border-brand-orange">
+                                <input type="tel" id="cphone" name="Phone Number" class="mt-1 block w-full rounded-lg bg-charcoal border-gray-700 text-white p-3 focus:ring-brand-orange focus:border-brand-orange">
                             </div>
                             <!-- Message Field -->
                             <div>
                                 <label for="cmessage" class="block text-sm font-medium text-gray-300">Your Message</label>
-                                <textarea id="cmessage" name="Message" rows="4" required class="mt-1 block w-full rounded-lg bg-gray-800 border-gray-700 text-white p-3 focus:ring-brand-orange focus:border-brand-orange"></textarea>
+                                <textarea id="cmessage" name="Message" rows="4" required class="mt-1 block w-full rounded-lg bg-charcoal border-gray-700 text-white p-3 focus:ring-brand-orange focus:border-brand-orange"></textarea>
                             </div>
                             <button type="submit" class="cta-button text-lg font-bold w-full px-4 py-3 rounded-lg">
                                 Send Message
@@ -323,7 +335,8 @@
 
     </main>
 
-    <!-- Footer --><footer class="mt-12 py-6 bg-charcoal border-t border-gray-700">
+    <!-- Footer -->
+    <footer class="mt-12 py-6 bg-charcoal border-t border-gray-700">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-400">
             <p>&copy; <span id="year"></span> Iredell Home Tech Support. All Rights Reserved.</p>
             <p class="mt-2 text-sm">
@@ -332,13 +345,13 @@
         </div>
     </footer>
 
-    <!-- JavaScript for Navigation and Form Handling --><script>
-        // Use the Formspree endpoint to send submissions directly to email via AJAX.
+    <!-- JavaScript for Navigation and Form Handling -->
+    <script>
+        // Formspree endpoint for AJAX form submission. NOTE: This is a placeholder and should be updated by the user.
         const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xjkpnzrd'; 
 
         /**
          * Function to sanitize user input against XSS by escaping HTML special characters.
-         * This uses the DOM's textContent property, which is the safest way to escape.
          * @param {string} text - The raw user input string.
          * @returns {string} The sanitized string.
          */
@@ -363,7 +376,6 @@
             handleNavigation(initialHash); 
             
             // --- Hash Change Event Listener: Handle all navigation changes (clicks, back/forward buttons) ---
-            // FIX: Replaced 'popstate' with 'hashchange' for reliable hash-based routing in restricted environments.
             window.addEventListener('hashchange', () => {
                 const pageIdFromHash = window.location.hash.substring(2);
                 handleNavigation(pageIdFromHash); 
@@ -398,7 +410,7 @@
                     const response = await fetch(FORMSPREE_ENDPOINT, {
                         method: 'POST',
                         headers: {
-                            // Formspree supports JSON submissions, which is cleaner than URL-encoded
+                            // Formspree supports JSON submissions
                             'Content-Type': 'application/json',
                         },
                         body: JSON.stringify(sanitizedData), // Use the sanitized data
@@ -408,18 +420,18 @@
                     if (response.ok) {
                         // Success feedback
                         formMessage.textContent = 'Message sent successfully! We will be in touch shortly.';
-                        formMessage.className = 'p-3 rounded-lg text-center bg-green-500 text-white mb-4';
+                        formMessage.className = 'p-3 rounded-lg text-center bg-green-600 text-white mb-4';
                         contactForm.reset();
                     } else {
                         // Failure feedback (e.g., if Formspree API rejects the submission)
                         formMessage.textContent = 'Failed to send message. Please try again or contact us directly.';
-                        formMessage.className = 'p-3 rounded-lg text-center bg-red-500 text-white mb-4';
+                        formMessage.className = 'p-3 rounded-lg text-center bg-red-600 text-white mb-4';
                         console.error('Formspree Submission Error Response:', response.status, await response.text());
                     }
                 } catch (error) {
                     console.error('Submission Network Error:', error);
                     formMessage.textContent = 'A network error occurred. Please check your connection.';
-                    formMessage.className = 'p-3 rounded-lg text-center bg-red-500 text-white mb-4';
+                    formMessage.className = 'p-3 rounded-lg text-center bg-red-600 text-white mb-4';
                 }
                 
                 // Hide message after 5 seconds
@@ -445,7 +457,6 @@
 
 
         // Function to handle page navigation and active states
-        // This function is now only responsible for updating the UI based on the page ID read from the hash.
         function handleNavigation(pageId) {
             // Default to 'home' if pageId is empty or undefined
             const finalPageId = pageId || 'home'; 
@@ -478,7 +489,17 @@
                 targetNavMobile.classList.add('active');
             }
         }
+
+        // Initial navigation setup on load is handled inside DOMContentLoaded
+        
+        // This is necessary to load the correct page initially if no hash is present, or if '#' is present.
+        if (window.location.hash === '' || window.location.hash === '#') {
+            window.location.hash = '#/home';
+        } else if (window.location.hash.startsWith('#/')) {
+             // Handle navigation for existing hash on initial load.
+             // The DOMContentLoaded listener already calls handleNavigation, so this is just a safeguard.
+        }
+
     </script>
 </body>
 </html>
-
