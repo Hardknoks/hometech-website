@@ -94,7 +94,9 @@
         
         <!-- Desktop Nav Bar and Mobile Menu Button -->
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-            <!-- Logo Area --><button onclick="navigateTo('home')" class="flex items-center text-2xl font-bold tracking-tight text-white focus:outline-none">
+            <!-- Logo Area -->
+            <!-- FIX: Update onclick to use hash navigation directly -->
+            <button onclick="window.location.hash = '#/home'" class="flex items-center text-2xl font-bold tracking-tight text-white focus:outline-none">
                 <!-- Image Logo (3.0_no_text.PNG) -->
                 <!-- UPDATED PATH FOR GITHUB PAGES COMPATIBILITY -->
                 <img src="/3.0_no_text.PNG" alt="Iredell Home Tech Support Logo" class="w-10 h-10 mr-2">
@@ -102,11 +104,13 @@
                 <span class="gradient-text-blue-orange">Iredell Home Tech Support</span>
             </button>
 
-            <!-- Desktop Navigation Links (Hidden on small screens) --><nav class="hidden md:flex space-x-4">
-                <button id="nav-home" class="nav-link text-lg font-medium py-1 px-3 transition-colors duration-200 text-white hover:text-brand-blue" onclick="navigateTo('home')">Home</button>
-                <button id="nav-about" class="nav-link text-lg font-medium py-1 px-3 transition-colors duration-200 text-white hover:text-brand-blue" onclick="navigateTo('about')">About Us</button>
-                <button id="nav-requests" class="nav-link text-lg font-medium py-1 px-3 transition-colors duration-200 text-white hover:text-brand-blue" onclick="navigateTo('requests')">Services</button>
-                <button id="nav-contact" class="nav-link text-lg font-medium py-1 px-3 transition-colors duration-200 text-white hover:text-brand-blue" onclick="navigateTo('contact')">Contact Us</button>
+            <!-- Desktop Navigation Links (Hidden on small screens) -->
+            <nav class="hidden md:flex space-x-4">
+                <!-- FIX: Update onclick to use hash navigation directly -->
+                <button id="nav-home" class="nav-link text-lg font-medium py-1 px-3 transition-colors duration-200 text-white hover:text-brand-blue" onclick="window.location.hash = '#/home'">Home</button>
+                <button id="nav-about" class="nav-link text-lg font-medium py-1 px-3 transition-colors duration-200 text-white hover:text-brand-blue" onclick="window.location.hash = '#/about'">About Us</button>
+                <button id="nav-requests" class="nav-link text-lg font-medium py-1 px-3 transition-colors duration-200 text-white hover:text-brand-blue" onclick="window.location.hash = '#/requests'">Services</button>
+                <button id="nav-contact" class="nav-link text-lg font-medium py-1 px-3 transition-colors duration-200 text-white hover:text-brand-blue" onclick="window.location.hash = '#/contact'">Contact Us</button>
             </nav>
 
             <!-- Mobile Menu Button (Visible on small screens) -->
@@ -126,10 +130,11 @@
         <div id="mobile-menu" class="hidden md:hidden bg-charcoal absolute w-full shadow-xl border-t border-gray-700 z-10">
             <div class="px-4 pt-2 pb-3 space-y-1 flex flex-col items-start">
                 <!-- Mobile Navigation Links (Clicking closes the menu) -->
-                <button id="mobile-nav-home" class="mobile-nav-link text-lg font-medium py-2 px-3 transition-colors duration-200 text-white hover:bg-gray-700 hover:text-brand-blue w-full text-left rounded-lg" onclick="navigateTo('home'); toggleMenu();">Home</button>
-                <button id="mobile-nav-about" class="mobile-nav-link text-lg font-medium py-2 px-3 transition-colors duration-200 text-white hover:bg-gray-700 hover:text-brand-blue w-full text-left rounded-lg" onclick="navigateTo('about'); toggleMenu();">About Us</button>
-                <button id="mobile-nav-requests" class="mobile-nav-link text-lg font-medium py-2 px-3 transition-colors duration-200 text-white hover:bg-gray-700 hover:text-brand-blue w-full text-left rounded-lg" onclick="navigateTo('requests'); toggleMenu();">Services</button>
-                <button id="mobile-nav-contact" class="mobile-nav-link text-lg font-medium py-2 px-3 transition-colors duration-200 text-white hover:bg-gray-700 hover:text-brand-blue w-full text-left rounded-lg" onclick="navigateTo('contact'); toggleMenu();">Contact Us</button>
+                <!-- FIX: Update onclick to use hash navigation directly -->
+                <button id="mobile-nav-home" class="mobile-nav-link text-lg font-medium py-2 px-3 transition-colors duration-200 text-white hover:bg-gray-700 hover:text-brand-blue w-full text-left rounded-lg" onclick="window.location.hash = '#/home'; toggleMenu();">Home</button>
+                <button id="mobile-nav-about" class="mobile-nav-link text-lg font-medium py-2 px-3 transition-colors duration-200 text-white hover:bg-gray-700 hover:text-brand-blue w-full text-left rounded-lg" onclick="window.location.hash = '#/about'; toggleMenu();">About Us</button>
+                <button id="mobile-nav-requests" class="mobile-nav-link text-lg font-medium py-2 px-3 transition-colors duration-200 text-white hover:bg-gray-700 hover:text-brand-blue w-full text-left rounded-lg" onclick="window.location.hash = '#/requests'; toggleMenu();">Services</button>
+                <button id="mobile-nav-contact" class="mobile-nav-link text-lg font-medium py-2 px-3 transition-colors duration-200 text-white hover:bg-gray-700 hover:text-brand-blue w-full text-left rounded-lg" onclick="window.location.hash = '#/contact'; toggleMenu();">Contact Us</button>
             </div>
         </div>
     </header>
@@ -147,7 +152,8 @@
                 <p class="text-gray-300 text-lg">
                     Experiencing PC troubles, network glitches, or need help setting up new devices? We provide friendly, expert assistance right in your Iredell County home. Get personalized service without the hassle of store visits.
                 </p>
-                <button onclick="navigateTo('requests')" class="cta-button text-xl font-bold px-8 py-3 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300">
+                <!-- FIX: Update onclick to use hash navigation directly -->
+                <button onclick="window.location.hash = '#/requests'" class="cta-button text-xl font-bold px-8 py-3 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300">
                     Get Your Tech Fixed Today
                 </button>
             </div>
@@ -246,7 +252,8 @@
                 <div class="bg-gray-800 p-8 rounded-xl shadow-2xl text-center border border-gray-700 max-w-xl mx-auto">
                     <h3 class="text-3xl font-bold text-white mb-4">Ready for an Estimate?</h3>
                     <p class="text-lg text-gray-300 mb-6">Click the button below to reach out directly to your local tech handyman.</p>
-                    <button onclick="navigateTo('contact')" class="cta-button text-xl font-bold px-8 py-4 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300">
+                    <!-- FIX: Update onclick to use hash navigation directly -->
+                    <button onclick="window.location.hash = '#/contact'" class="cta-button text-xl font-bold px-8 py-4 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300">
                         Get an Estimate
                     </button>
                 </div>
@@ -327,13 +334,24 @@
 
     <!-- JavaScript for Navigation and Form Handling --><script>
         // Use the Formspree endpoint to send submissions directly to email via AJAX.
-        // This keeps the modern, no-reload experience.
         const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xjkpnzrd'; 
 
         document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('year').textContent = new Date().getFullYear();
-            navigateTo('home'); 
             
+            // --- Initial Load Logic: Check URL Hash ---
+            const initialHash = window.location.hash.substring(2); // Removes '#/'
+            // Load page based on hash, or default to 'home'. 
+            handleNavigation(initialHash); 
+            
+            // --- Hash Change Event Listener: Handle all navigation changes (clicks, back/forward buttons) ---
+            // FIX: Replaced 'popstate' with 'hashchange' for reliable hash-based routing in restricted environments.
+            window.addEventListener('hashchange', () => {
+                const pageIdFromHash = window.location.hash.substring(2);
+                handleNavigation(pageIdFromHash); 
+            });
+
+
             // --- Form Submission Handler for Formspree AJAX ---
             const contactForm = document.getElementById('contactForm');
             const formMessage = document.getElementById('form-message');
@@ -400,35 +418,39 @@
         }
 
 
-        // Function to handle page navigation
-        function navigateTo(pageId) {
+        // Function to handle page navigation and active states
+        // This function is now only responsible for updating the UI based on the page ID read from the hash.
+        function handleNavigation(pageId) {
+            // Default to 'home' if pageId is empty or undefined
+            const finalPageId = pageId || 'home'; 
+
+            // 1. Hide all sections
             document.querySelectorAll('.page-section').forEach(section => {
                 section.style.display = 'none';
             });
+
+            // 2. Show target section
+            const targetPage = document.getElementById(finalPageId);
+            if (targetPage) {
+                targetPage.style.display = 'block';
+                // Always scroll to top on navigation change
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
             
-            // Deactivate all links (desktop and mobile)
+            // 3. Update active states for both desktop and mobile navigation
             document.querySelectorAll('.nav-link, .mobile-nav-link').forEach(button => {
                 button.classList.remove('active');
             });
 
-            const targetPage = document.getElementById(pageId);
-            if (targetPage) {
-                targetPage.style.display = 'block';
-            }
-            
-            // Activate Desktop Link
-            const targetNavDesktop = document.getElementById(`nav-${pageId}`);
+            const targetNavDesktop = document.getElementById(`nav-${finalPageId}`);
             if (targetNavDesktop) {
                 targetNavDesktop.classList.add('active');
             }
 
-            // Activate Mobile Link
-            const targetNavMobile = document.getElementById(`mobile-nav-${pageId}`);
+            const targetNavMobile = document.getElementById(`mobile-nav-${finalPageId}`);
             if (targetNavMobile) {
                 targetNavMobile.classList.add('active');
             }
-            
-            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     </script>
 </body>
