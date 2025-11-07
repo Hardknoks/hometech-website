@@ -1,0 +1,8 @@
+Sitemap location (Crucial for Google to find your sitemap)
+
+Sitemap: https://www.google.com/search?q=https://iredellhometechsupport.com/sitemap.xml
+
+Default rule: Allow all legitimate search engines to crawl the site
+
+User-agent: *
+Allow: /
