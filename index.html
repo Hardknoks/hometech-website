@@ -41,9 +41,15 @@
             padding-bottom: 8rem; /* Space before the footer */
         }
 
-        /* Active navigation link styling */
+        /* Active navigation link styling (Desktop - bottom border) */
         .nav-link.active {
             border-bottom: 2px solid var(--color-blue); /* Use blue for active indicator */
+            color: var(--color-blue);
+        }
+
+        /* Active navigation link styling (Mobile - background color) */
+        .mobile-nav-link.active {
+            background-color: rgba(17, 150, 210, 0.2); /* Light blue background for active state */
             color: var(--color-blue);
         }
 
@@ -85,6 +91,8 @@
 <body class="bg-charcoal">
 
     <!-- Sticky Navigation Header --><header class="sticky top-0 z-10 bg-charcoal/90 shadow-lg border-b border-gray-700">
+        
+        <!-- Desktop Nav Bar and Mobile Menu Button -->
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
             <!-- Logo Area --><button onclick="navigateTo('home')" class="flex items-center text-2xl font-bold tracking-tight text-white focus:outline-none">
                 <!-- Image Logo (3.0_no_text.PNG) -->
@@ -94,12 +102,35 @@
                 <span class="gradient-text-blue-orange">Iredell Home Tech Support</span>
             </button>
 
-            <!-- Navigation Links --><nav class="space-x-4 flex">
+            <!-- Desktop Navigation Links (Hidden on small screens) --><nav class="hidden md:flex space-x-4">
                 <button id="nav-home" class="nav-link text-lg font-medium py-1 px-3 transition-colors duration-200 text-white hover:text-brand-blue" onclick="navigateTo('home')">Home</button>
                 <button id="nav-about" class="nav-link text-lg font-medium py-1 px-3 transition-colors duration-200 text-white hover:text-brand-blue" onclick="navigateTo('about')">About Us</button>
                 <button id="nav-requests" class="nav-link text-lg font-medium py-1 px-3 transition-colors duration-200 text-white hover:text-brand-blue" onclick="navigateTo('requests')">Services</button>
                 <button id="nav-contact" class="nav-link text-lg font-medium py-1 px-3 transition-colors duration-200 text-white hover:text-brand-blue" onclick="navigateTo('contact')">Contact Us</button>
             </nav>
+
+            <!-- Mobile Menu Button (Visible on small screens) -->
+            <button id="mobile-menu-button" class="md:hidden text-white hover:text-brand-blue transition-colors focus:outline-none p-2 rounded-md" aria-label="Toggle navigation" onclick="toggleMenu()">
+                <!-- Hamburger Icon (Menu closed) -->
+                <svg id="icon-open" class="h-6 w-6 block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+                <!-- X Icon (Menu open - initially hidden) -->
+                <svg id="icon-close" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Container (Initially hidden, toggled by JS) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-charcoal absolute w-full shadow-xl border-t border-gray-700 z-10">
+            <div class="px-4 pt-2 pb-3 space-y-1 flex flex-col items-start">
+                <!-- Mobile Navigation Links (Clicking closes the menu) -->
+                <button id="mobile-nav-home" class="mobile-nav-link text-lg font-medium py-2 px-3 transition-colors duration-200 text-white hover:bg-gray-700 hover:text-brand-blue w-full text-left rounded-lg" onclick="navigateTo('home'); toggleMenu();">Home</button>
+                <button id="mobile-nav-about" class="mobile-nav-link text-lg font-medium py-2 px-3 transition-colors duration-200 text-white hover:bg-gray-700 hover:text-brand-blue w-full text-left rounded-lg" onclick="navigateTo('about'); toggleMenu();">About Us</button>
+                <button id="mobile-nav-requests" class="mobile-nav-link text-lg font-medium py-2 px-3 transition-colors duration-200 text-white hover:bg-gray-700 hover:text-brand-blue w-full text-left rounded-lg" onclick="navigateTo('requests'); toggleMenu();">Services</button>
+                <button id="mobile-nav-contact" class="mobile-nav-link text-lg font-medium py-2 px-3 transition-colors duration-200 text-white hover:bg-gray-700 hover:text-brand-blue w-full text-left rounded-lg" onclick="navigateTo('contact'); toggleMenu();">Contact Us</button>
+            </div>
         </div>
     </header>
 
@@ -249,12 +280,11 @@
 
                 <!-- Simple Contact Form --><div class="bg-charcoal p-8 rounded-xl shadow-2xl border border-gray-700">
                     <h3 class="text-2xl font-semibold text-brand-blue mb-4">Contact Us Today</h3>
-                    <!-- Form is configured for Formspree submission -->
-                    <form id="contactForm" method="POST" action="https://formspree.io/f/xjkpnzrd">
-                        <!-- Form is now fully configured with your Formspree endpoint! -->
+                    
+                    <form id="contactForm">
+                        <!-- We removed action and method, now handled by JavaScript -->
                         
-                        <!-- Hidden field for Formspree to set the email subject line -->
-                        <input type="hidden" name="_subject" value="New Contact Form Submission from IredellHomeTech.com" />
+                        <div id="form-message" class="hidden p-3 rounded-lg text-center mb-4 transition-all duration-300" role="status"></div>
 
                         <div class="space-y-4">
                             <div>
@@ -263,8 +293,7 @@
                             </div>
                             <div>
                                 <label for="cemail" class="block text-sm font-medium text-gray-300">Email Address</label>
-                                <!-- Uses _replyto for Formspree to know where to send the response -->
-                                <input type="email" id="cemail" name="_replyto" required class="mt-1 block w-full rounded-lg bg-gray-800 border-gray-700 text-white p-3 focus:ring-brand-orange focus:border-brand-orange">
+                                <input type="email" id="cemail" name="Email" required class="mt-1 block w-full rounded-lg bg-gray-800 border-gray-700 text-white p-3 focus:ring-brand-orange focus:border-brand-orange">
                             </div>
                             <!-- Phone Number Field -->
                             <div>
@@ -297,37 +326,108 @@
     </footer>
 
     <!-- JavaScript for Navigation and Form Handling --><script>
+        // Use the Formspree endpoint to send submissions directly to email via AJAX.
+        // This keeps the modern, no-reload experience.
+        const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xjkpnzrd'; 
+
         document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('year').textContent = new Date().getFullYear();
-            // Default to the home page on load
             navigateTo('home'); 
+            
+            // --- Form Submission Handler for Formspree AJAX ---
+            const contactForm = document.getElementById('contactForm');
+            const formMessage = document.getElementById('form-message');
+
+            contactForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+
+                // 1. Show loading state
+                formMessage.textContent = 'Sending...';
+                formMessage.className = 'p-3 rounded-lg text-center bg-gray-600 text-white mb-4';
+                formMessage.classList.remove('hidden');
+
+                const formData = new FormData(contactForm);
+                const data = Object.fromEntries(formData.entries());
+                
+                // 2. Send JSON data to Formspree
+                try {
+                    const response = await fetch(FORMSPREE_ENDPOINT, {
+                        method: 'POST',
+                        headers: {
+                            // Formspree supports JSON submissions, which is cleaner than URL-encoded
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(data),
+                    });
+
+                    // Formspree returns a 200 status code on success
+                    if (response.ok) {
+                        // Success feedback
+                        formMessage.textContent = 'Message sent successfully! We will be in touch shortly.';
+                        formMessage.className = 'p-3 rounded-lg text-center bg-green-500 text-white mb-4';
+                        contactForm.reset();
+                    } else {
+                        // Failure feedback (e.g., if Formspree API rejects the submission)
+                        formMessage.textContent = 'Failed to send message. Please try again or contact us directly.';
+                        formMessage.className = 'p-3 rounded-lg text-center bg-red-500 text-white mb-4';
+                        console.error('Formspree Submission Error Response:', response.status, await response.text());
+                    }
+                } catch (error) {
+                    console.error('Submission Network Error:', error);
+                    formMessage.textContent = 'A network error occurred. Please check your connection.';
+                    formMessage.className = 'p-3 rounded-lg text-center bg-red-500 text-white mb-4';
+                }
+                
+                // Hide message after 5 seconds
+                setTimeout(() => {
+                    formMessage.classList.add('hidden');
+                }, 5000);
+            });
         });
+
+        // Function to handle the mobile menu toggle
+        function toggleMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const iconOpen = document.getElementById('icon-open');
+            const iconClose = document.getElementById('icon-close');
+            
+            // Toggle the hidden class on the menu container
+            mobileMenu.classList.toggle('hidden');
+
+            // Toggle the icons (Hamburger <-> X)
+            iconOpen.classList.toggle('hidden');
+            iconClose.classList.toggle('hidden');
+        }
+
 
         // Function to handle page navigation
         function navigateTo(pageId) {
-            // 1. Hide all pages
             document.querySelectorAll('.page-section').forEach(section => {
                 section.style.display = 'none';
             });
-
-            // 2. Remove 'active' class from all nav buttons
-            document.querySelectorAll('.nav-link').forEach(button => {
+            
+            // Deactivate all links (desktop and mobile)
+            document.querySelectorAll('.nav-link, .mobile-nav-link').forEach(button => {
                 button.classList.remove('active');
             });
 
-            // 3. Show the requested page
             const targetPage = document.getElementById(pageId);
             if (targetPage) {
                 targetPage.style.display = 'block';
             }
+            
+            // Activate Desktop Link
+            const targetNavDesktop = document.getElementById(`nav-${pageId}`);
+            if (targetNavDesktop) {
+                targetNavDesktop.classList.add('active');
+            }
 
-            // 4. Set 'active' class on the current nav button
-            const targetNav = document.getElementById(`nav-${pageId}`);
-            if (targetNav) {
-                targetNav.classList.add('active');
+            // Activate Mobile Link
+            const targetNavMobile = document.getElementById(`mobile-nav-${pageId}`);
+            if (targetNavMobile) {
+                targetNavMobile.classList.add('active');
             }
             
-            // Scroll to top of the page content
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     </script>
