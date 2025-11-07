@@ -1,4 +1,16 @@
-Sitemap: https://iredellhometechsupport.com/sitemap.xml
+Block access to certain directories (if applicable)
 
 User-agent: *
-Allow: /
+
+Disallow: /admin/
+
+Disallow: /temp/
+
+Allow all robots to crawl the site
+
+User-agent: *
+Disallow:
+
+Specify the location of the sitemap
+
+Sitemap: https://iredellhometechsupport.com/sitemap.xml
