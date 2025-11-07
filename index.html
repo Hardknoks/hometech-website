@@ -336,6 +336,24 @@
         // Use the Formspree endpoint to send submissions directly to email via AJAX.
         const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xjkpnzrd'; 
 
+        /**
+         * Function to sanitize user input against XSS by escaping HTML special characters.
+         * This uses the DOM's textContent property, which is the safest way to escape.
+         * @param {string} text - The raw user input string.
+         * @returns {string} The sanitized string.
+         */
+        function sanitizeInput(text) {
+            if (typeof text !== 'string' || text.length === 0) {
+                return text;
+            }
+            // Create a temporary, unattached DOM element
+            const tempDiv = document.createElement('div');
+            // Setting textContent automatically escapes the text (e.g., '<' becomes '&lt;')
+            tempDiv.textContent = text;
+            // Returning the escaped string
+            return tempDiv.innerHTML;
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('year').textContent = new Date().getFullYear();
             
@@ -365,7 +383,15 @@
                 formMessage.classList.remove('hidden');
 
                 const formData = new FormData(contactForm);
-                const data = Object.fromEntries(formData.entries());
+                const rawData = Object.fromEntries(formData.entries());
+                
+                // --- XSS Sanitization Step ---
+                const sanitizedData = {};
+                for (const [key, value] of Object.entries(rawData)) {
+                    // Only sanitize string values
+                    sanitizedData[key] = typeof value === 'string' ? sanitizeInput(value) : value;
+                }
+                // -----------------------------
                 
                 // 2. Send JSON data to Formspree
                 try {
@@ -375,7 +401,7 @@
                             // Formspree supports JSON submissions, which is cleaner than URL-encoded
                             'Content-Type': 'application/json',
                         },
-                        body: JSON.stringify(data),
+                        body: JSON.stringify(sanitizedData), // Use the sanitized data
                     });
 
                     // Formspree returns a 200 status code on success
