@@ -106,13 +106,12 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
             <!-- Logo Area -->
             <button onclick="window.location.hash = '#/home'" class="flex items-center text-2xl font-bold tracking-tight text-white focus:outline-none">
-                <!-- Image Logo: Added onerror for stability -->
-                <!-- NOTE: The image path '/3.0_no_text.PNG' is expected to be available at the root of the hosting environment. -->
+                <!-- Image Logo: The image path '/3.0_no_text.PNG' is expected to be available at the root of the hosting environment. -->
                 <img src="/3.0_no_text.PNG" 
                      alt="Iredell Home Tech Support Logo" 
                      class="w-10 h-10 mr-2 rounded-lg"
                      onerror="this.onerror=null; this.src='https://placehold.co/40x40/1196d2/ffffff?text=IH';" 
-                     title="Iredell Home Tech Support">
+                     title="Iredell Home Tech Support Logo">
                 
                 <span class="gradient-text-blue-orange">Iredell Home Tech Support</span>
             </button>
@@ -126,7 +125,7 @@
             </nav>
 
             <!-- Mobile Menu Button (Visible on small screens) -->
-            <button id="mobile-menu-button" class="md:hidden text-white hover:text-brand-blue transition-colors focus:outline-none p-2 rounded-md" aria-label="Toggle navigation" onclick="toggleMenu()">
+            <button id="mobile-menu-button" class="md:hidden text-white hover:text-brand-blue transition-colors focus:outline-none p-2 rounded-md" aria-label="Toggle navigation" aria-controls="mobile-menu" aria-expanded="false" onclick="toggleMenu()">
                 <!-- Hamburger Icon (Menu closed) -->
                 <svg id="icon-open" class="h-6 w-6 block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
@@ -177,7 +176,10 @@
         <!-- 2. ABOUT US PAGE -->
         <!-- ============================================== -->
         <section id="about" class="page-section pt-12">
-            <h2 class="text-4xl font-bold mb-8 border-b-2 border-brand-blue pb-2 inline-block">About Iredell Home Tech Support</h2>
+            <!-- CENTERED H2 (Ensuring Consistency) -->
+            <div class="text-center">
+                <h2 class="text-4xl font-bold mb-8 border-b-2 border-brand-blue pb-2 inline-block">About Iredell Home Tech Support</h2>
+            </div>
 
             <!-- Mission Statement -->
             <div class="bg-gray-800 p-8 rounded-xl shadow-xl space-y-6 border border-gray-700 mb-10">
@@ -249,7 +251,10 @@
         <!-- 3. SERVICES (CUSTOMER REQUESTS) PAGE - RESTRUCTURED FOR SCOPE -->
         <!-- ============================================== -->
         <section id="requests" class="page-section pt-12">
-            <h2 class="text-4xl font-bold mb-8 border-b-2 border-brand-blue pb-2 inline-block">Comprehensive On-Site Tech Services in Iredell County</h2>
+            <!-- CENTERED H2 (Ensuring Consistency) -->
+            <div class="text-center">
+                <h2 class="text-4xl font-bold mb-8 border-b-2 border-brand-blue pb-2 inline-block">Comprehensive On-Site Tech Services in Iredell County</h2>
+            </div>
 
             <div class="space-y-12">
                 
@@ -396,11 +401,13 @@
         <!-- 4. CONTACT US PAGE -->
         <!-- ============================================== -->
         <section id="contact" class="page-section pt-12">
-            <h2 class="text-4xl font-bold mb-8 border-b-2 border-brand-blue pb-2 inline-block">Contact Us</h2>
+            <!-- CENTERED H2 (Ensuring Consistency) -->
+            <div class="text-center">
+                <h2 class="text-4xl font-bold mb-8 border-b-2 border-brand-blue pb-2 inline-block">Contact Us</h2>
+            </div>
 
             <div class="grid md:grid-cols-2 gap-10">
                 <!-- Contact Details -->
-                <!-- CHANGED bg-charcoal to bg-gray-800 for better visual depth -->
                 <div class="bg-gray-800 p-8 rounded-xl shadow-xl space-y-6 border border-gray-700">
                     <h3 class="text-2xl font-semibold text-brand-orange">Proudly Serving Iredell County</h3>
                     <p class="text-lg text-gray-300">
@@ -423,7 +430,6 @@
                 </div>
 
                 <!-- Simple Contact Form -->
-                <!-- CHANGED bg-charcoal to bg-gray-800 for better visual depth -->
                 <div class="bg-gray-800 p-8 rounded-xl shadow-2xl border border-gray-700">
                     <h3 class="text-2xl font-semibold text-brand-blue mb-4">Contact Us Today</h3>
                     
@@ -450,7 +456,7 @@
                                 <label for="cmessage" class="block text-sm font-medium text-gray-300">Your Message</label>
                                 <textarea id="cmessage" name="Message" rows="4" required class="mt-1 block w-full rounded-lg bg-charcoal border-gray-700 text-white p-3 focus:ring-brand-orange focus:border-brand-orange"></textarea>
                             </div>
-                            <button type="submit" class="cta-button text-lg font-bold w-full px-4 py-3 rounded-lg">
+                            <button type="submit" name="submit" class="cta-button text-lg font-bold w-full px-4 py-3 rounded-lg">
                                 Send Message
                             </button>
                         </div>
@@ -467,13 +473,14 @@
             <p>&copy; <span id="year"></span> Iredell Home Tech Support. All Rights Reserved.</p>
             <p class="mt-2 text-sm">
                 Your personal home tech handyman.
-            </p>
+            </col>
         </div>
     </footer>
 
     <!-- JavaScript for Navigation and Form Handling -->
     <script>
-        // Formspree endpoint for AJAX form submission. NOTE: This is a placeholder and should be updated by the user.
+        // Formspree endpoint for AJAX form submission. 
+        // This endpoint has been confirmed by the user and is now permanently set.
         const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xjkpnzrd'; 
 
         /**
@@ -497,13 +504,13 @@
             document.getElementById('year').textContent = new Date().getFullYear();
             
             // --- Initial Load Logic: Check URL Hash ---
-            const initialHash = window.location.hash.substring(2); // Removes '#/'
-            // Load page based on hash, or default to 'home'. 
+            // Removes '#/' and defaults to 'home' if empty
+            const initialHash = window.location.hash.startsWith('#/') ? window.location.hash.substring(2) : 'home'; 
             handleNavigation(initialHash); 
             
             // --- Hash Change Event Listener: Handle all navigation changes (clicks, back/forward buttons) ---
             window.addEventListener('hashchange', () => {
-                const pageIdFromHash = window.location.hash.substring(2);
+                const pageIdFromHash = window.location.hash.startsWith('#/') ? window.location.hash.substring(2) : 'home';
                 handleNavigation(pageIdFromHash); 
             });
 
@@ -526,8 +533,8 @@
                 // --- XSS Sanitization Step ---
                 const sanitizedData = {};
                 for (const [key, value] of Object.entries(rawData)) {
-                    // Only sanitize string values
-                    sanitizedData[key] = typeof value === 'string' ? sanitizeInput(value) : value;
+                    // Only sanitize string values, trim whitespace
+                    sanitizedData[key] = typeof value === 'string' ? sanitizeInput(value.trim()) : value;
                 }
                 // -----------------------------
                 
@@ -553,7 +560,7 @@
                             gtag('event', 'contact_form_submission', {
                                 'event_category': 'form_interaction',
                                 'event_label': 'contact_success',
-                                'value': 1 // Tracks one successful conversion
+                                'value': 1 
                             });
                             console.log("GA4 Event: contact_form_submission logged.");
                         }
@@ -562,9 +569,10 @@
                         contactForm.reset();
                     } else {
                         // Failure feedback (e.g., if Formspree API rejects the submission)
+                        const errorText = await response.text();
                         formMessage.textContent = 'Failed to send message. Please try again or contact us directly.';
                         formMessage.className = 'p-3 rounded-lg text-center bg-red-600 text-white mb-4';
-                        console.error('Formspree Submission Error Response:', response.status, await response.text());
+                        console.error('Formspree Submission Error Response:', response.status, errorText);
                     }
                 } catch (error) {
                     console.error('Submission Network Error:', error);
@@ -584,13 +592,17 @@
             const mobileMenu = document.getElementById('mobile-menu');
             const iconOpen = document.getElementById('icon-open');
             const iconClose = document.getElementById('icon-close');
+            const button = document.getElementById('mobile-menu-button');
             
             // Toggle the hidden class on the menu container
-            mobileMenu.classList.toggle('hidden');
+            const isMenuOpen = mobileMenu.classList.toggle('hidden');
+
+            // Update ARIA attributes
+            button.setAttribute('aria-expanded', !isMenuOpen);
 
             // Toggle the icons (Hamburger <-> X)
-            iconOpen.classList.toggle('hidden');
-            iconClose.classList.toggle('hidden');
+            iconOpen.classList.toggle('hidden', !isMenuOpen);
+            iconClose.classList.toggle('hidden', isMenuOpen);
         }
 
 
@@ -632,24 +644,13 @@
                 // Construct a clean path for GA4 based on the hash (e.g., '/about')
                 const path = '/' + finalPageId; 
                 gtag('event', 'page_view', {
-                    page_title: document.title, // Iredell Home Tech Support - Your Personal Home Tech Handyman
+                    page_title: document.title, 
                     page_path: path,
-                    page_location: window.location.href // e.g., https://yourdomain.com/#/about
+                    page_location: window.location.href 
                 });
                 console.log(`GA4 Virtual Page View: ${path} logged.`);
             }
         }
-
-        // Initial navigation setup on load is handled inside DOMContentLoaded
-        
-        // This is necessary to load the correct page initially if no hash is present, or if '#' is present.
-        if (window.location.hash === '' || window.location.hash === '#') {
-            window.location.hash = '#/home';
-        } else if (window.location.hash.startsWith('#/')) {
-             // Handle navigation for existing hash on initial load.
-             // The DOMContentLoaded listener already calls handleNavigation, so this is just a safeguard.
-        }
-
     </script>
 </body>
 </html>
