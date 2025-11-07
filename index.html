@@ -432,7 +432,7 @@
                         formMessage.textContent = 'Message sent successfully! We will be in touch shortly.';
                         formMessage.className = 'p-3 rounded-lg text-center bg-green-600 text-white mb-4';
                         
-                        // --- GA4 Conversion Event Tracking (NEW) ---
+                        // --- GA4 Conversion Event Tracking ---
                         if (typeof gtag === 'function') {
                             gtag('event', 'contact_form_submission', {
                                 'event_category': 'form_interaction',
@@ -509,6 +509,18 @@
             const targetNavMobile = document.getElementById(`mobile-nav-${finalPageId}`);
             if (targetNavMobile) {
                 targetNavMobile.classList.add('active');
+            }
+
+            // 4. Manually send a page_view event to GA4 for SPA hash changes (Crucial for tracking all virtual pages)
+            if (typeof gtag === 'function' && targetPage) {
+                // Construct a clean path for GA4 based on the hash (e.g., '/about')
+                const path = '/' + finalPageId; 
+                gtag('event', 'page_view', {
+                    page_title: document.title, // Iredell Home Tech Support - Your Personal Home Tech Handyman
+                    page_path: path,
+                    page_location: window.location.href // e.g., https://yourdomain.com/#/about
+                });
+                console.log(`GA4 Virtual Page View: ${path} logged.`);
             }
         }
 
