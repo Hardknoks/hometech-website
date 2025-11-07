@@ -5,6 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iredell Home Tech Support - Your Personal Home Tech Handyman</title>
     
+    <!-- Google Analytics 4 (GA4) Tracking Script -->
+    <!-- ID: G-3QTMG1C4J9 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3QTMG1C4J9"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-3QTMG1C4J9'); 
+    </script>
+
     <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Load Inter Font -->
@@ -421,6 +431,18 @@
                         // Success feedback
                         formMessage.textContent = 'Message sent successfully! We will be in touch shortly.';
                         formMessage.className = 'p-3 rounded-lg text-center bg-green-600 text-white mb-4';
+                        
+                        // --- GA4 Conversion Event Tracking (NEW) ---
+                        if (typeof gtag === 'function') {
+                            gtag('event', 'contact_form_submission', {
+                                'event_category': 'form_interaction',
+                                'event_label': 'contact_success',
+                                'value': 1 // Tracks one successful conversion
+                            });
+                            console.log("GA4 Event: contact_form_submission logged.");
+                        }
+                        // -------------------------------------------
+
                         contactForm.reset();
                     } else {
                         // Failure feedback (e.g., if Formspree API rejects the submission)
