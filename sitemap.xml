@@ -1,11 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-<urlset xmlns="[suspicious link removed]">
-<!-- Since this is a single-page application (SPA), we only list the root URL. -->
-<url>
-<loc>https://iredellhometechsupport.com/</loc>
-<lastmod>2025-11-07</lastmod>
-<changefreq>monthly</changefreq>
-<priority>1.0</priority>
-</url>
+    <!-- Homepage (root) -->
+    <url>
+        <loc>https://iredellhometechsupport.com/</loc>
+        <lastmod>2025-11-07</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>1.0</priority>
+    </url>
+
+    <!-- About Us Page (using hash routing) -->
+    <url>
+        <loc>https://iredellhometechsupport.com/#/about</loc>
+        <lastmod>2025-11-07</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Services Page (using hash routing) -->
+    <url>
+        <loc>https://iredellhometechsupport.com/#/services</loc>
+        <lastmod>2025-11-07</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <!-- Contact Page (using hash routing) -->
+    <url>
+        <loc>https://iredellhometechsupport.com/#/contact</loc>
+        <lastmod>2025-11-07</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <!-- Blog / Articles Page (using hash routing) -->
+    <url>
+        <loc>https://iredellhometechsupport.com/#/blog</loc>
+        <lastmod>2025-11-07</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+    <!-- Privacy Policy Page (using hash routing) -->
+    <url>
+        <loc>https://iredellhometechsupport.com/#/privacy-policy</loc>
+        <lastmod>2025-11-07</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+
 </urlset>
