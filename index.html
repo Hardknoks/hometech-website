@@ -573,38 +573,12 @@
                     </div>
                 </div>
 
-                <!-- Simple Contact Form -->
+                <!-- Fillout Embedded Form -->
                 <div class="bg-gray-800 p-8 rounded-xl shadow-2xl border border-gray-700">
                     <h3 class="text-2xl font-normal text-brand-blue mb-4">Contact Us Today</h3>
                     
-                    <form id="contactForm" class="text-left">
-                        
-                        <div id="form-message" class="hidden p-3 rounded-lg text-center mb-4 transition-all duration-300" role="status"></div>
-
-                        <div class="space-y-4">
-                            <div>
-                                <label for="cname" class="block text-sm font-normal text-gray-300">Name</label>
-                                <input type="text" id="cname" name="Name" required class="mt-1 block w-full rounded-lg bg-charcoal border-gray-700 text-white p-3 focus:ring-brand-orange focus:border-brand-orange">
-                            </div>
-                            <div>
-                                <label for="cemail" class="block text-sm font-normal text-gray-300">Email Address</label>
-                                <input type="email" id="cemail" name="Email" required class="mt-1 block w-full rounded-lg bg-charcoal border-gray-700 text-white p-3 focus:ring-brand-orange focus:border-brand-orange">
-                            </div>
-                            <!-- Phone Number Field -->
-                            <div>
-                                <label for="cphone" class="block text-sm font-normal text-gray-300">Phone Number (Optional)</label>
-                                <input type="tel" id="cphone" name="Phone Number" class="mt-1 block w-full rounded-lg bg-charcoal border-gray-700 text-white p-3 focus:ring-brand-orange focus:border-brand-orange">
-                            </div>
-                            <!-- Message Field -->
-                            <div>
-                                <label for="cmessage" class="block text-sm font-normal text-gray-300">Your Message</label>
-                                <textarea id="cmessage" name="Message" rows="4" required class="mt-1 block w-full rounded-lg bg-charcoal border-gray-700 text-white p-3 focus:ring-brand-orange focus:border-brand-orange"></textarea>
-                            </div>
-                            <button type="submit" name="submit" class="cta-button text-lg font-normal w-full px-4 py-3 rounded-lg">
-                                Send Message
-                            </button>
-                        </div>
-                    </form>
+                    <div style="width:100%;height:500px;" data-fillout-id="2BufiU7nUWus" data-fillout-embed-type="standard" data-fillout-inherit-parameters data-fillout-dynamic-resize></div>
+                    <script src="https://server.fillout.com/embed/v1/"></script>
                 </div>
             </div>
         </section>
@@ -632,28 +606,8 @@
         </div>
     </footer>
 
-    <!-- JavaScript for Navigation and Form Handling -->
+    <!-- JavaScript for Navigation and FAQ Toggle -->
     <script>
-        // Formspree endpoint for AJAX form submission. 
-        const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xjkpnzrd'; 
-
-        /**
-         * Function to sanitize user input against XSS by escaping HTML special characters.
-         * @param {string} text - The raw user input string.
-         * @returns {string} The sanitized string.
-         */
-        function sanitizeInput(text) {
-            if (typeof text !== 'string' || text.length === 0) {
-                return text;
-            }
-            // Create a temporary, unattached DOM element
-            const tempDiv = document.createElement('div');
-            // Setting textContent automatically escapes the text (e.g., '<' becomes '&lt;')
-            tempDiv.textContent = text;
-            // Returning the escaped string
-            return tempDiv.innerHTML;
-        }
-
         /**
          * Function to toggle FAQ answer visibility using the 'open' class for CSS transitions.
          * @param {string} id - The ID of the FAQ answer div (e.g., 'faq-1-tip').
@@ -686,78 +640,6 @@
             window.addEventListener('hashchange', () => {
                 const pageIdFromHash = window.location.hash.startsWith('#/') ? window.location.hash.substring(2) : 'home';
                 handleNavigation(pageIdFromHash); 
-            });
-
-
-            // --- Form Submission Handler for Formspree AJAX ---
-            const contactForm = document.getElementById('contactForm');
-            const formMessage = document.getElementById('form-message');
-
-            contactForm.addEventListener('submit', async function(e) {
-                e.preventDefault();
-
-                // 1. Show loading state
-                formMessage.textContent = 'Sending...';
-                formMessage.className = 'p-3 rounded-lg text-center bg-gray-600 text-white mb-4';
-                formMessage.classList.remove('hidden');
-
-                const formData = new FormData(contactForm);
-                const rawData = Object.fromEntries(formData.entries());
-                
-                // --- XSS Sanitization Step ---
-                const sanitizedData = {};
-                for (const [key, value] of Object.entries(rawData)) {
-                    // Only sanitize string values, trim whitespace
-                    sanitizedData[key] = typeof value === 'string' ? sanitizeInput(value.trim()) : value;
-                }
-                // -----------------------------
-                
-                // 2. Send JSON data to Formspree
-                try {
-                    const response = await fetch(FORMSPREE_ENDPOINT, {
-                        method: 'POST',
-                        headers: {
-                            // Formspree supports JSON submissions
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify(sanitizedData), // Use the sanitized data
-                    });
-
-                    // Formspree returns a 200 status code on success
-                    if (response.ok) {
-                        // Success feedback
-                        formMessage.textContent = 'Message sent successfully! We will be in touch shortly.';
-                        formMessage.className = 'p-3 rounded-lg text-center bg-green-600 text-white mb-4';
-                        
-                        // --- GA4 Conversion Event Tracking ---
-                        if (typeof gtag === 'function') {
-                            gtag('event', 'contact_form_submission', {
-                                'event_category': 'form_interaction',
-                                'event_label': 'contact_success',
-                                'value': 1 
-                            });
-                            console.log("GA4 Event: contact_form_submission logged.");
-                        }
-                        // -------------------------------------------
-
-                        contactForm.reset();
-                    } else {
-                        // Failure feedback (e.g., if Formspree API rejects the submission)
-                        const errorText = await response.text();
-                        formMessage.textContent = 'Failed to send message. Please try again or contact us directly.';
-                        formMessage.className = 'p-3 rounded-lg text-center bg-red-600 text-white mb-4';
-                        console.error('Formspree Submission Error Response:', response.status, errorText);
-                    }
-                } catch (error) {
-                    console.error('Submission Network Error:', error);
-                    formMessage.textContent = 'A network error occurred. Please check your connection.';
-                    formMessage.className = 'p-3 rounded-lg text-center bg-red-600 text-white mb-4';
-                }
-                
-                // Hide message after 5 seconds
-                setTimeout(() => {
-                    formMessage.classList.add('hidden');
-                }, 5000);
             });
         });
 
@@ -828,3 +710,4 @@
     </script>
 </body>
 </html>
+                
