@@ -4,18 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- Title Tag: Excellent keyword density and location targeting -->
     <title>Iredell Home Tech Support | PC Repair & IT Service in Statesville, NC</title>
     
-    <!-- Meta Description: Strong call-to-action and service area defined -->
     <meta name="description" content="Expert on-site home tech support in Iredell County, NC. We provide PC repair, virus removal, Wi-Fi setup, and new device installation right to your door.">
 
-    <!-- =========== FAVICON LINK ADDED HERE ============= -->
-    <!-- Sets the browser tab icon and bookmark icon -->
     <link rel="icon" type="image/png" href="/3.0_no_text.PNG">
-    <!-- ================================================= -->
-    
-    <!-- JSON-LD SCHEMA MARKUP (LocalBusiness) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -46,8 +39,6 @@
     }
     </script>
     
-    <!-- Google Analytics 4 (GA4) Tracking Script -->
-    <!-- ID: G-3QTMG1C4J9 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-3QTMG1C4J9"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -56,9 +47,7 @@
       gtag('config', 'G-3QTMG1C4J9'); 
     </script>
 
-    <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Load Inter Font -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
     
     <style>
@@ -150,14 +139,10 @@
 </head>
 <body class="bg-charcoal">
 
-    <!-- Sticky Navigation Header -->
     <header class="sticky top-0 z-10 bg-charcoal/90 shadow-lg border-b border-gray-700">
         
-        <!-- Desktop Nav Bar and Mobile Menu Button -->
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-            <!-- Logo Area -->
             <button onclick="window.location.hash = '#/home'" class="flex items-center text-2xl font-normal tracking-tight text-white focus:outline-none">
-                <!-- Image Logo: The image path '/3.0_no_text.PNG' is expected to be available at the root of the hosting environment. -->
                 <img src="/3.0_no_text.PNG" 
                      alt="Iredell Home Tech Support Logo and PC Repair Service" 
                      class="w-10 h-10 mr-2 rounded-lg"
@@ -167,7 +152,6 @@
                 <span class="gradient-text-blue-orange">Iredell Home Tech Support</span>
             </button>
 
-            <!-- Desktop Navigation Links (Hidden on small screens) -->
             <nav class="hidden md:flex space-x-4">
                 <button id="nav-home" class="nav-link text-lg font-normal py-1 px-3 transition-colors duration-200 text-white hover:text-brand-blue" onclick="window.location.hash = '#/home'">Home</button>
                 <button id="nav-about" class="nav-link text-lg font-normal py-1 px-3 transition-colors duration-200 text-white hover:text-brand-blue" onclick="window.location.hash = '#/about'">About Us</button>
@@ -176,23 +160,18 @@
                 <button id="nav-contact" class="nav-link text-lg font-normal py-1 px-3 transition-colors duration-200 text-white hover:text-brand-blue" onclick="window.location.hash = '#/contact'">Contact Us</button>
             </nav>
 
-            <!-- Mobile Menu Button (Visible on small screens) -->
             <button id="mobile-menu-button" class="md:hidden text-white hover:text-brand-blue transition-colors focus:outline-none p-2 rounded-md" aria-label="Toggle navigation" aria-controls="mobile-menu" aria-expanded="false" onclick="toggleMenu()">
-                <!-- Hamburger Icon (Menu closed) -->
                 <svg id="icon-open" class="h-6 w-6 block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
                 </svg>
-                <!-- X Icon (Menu open - initially hidden) -->
                 <svg id="icon-close" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                 </svg>
             </button>
         </div>
 
-        <!-- Mobile Menu Container (Initially hidden, toggled by JS) -->
         <div id="mobile-menu" class="hidden md:hidden bg-charcoal absolute w-full shadow-xl border-t border-gray-700 z-10">
             <div class="px-4 pt-2 pb-3 space-y-1 flex flex-col items-start">
-                <!-- Mobile Navigation Links (Clicking closes the menu) -->
                 <button id="mobile-nav-home" class="mobile-nav-link text-lg font-normal py-2 px-3 transition-colors duration-200 text-white hover:bg-gray-700 hover:text-brand-blue w-full text-left rounded-lg" onclick="window.location.hash = '#/home'; toggleMenu();">Home</button>
                 <button id="mobile-nav-about" class="mobile-nav-link text-lg font-normal py-2 px-3 transition-colors duration-200 text-white hover:bg-gray-700 hover:text-brand-blue w-full text-left rounded-lg" onclick="window.location.hash = '#/about'; toggleMenu();">About Us</button>
                 <button id="mobile-nav-requests" class="mobile-nav-link text-lg font-normal py-2 px-3 transition-colors duration-200 text-white hover:bg-gray-700 hover:text-brand-blue w-full text-left rounded-lg" onclick="window.location.hash = '#/requests'; toggleMenu();">Services</button>
@@ -202,22 +181,16 @@
         </div>
     </header>
 
-    <!-- Main Content Container -->
     <main id="content" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex-grow">
         
-        <!-- ============================================== -->
-        <!-- 1. LANDING PAGE (HOME) -->
-        <!-- ============================================== -->
         <section id="home" class="page-section pt-16 flex flex-col items-center justify-center min-h-[70vh]">
             <div class="max-w-4xl space-y-6">
-                <!-- H1: Retained keywords and branding -->
                 <h1 class="text-5xl md:text-6xl lg:text-7xl font-normal leading-tight text-white">
                     Your Go-To for <span class="gradient-text-blue-orange">Reliable Home Tech Support</span> in Iredell County
                 </h1>
                 <p class="text-2xl font-normal mt-4 text-white">
                     <span class="text-brand-blue">Iredell Home Tech Support:</span> Your personal home tech handyman.
                 </p>
-                <!-- Body copy reinforces services and location -->
                 <p class="text-gray-300 text-lg">
                     Experiencing PC troubles, network glitches, or need help setting up new devices? We provide friendly, expert assistance right in your Iredell County home. Get personalized service without the hassle of store visits.
                 </p>
@@ -226,11 +199,9 @@
                 </button>
             </div>
             
-            <!-- Quick Contact Info (NAP) - Essential for local SEO signals -->
             <div class="mt-12 w-full max-w-lg bg-gray-800 p-6 rounded-xl shadow-xl border border-gray-700 mx-auto">
                 <h2 class="text-xl font-normal text-brand-orange mb-3">Service & Contact</h2>
                 <div class="space-y-3">
-                    <!-- Top row: Phone and Location -->
                     <div class="flex flex-col sm:flex-row sm:justify-center sm:items-center gap-3 text-lg text-gray-300">
                         <p class="flex items-center justify-center">
                             <span class="text-brand-blue mr-2">📞</span> 
@@ -241,27 +212,21 @@
                             Statesville, NC
                         </p>
                     </div>
-                    <!-- Bottom row: Email (centered) -->
                     <div class="flex justify-center">
                         <p class="flex items-center text-lg text-gray-300">
                             <span class="text-brand-blue mr-2">📧</span> 
-                            <a href="/cdn-cgi/l/email-protection#32414742425d4046725b405756575e5e5a5d5f574657515a414742425d40461c515d5f" class="hover:text-brand-orange text-center"><span class="__cf_email__" data-cfemail="6c1f191c1c031e182c051e09080900000403010918090f041f191c1c031e18420f0301">[email&#160;protected]</span></a>
+                            <a href="mailto:support@iredellhometechsupport.com" class="hover:text-brand-orange text-center">support@iredellhometechsupport.com</a>
                         </p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ============================================== -->
-        <!-- 2. ABOUT US PAGE -->
-        <!-- ============================================== -->
         <section id="about" class="page-section pt-12">
-            <!-- H2: Reinforced location focus -->
             <div>
                 <h2 class="text-4xl font-normal mb-8 border-b-2 border-brand-blue pb-2 inline-block">About Iredell Home Tech Support</h2>
             </div>
 
-            <!-- Mission Statement -->
             <div class="bg-gray-800 p-8 rounded-xl shadow-xl space-y-6 border border-gray-700 mb-10 max-w-4xl mx-auto">
                 <p class="text-lg">
                     Iredell Home Tech Support was founded with a simple mission: to provide personalized, trustworthy, and convenient tech assistance to our neighbors across Iredell County. We understand the frustrations that come with tech issues, and our goal is to offer clear, effective solutions without the jargon or hefty price tags of larger corporate services.
@@ -273,9 +238,7 @@
 
             <h3 class="text-3xl font-normal text-brand-blue mb-6">Meet the Co-Founders</h3>
 
-            <!-- Founders Grid (Content remains the same, focuses on expertise) -->
             <div class="grid lg:grid-cols-2 gap-10 max-w-4xl mx-auto">
-                <!-- Valentin Roman Profile -->
                 <div class="bg-gray-800 p-8 rounded-xl shadow-2xl border-t-4 border-brand-blue h-full flex flex-col items-center">
                     <div class="flex items-center space-x-4 mb-4">
                         <div class="w-16 h-16 bg-brand-blue rounded-full flex items-center justify-center text-3xl font-normal text-white">VR</div>
@@ -296,7 +259,6 @@
                             More than just a seasoned manager, Valentin is a highly trained Cybersecurity Professional, holding credentials including CompTIA Security+ and ISC² Certified in Cybersecurity (CC). His high-level training ensures every solution you receive is not just a quick fix, but a secure, precisely implemented, and long-lasting result.
                         </p>
 
-                        <!-- Why this matters to you section: Checkmarks maintained -->
                         <h5 class="text-xl font-normal text-brand-blue pt-4">Why this matters to you:</h5>
                         <ul class="space-y-2 text-gray-300 list-none">
                             <li class="flex items-start">
@@ -315,7 +277,6 @@
                     </div>
                 </div>
 
-                <!-- Enmanuel Huenchunir Profile -->
                 <div class="bg-gray-800 p-8 rounded-xl shadow-2xl border-t-4 border-brand-orange h-full flex flex-col items-center">
                     <div class="flex items-center space-x-4 mb-4">
                         <div class="w-16 h-16 bg-brand-orange rounded-full flex items-center justify-center text-3xl font-normal text-white">EH</div>
@@ -333,7 +294,6 @@
                             This background instills a powerful commitment to 100% safety compliance, real-time problem solving, and meeting deadlines—ensuring your job is handled with unmatched discipline and precision. More than just a seasoned operator, Enmanuel is a second-year Software Engineering student with skills in Java, Python, C++, and SQL.
                         </p>
 
-                        <!-- Why this matters to you section: Checkmarks maintained -->
                         <h5 class="text-xl font-normal text-brand-orange pt-4">Why this matters to you:</h5>
                         <ul class="space-y-2 text-gray-300 list-none">
                             <li class="flex items-start">
@@ -354,11 +314,7 @@
             </div>
         </section>
 
-        <!-- ============================================== -->
-        <!-- 3. SERVICES (CUSTOMER REQUESTS) PAGE -->
-        <!-- ============================================== -->
         <section id="requests" class="page-section pt-12">
-            <!-- H2: Reinforced service + location keywords -->
             <div>
                 <h2 class="text-4xl font-normal mb-8 border-b-2 border-brand-blue pb-2 inline-block">Comprehensive On-Site Tech Services in Iredell County</h2>
             </div>
@@ -369,10 +325,8 @@
                     We cover everything from device tune-ups to complex network builds. We are your one-stop shop for professional home tech solutions serving Statesville, Mooresville, Troutman, and surrounding Iredell County areas.
                 </p>
                 
-                <!-- Services Grid with 3 Detailed Content Cards -->
                 <div class="grid lg:grid-cols-2 gap-8 max-w-4xl mx-auto">
 
-                    <!-- Service Category 1: PC Health, Performance, & Builds -->
                     <div class="bg-gray-800 p-8 rounded-xl shadow-2xl border-t-4 border-brand-blue h-full flex flex-col">
                         <span class="text-4xl text-brand-orange mb-4">⚙️</span>
                         <h3 class="text-3xl font-normal text-white mb-4">PC Repair, Performance, & Custom Builds</h3>
@@ -408,7 +362,6 @@
                         </ul>
                     </div>
 
-                    <!-- Service Category 2: Network & Smart Home Integration -->
                     <div class="bg-gray-800 p-8 rounded-xl shadow-2xl border-t-4 border-brand-orange h-full flex flex-col">
                         <span class="text-4xl text-brand-blue mb-4">🏠</span>
                         <h3 class="text-3xl font-normal text-white mb-4">Home Network & Smart Home Integration</h3>
@@ -444,7 +397,6 @@
                         </ul>
                     </div>
 
-                    <!-- Service Category 3: Specialized & On-Site Services (Stretches across both columns for large mobile/small desktop view) -->
                     <div class="lg:col-span-2 bg-gray-800 p-8 rounded-xl shadow-2xl border-t-4 border-brand-blue flex flex-col">
                         <span class="text-4xl text-brand-orange mb-4">🛠️</span>
                         <h3 class="text-3xl font-normal text-white mb-4">Specialized & On-Site Tech Support</h3>
@@ -453,7 +405,6 @@
                         </p>
                         
                         <div class="grid md:grid-cols-3 gap-6 text-gray-200">
-                            <!-- Cable Management -->
                             <div class="text-left">
                                 <h4 class="text-xl font-normal text-brand-orange mb-2">Cable Management</h4>
                                 <ul class="space-y-2 list-none">
@@ -465,7 +416,6 @@
                                 </ul>
                             </div>
                             
-                            <!-- 3D Printing -->
                             <div class="text-left">
                                 <h4 class="text-xl font-normal text-brand-orange mb-2">3D Printing Services</h4>
                                 <ul class="space-y-2 list-none">
@@ -476,7 +426,6 @@
                                 </ul>
                             </div>
 
-                            <!-- Data & Training -->
                             <div class="text-left">
                                 <h4 class="text-xl font-normal text-brand-orange mb-2">Data & Training</h4>
                                 <ul class="space-y-2 list-none">
@@ -494,7 +443,6 @@
                     </div>
                 </div>
                 
-                <!-- Call to Action Button to Contact Page -->
                 <div class="bg-gray-800 p-8 rounded-xl shadow-2xl border border-gray-700 max-w-xl mx-auto">
                     <h3 class="text-3xl font-normal text-white mb-4">Ready for an Estimate?</h3>
                     <p class="text-lg text-gray-300 mb-6">Click the button below to reach out directly to your local tech handyman.</p>
@@ -505,9 +453,6 @@
             </div>
         </section>
 
-        <!-- ============================================== -->
-        <!-- 4. FAQ (Troubleshooting) PAGE -->
-        <!-- ============================================== -->
         <section id="faq" class="page-section pt-12">
             <div>
                 <h2 class="text-4xl font-normal mb-8 border-b-2 border-brand-blue pb-2 inline-block">Quick Troubleshooting Tips (FAQ)</h2>
@@ -518,7 +463,6 @@
                     These simple checks can often resolve minor issues instantly, saving you time and the need for a service call. If these steps do not work, please contact us!
                 </p>
 
-                <!-- Tip 1: Power Cycle -->
                 <div class="bg-gray-800 rounded-xl shadow-md border border-gray-700 mx-auto max-w-2xl">
                     <button onclick="toggleFaq('faq-1-tip')" class="w-full text-left p-4 flex justify-between items-center text-xl font-normal text-white hover:text-brand-orange transition-colors">
                         1. My device is acting strangely, unresponsive, or an indicator light is blinking unexpectedly. What should I do?
@@ -540,7 +484,6 @@
                     </div>
                 </div>
 
-                <!-- Tip 2: Physical Connections and Obstructions -->
                 <div class="bg-gray-800 rounded-xl shadow-md border border-gray-700 mx-auto max-w-2xl">
                     <button onclick="toggleFaq('faq-2-tip')" class="w-full text-left p-4 flex justify-between items-center text-xl font-normal text-white hover:text-brand-orange transition-colors">
                         2. A specific function (like sound, video, or movement) suddenly stopped working.
@@ -567,7 +510,6 @@
                     </div>
                 </div>
                 
-                 <!-- Contact CTA at bottom of FAQ -->
                  <div class="pt-8">
                     <button onclick="window.location.hash = '#/contact'" class="cta-button text-xl font-normal px-8 py-3 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300">
                         Still Having Trouble? Contact Us!
@@ -576,17 +518,12 @@
             </div>
         </section>
 
-        <!-- ============================================== -->
-        <!-- 5. CONTACT US PAGE -->
-        <!-- ============================================== -->
         <section id="contact" class="page-section pt-12">
-            <!-- H2: Contact is clear -->
             <div>
                 <h2 class="text-4xl font-normal mb-8 border-b-2 border-brand-blue pb-2 inline-block">Contact Us</h2>
             </div>
 
             <div class="grid md:grid-cols-2 gap-10 max-w-4xl mx-auto">
-                <!-- Contact Details -->
                 <div class="bg-gray-800 p-8 rounded-xl shadow-xl space-y-6 border border-gray-700">
                     <h3 class="text-2xl font-normal text-brand-orange">Proudly Serving Iredell County, NC</h3>
                     <p class="text-lg text-gray-300">
@@ -599,7 +536,7 @@
                         </p>
                         <p class="flex items-center text-xl justify-center">
                             <span class="text-brand-blue mr-3 font-normal text-2xl">📧</span> 
-                            <a href="/cdn-cgi/l/email-protection#33404643435c4147735a415657565f5f5b5c5e564756505b404643435c41471d505c5e" class="hover:text-brand-orange transition-colors"><span class="__cf_email__" data-cfemail="7704020707180503371e051213121b1b1f181a120312141f040207071805035914181a">[email&#160;protected]</span></a>
+                            <a href="mailto:support@iredellhometechsupport.com" class="hover:text-brand-orange transition-colors">support@iredellhometechsupport.com</a>
                         </p>
                         <p class="flex items-center text-xl justify-center">
                             <span class="text-brand-blue mr-3 font-normal text-2xl">📍</span> 
@@ -608,30 +545,27 @@
                     </div>
                 </div>
 
-                <!-- Fillout Embedded Form -->
                 <div class="bg-gray-800 p-8 rounded-xl shadow-2xl border border-gray-700">
                     <h3 class="text-2xl font-normal text-brand-blue mb-4">Contact Us Today</h3>
                     
                     <div style="width:100%;height:500px;" data-fillout-id="2BufiU7nUWus" data-fillout-embed-type="standard" data-fillout-inherit-parameters data-fillout-dynamic-resize></div>
-                    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://server.fillout.com/embed/v1/"></script>
+                    <script src="https://server.fillout.com/embed/v1/" defer></script>
                 </div>
             </div>
         </section>
 
     </main>
 
-    <!-- Footer -->
     <footer class="mt-12 py-8 bg-charcoal border-t border-gray-700">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             
-            <!-- Footer Navigation Links for crawlability -->
             <nav class="flex justify-center space-x-6 mb-4 text-sm font-normal">
                 <a href="#/home" class="text-gray-400 hover:text-brand-blue transition-colors">Home</a>
                 <a href="#/about" class="text-gray-400 hover:text-brand-blue transition-colors">About Us</a>
                 <a href="#/requests" class="text-gray-400 hover:text-brand-blue transition-colors">Services</a>
                 <a href="#/faq" class="text-gray-400 hover:text-brand-blue transition-colors">FAQ</a>
                 <a href="#/contact" class="text-gray-400 hover:text-brand-blue transition-colors">Contact Us</a>
-                <a href="/cdn-cgi/l/email-protection#88fbfdf8f8e7fafcc8e1faedecede4e4e0e7e5edfcedebe0fbfdf8f8e7fafca6ebe7e5" class="text-gray-400 hover:text-brand-blue transition-colors">Email Support</a>
+                <a href="mailto:support@iredellhometechsupport.com" class="text-gray-400 hover:text-brand-blue transition-colors">Email Support</a>
             </nav>
 
             <p class="text-gray-400">&copy; <span id="year"></span> Iredell Home Tech Support. All Rights Reserved.</p>
@@ -641,8 +575,7 @@
         </div>
     </footer>
 
-    <!-- JavaScript for Navigation and FAQ Toggle -->
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script>
         /**
          * Function to toggle FAQ answer visibility using the 'open' class for CSS transitions.
          * @param {string} id - The ID of the FAQ answer div (e.g., 'faq-1-tip').
@@ -665,12 +598,6 @@
 
         document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('year').textContent = new Date().getFullYear();
-            
-            // Ensure email links display properly (bypass browser extension protection)
-
-
-            
-
             
             // --- Initial Load Logic: Check URL Hash ---
             // Removes '#/' and defaults to 'home' if empty
@@ -751,4 +678,3 @@
     </script>
 </body>
 </html>
-                
