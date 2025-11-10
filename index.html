@@ -229,19 +229,25 @@
             <!-- Quick Contact Info (NAP) - Essential for local SEO signals -->
             <div class="mt-12 w-full max-w-lg bg-gray-800 p-6 rounded-xl shadow-xl border border-gray-700 mx-auto">
                 <h2 class="text-xl font-normal text-brand-orange mb-3">Service & Contact</h2>
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-lg text-gray-300">
-                    <p class="flex items-center justify-center sm:justify-start">
-                        <span class="text-brand-blue mr-2">📞</span> 
-                        <a href="tel:8474040586" class="hover:text-brand-orange">(847) 404-0586</a>
-                    </p>
-                    <p class="flex items-center justify-center sm:justify-center">
-                        <span class="text-brand-blue mr-2">📍</span> 
-                        Statesville, NC
-                    </p>
-                    <p class="flex items-center justify-center sm:justify-end">
-                        <span class="text-brand-blue mr-2">📧</span> 
-                        <a href="/cdn-cgi/l/email-protection#f3808683839c8187b39a819697969f9f9b9c9e968796909b808683839c8187dd909c9e" class="hover:text-brand-orange"><span class="__cf_email__" data-cfemail="6d1e181d1d021f192d041f08090801010502000819080e051e181d1d021f19430e0200">[email&#160;protected]</span></a>
-                    </p>
+                <div class="space-y-3">
+                    <!-- Top row: Phone and Location -->
+                    <div class="flex flex-col sm:flex-row sm:justify-center sm:items-center gap-3 text-lg text-gray-300">
+                        <p class="flex items-center justify-center">
+                            <span class="text-brand-blue mr-2">📞</span> 
+                            <a href="tel:8474040586" class="hover:text-brand-orange">(847) 404-0586</a>
+                        </p>
+                        <p class="flex items-center justify-center">
+                            <span class="text-brand-blue mr-2">📍</span> 
+                            Statesville, NC
+                        </p>
+                    </div>
+                    <!-- Bottom row: Email (centered) -->
+                    <div class="flex justify-center">
+                        <p class="flex items-center text-lg text-gray-300">
+                            <span class="text-brand-blue mr-2">📧</span> 
+                            <a href="/cdn-cgi/l/email-protection#b4c7c1c4c4dbc6c0f4ddc6d1d0d1d8d8dcdbd9d1c0d1d7dcc7c1c4c4dbc6c09ad7dbd9" class="hover:text-brand-orange text-center"><span class="__cf_email__" data-cfemail="c7b4b2b7b7a8b5b387aeb5a2a3a2ababafa8aaa2b3a2a4afb4b2b7b7a8b5b3e9a4a8aa">[email&#160;protected]</span></a>
+                        </p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -593,9 +599,7 @@
                         </p>
                         <p class="flex items-center text-xl justify-center">
                             <span class="text-brand-blue mr-3 font-normal text-2xl">📧</span> 
-                            <a href="/cdn-cgi/l/email-protection#3e4d4b4e4e514c4a7e574c5b5a5b52525651535b4a5b5d564d4b4e4e514c4a105d5153" class="hover:text-brand-orange transition-colors text-2xl font-semibold bg-brand-blue bg-opacity-10 px-4 py-2 rounded-lg border-2 border-brand-blue border-opacity-30">
-                                <span class="__cf_email__" data-cfemail="9be8eeebebf4e9efdbf2e9fefffef7f7f3f4f6feeffef8f3e8eeebebf4e9efb5f8f4f6">[email&#160;protected]</span>
-                            </a>
+                            <a href="/cdn-cgi/l/email-protection#53202623233c2127133a213637363f3f3b3c3e362736303b202623233c21277d303c3e" class="hover:text-brand-orange transition-colors"><span class="__cf_email__" data-cfemail="1764626767786563577e657273727b7b7f787a726372747f646267677865633974787a">[email&#160;protected]</span></a>
                         </p>
                         <p class="flex items-center text-xl justify-center">
                             <span class="text-brand-blue mr-3 font-normal text-2xl">📍</span> 
@@ -627,7 +631,7 @@
                 <a href="#/requests" class="text-gray-400 hover:text-brand-blue transition-colors">Services</a>
                 <a href="#/faq" class="text-gray-400 hover:text-brand-blue transition-colors">FAQ</a>
                 <a href="#/contact" class="text-gray-400 hover:text-brand-blue transition-colors">Contact Us</a>
-                <a href="/cdn-cgi/l/email-protection#1d6e686d6d726f695d746f78797871717572707869787e756e686d6d726f69337e7270" class="text-gray-400 hover:text-brand-blue transition-colors">Email Support</a>
+                <a href="/cdn-cgi/l/email-protection#89fafcf9f9e6fbfdc9e0fbecedece5e5e1e6e4ecfdeceae1fafcf9f9e6fbfda7eae6e4" class="text-gray-400 hover:text-brand-blue transition-colors">Email Support</a>
             </nav>
 
             <p class="text-gray-400">&copy; <span id="year"></span> Iredell Home Tech Support. All Rights Reserved.</p>
@@ -661,6 +665,10 @@
 
         document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('year').textContent = new Date().getFullYear();
+            
+            // Ensure email links display properly (bypass browser extension protection)
+
+
             
 
             
@@ -743,3 +751,4 @@
     </script>
 </body>
 </html>
+                
