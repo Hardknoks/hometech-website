@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <title>Iredell Home Tech Support | PC Repair & IT Service in Statesville, NC</title>
-    
     <meta name="description" content="Expert on-site home tech support in Iredell County, NC. We provide PC repair, virus removal, Wi-Fi setup, and new device installation right to your door.">
 
     <link rel="icon" type="image/png" href="/3.0_no_text.PNG">
+    
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -51,7 +51,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
     
     <style>
-        /* Custom styles to refine the color scheme and modern look */
+        /* Define custom variables for easier color management */
         :root {
             /* Primary Brand Colors */
             --color-blue: #1196d2;
@@ -59,7 +59,6 @@
             
             /* Neutral Background/Text Colors */
             --color-charcoal: #3a3938; /* Main dark background */
-            --color-light-gray: #f5f5f5; /* For contrast on dark backgrounds, or text */
             --color-white: #ffffff;
         }
 
@@ -72,32 +71,32 @@
             flex-direction: column;
         }
 
-        /* Styling for the main content sections (pages) */
+        /* Styling for the main content sections (used for SPA routing) */
         .page-section {
-            display: none;
+            display: none; /* Hidden by default, shown by JavaScript router */
             padding-bottom: 8rem; /* Space before the footer */
-            text-align: center; /* Ensure all sections are centered by default */
+            text-align: center;
         }
-
-        /* Active navigation link styling (Desktop - bottom border) */
+        
+        /* Highlight for the active desktop navigation link */
         .nav-link.active {
-            border-bottom: 2px solid var(--color-blue); /* Use blue for active indicator */
+            border-bottom: 2px solid var(--color-blue);
             color: var(--color-blue);
         }
 
-        /* Active navigation link styling (Mobile - background color) */
+        /* Highlight for the active mobile navigation link */
         .mobile-nav-link.active {
-            background-color: rgba(17, 150, 210, 0.2); /* Light blue background for active state */
+            background-color: rgba(17, 150, 210, 0.2);
             color: var(--color-blue);
         }
 
-        /* Custom button styling (using primary blue) */
+        /* Custom primary call-to-action button styling */
         .cta-button {
             background-color: var(--color-blue);
             transition: background-color 0.3s, transform 0.1s;
         }
         .cta-button:hover {
-            background-color: #0d7ea8; /* Slightly darker blue on hover */
+            background-color: #0d7ea8;
             transform: translateY(-1px);
         }
 
@@ -107,22 +106,21 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            color: transparent; /* Fallback for browsers not supporting background-clip */
+            color: transparent;
         }
 
-
-
-        /* Custom style for FAQ answer expansion */
+        /* Custom style for FAQ answer expansion (controlled by JS) */
         .faq-answer {
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.4s ease-in-out, padding-top 0.4s ease-in-out;
         }
         .faq-answer.open {
-            max-height: 500px; /* Large enough value to cover content */
+            max-height: 500px; /* Adjust as needed for content length */
             padding-top: 1rem;
         }
     </style>
+    
     <script>
         tailwind.config = {
             theme: {
@@ -144,10 +142,10 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
             <button onclick="window.location.hash = '#/home'" class="flex items-center text-2xl font-normal tracking-tight text-white focus:outline-none">
                 <img src="/3.0_no_text.PNG" 
-                     alt="Iredell Home Tech Support Logo and PC Repair Service" 
-                     class="w-10 h-10 mr-2 rounded-lg"
-                     onerror="this.onerror=null; this.src='https://placehold.co/40x40/1196d2/ffffff?text=IH';" 
-                     title="Iredell Home Tech Support">
+                    alt="Iredell Home Tech Support Logo and PC Repair Service" 
+                    class="w-10 h-10 mr-2 rounded-lg"
+                    onerror="this.onerror=null; this.src='https://placehold.co/40x40/1196d2/ffffff?text=IH';" 
+                    title="Iredell Home Tech Support">
                 
                 <span class="gradient-text-blue-orange">Iredell Home Tech Support</span>
             </button>
@@ -324,7 +322,168 @@
                 <p class="text-xl text-gray-300 max-w-4xl mx-auto">
                     We cover everything from device tune-ups to complex network builds. We are your one-stop shop for professional home tech solutions serving Statesville, Mooresville, Troutman, and surrounding Iredell County areas.
                 </p>
-                
+
+                <div class="max-w-4xl mx-auto bg-gray-900 p-6 rounded-xl shadow-2xl border border-brand-orange/50">
+                    <h3 class="text-3xl font-normal text-brand-orange mb-6">Transparent Service Pricing</h3>
+                    
+                    <table class="min-w-full divide-y divide-gray-700">
+                        <thead class="bg-gray-800">
+                            <tr>
+                                <th colspan="2" scope="col" class="px-6 py-3 text-left text-xl font-normal text-brand-blue uppercase tracking-wider border-b border-brand-blue">
+                                    HOURLY & MINIMUM RATES
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-charcoal divide-y divide-gray-700">
+                            <tr class="hover:bg-gray-700 transition-colors">
+                                <td class="px-6 py-4 whitespace-nowrap text-left text-lg font-normal text-white">
+                                    Standard Hourly Rate (On-Site / Custom Work)
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-right text-lg text-brand-orange font-bold">
+                                    $75 per hour
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-gray-700 transition-colors">
+                                <td class="px-6 py-4 whitespace-nowrap text-left text-lg font-normal text-white">
+                                    On-Site Minimum Fee (Trip Charge + 1 Hour)
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-right text-lg text-brand-orange font-bold">
+                                    $115 Flat Fee
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-gray-700 transition-colors">
+                                <td class="px-6 py-4 whitespace-nowrap text-left text-lg font-normal text-white">
+                                    Remote Support Rate
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-right text-lg text-brand-orange font-bold">
+                                    $60 per hour
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-gray-700 transition-colors">
+                                <td class="px-6 py-4 whitespace-nowrap text-left text-lg font-normal text-white">
+                                    Drop-Off Diagnostic Fee
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-right text-lg text-brand-orange font-bold">
+                                    $45 Flat Fee
+                                </td>
+                            </tr>
+                            
+                            <tr class="bg-gray-800">
+                                <th colspan="2" scope="col" class="px-6 py-3 text-left text-xl font-normal text-brand-blue uppercase tracking-wider border-y border-brand-blue">
+                                    STANDARD FLAT-RATE SERVICES
+                                </th>
+                            </tr>
+                            
+                            <tr class="hover:bg-gray-700 transition-colors">
+                                <td class="px-6 py-4 whitespace-nowrap text-left text-lg font-normal text-white">
+                                    Deep Virus/Malware/Spyware Removal
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-right text-lg text-white font-bold">
+                                    $135
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-gray-700 transition-colors">
+                                <td class="px-6 py-4 whitespace-nowrap text-left text-lg font-normal text-white">
+                                    Complete PC Tune-Up & Optimization
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-right text-lg text-white font-bold">
+                                    $115
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-gray-700 transition-colors">
+                                <td class="px-6 py-4 whitespace-nowrap text-left text-lg font-normal text-white">
+                                    Operating System (OS) Install/Reinstall
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-right text-lg text-white font-bold">
+                                    $125
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-gray-700 transition-colors">
+                                <td class="px-6 py-4 whitespace-nowrap text-left text-lg font-normal text-white">
+                                    New PC Setup & Software Installation
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-right text-lg text-white font-bold">
+                                    $95
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-gray-700 transition-colors">
+                                <td class="px-6 py-4 whitespace-nowrap text-left text-lg font-normal text-white">
+                                    Hardware Diagnostics & Installation
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-right text-lg text-white font-bold">
+                                    $75 Flat Labor Fee + Parts
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-gray-700 transition-colors">
+                                <td class="px-6 py-4 whitespace-nowrap text-left text-lg font-normal text-white">
+                                    Data Transfer / File Migration
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-right text-lg text-white font-bold">
+                                    $85
+                                </td>
+                            </tr>
+                            
+                            <tr class="bg-gray-800">
+                                <th colspan="2" scope="col" class="px-6 py-3 text-left text-xl font-normal text-brand-blue uppercase tracking-wider border-y border-brand-blue">
+                                    HOME NETWORKING & SPECIALIZED SUPPORT
+                                </th>
+                            </tr>
+                            
+                            <tr class="hover:bg-gray-700 transition-colors">
+                                <td class="px-6 py-4 whitespace-nowrap text-left text-lg font-normal text-white">
+                                    Home Network / Wi-Fi Optimization
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-right text-lg text-white font-bold">
+                                    $115 (First hour, then $75/hr)
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-gray-700 transition-colors">
+                                <td class="px-6 py-4 whitespace-nowrap text-left text-lg font-normal text-white">
+                                    Home Security (Cameras/Doorbells) Setup
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-right text-lg text-white font-bold">
+                                    $95 per device
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-gray-700 transition-colors">
+                                <td class="px-6 py-4 whitespace-nowrap text-left text-lg font-normal text-white">
+                                    NAS (Network Attached Storage) Setup
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-right text-lg text-white font-bold">
+                                    $150 Flat Labor Fee
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-gray-700 transition-colors">
+                                <td class="px-6 py-4 whitespace-nowrap text-left text-lg font-normal text-white">
+                                    Custom PC Build / Gaming PC Build
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-right text-lg text-white font-bold">
+                                    $185 Flat Labor Fee + Parts
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-gray-700 transition-colors">
+                                <td class="px-6 py-4 whitespace-nowrap text-left text-lg font-normal text-white">
+                                    One-on-One Tech Training / Consulting
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-right text-lg text-white font-bold">
+                                    $75 per hour
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-gray-700 transition-colors">
+                                <td class="px-6 py-4 whitespace-nowrap text-left text-lg font-normal text-white">
+                                    3D Printing Services
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-right text-lg text-white font-bold">
+                                    Quoted by the Job (Base fee $15)
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="text-sm text-gray-500 mt-4 text-left">
+                        *Flat-rate services include diagnostics and labor. All other on-site work is billed at the Standard Hourly Rate after the minimum fee is met. Prices are estimates and may vary based on complexity.
+                    </p>
+                </div>
+                                
                 <div class="grid lg:grid-cols-2 gap-8 max-w-4xl mx-auto">
 
                     <div class="bg-gray-800 p-8 rounded-xl shadow-2xl border-t-4 border-brand-blue h-full flex flex-col">
@@ -333,125 +492,17 @@
                         <p class="text-gray-300 mb-6 text-left">
                             Maximize your computer's speed and security. We handle all aspects of personal computing, from maintenance to building your dream gaming rig.
                         </p>
-                        
-                        <ul class="space-y-3 text-gray-200 flex-grow list-none text-left">
-                            <li class="flex items-start">
-                                <span class="mr-2 text-brand-orange font-normal text-lg pt-0.5">✓</span> 
-                                Windows Clean Up and Performance Optimization
-                            </li>
-                            <li class="flex items-start">
-                                <span class="mr-2 text-brand-orange font-normal text-lg pt-0.5">✓</span> 
-                                Operating System Updates and Troubleshooting
-                            </li>
-                            <li class="flex items-start">
-                                <span class="mr-2 text-brand-orange font-normal text-lg pt-0.5">✓</span> 
-                                Deep Virus Scans, Malware, and Spyware Removal
-                            </li>
-                            <li class="flex items-start">
-                                <span class="mr-2 text-brand-orange font-normal text-lg pt-0.5">✓</span> 
-                                Windows Setup / New PC Installation and Data Transfer
-                            </li>
-                            <li class="flex items-start">
-                                <span class="mr-2 text-brand-orange font-normal text-lg pt-0.5">✓</span> 
-                                Custom PC Builds and Gaming PC Builds (Consultation to Finish)
-                            </li>
-                            <li class="flex items-start">
-                                <span class="mr-2 text-brand-orange font-normal text-lg pt-0.5">✓</span> 
-                                Hardware Diagnostics and Upgrades (SSD, RAM, GPU)
-                            </li>
-                        </ul>
-                    </div>
+                        </div>
 
                     <div class="bg-gray-800 p-8 rounded-xl shadow-2xl border-t-4 border-brand-orange h-full flex flex-col">
                         <span class="text-4xl text-brand-blue mb-4">🏠</span>
-                        <h3 class="text-3xl font-normal text-white mb-4">Home Network & Smart Home Integration</h3>
+                        <h3 class="text-3xl font-normal text-white mb-4">Home Networking & Smart Home Setup</h3>
                         <p class="text-gray-300 mb-6 text-left">
-                            Create a fast, secure, and fully connected home. We specialize in bringing all your devices together seamlessly and securely.
+                            Set up a reliable Wi-Fi network, troubleshoot connectivity issues, or get your smart devices (like security cameras and doorbells) working perfectly.
                         </p>
-                        
-                        <ul class="space-y-3 text-gray-200 flex-grow list-none text-left">
-                            <li class="flex items-start">
-                                <span class="mr-2 text-brand-blue font-normal text-lg pt-0.5">✓</span> 
-                                Home Network Access Point Setup (Eliminate Wi-Fi Dead Zones)
-                            </li>
-                            <li class="flex items-start">
-                                <span class="mr-2 text-brand-blue font-normal text-lg pt-0.5">✓</span> 
-                                Comprehensive Home Security Setup (Cameras, Doorbells, Monitoring)
-                            </li>
-                            <li class="flex items-start">
-                                <span class="mr-2 text-brand-blue font-normal text-lg pt-0.5">✓</span> 
-                                Implementing Parental Controls and Network Filtering
-                            </li>
-                            <li class="flex items-start">
-                                <span class="mr-2 text-brand-blue font-normal text-lg pt-0.5">✓</span> 
-                                Home Theater and A/V Streaming Setup/Calibration
-                            </li>
-                            <li class="flex items-start">
-                                <span class="mr-2 text-brand-blue font-normal text-lg pt-0.5">✓</span> 
-                                Complete Smart Home Setups (Lighting, Assistants, Automation)
-                            </li>
-                            <li class="flex items-start">
-                                <span class="mr-2 text-brand-blue font-normal text-lg pt-0.5">✓</span> 
-                                NAS (Network Attached Storage) Setup for Private Cloud Backup
-                            </li>
-                        </ul>
                     </div>
 
-                    <div class="lg:col-span-2 bg-gray-800 p-8 rounded-xl shadow-2xl border-t-4 border-brand-blue flex flex-col">
-                        <span class="text-4xl text-brand-orange mb-4">🛠️</span>
-                        <h3 class="text-3xl font-normal text-white mb-4">Specialized & On-Site Tech Support</h3>
-                        <p class="text-gray-300 mb-6 text-left">
-                            Beyond software, we offer hands-on physical services and unique offerings to enhance your home environment.
-                        </p>
-                        
-                        <div class="grid md:grid-cols-3 gap-6 text-gray-200">
-                            <div class="text-left">
-                                <h4 class="text-xl font-normal text-brand-orange mb-2">Cable Management</h4>
-                                <ul class="space-y-2 list-none">
-                                    <li class="flex items-start">
-                                        <span class="mr-2 text-brand-blue font-normal text-lg pt-0.5">✓</span> 
-                                        Organizing and concealing desktop/home theater wiring for aesthetics and safety.
-                                    </li>
-                                
-                                </ul>
-                            </div>
-                            
-                            <div class="text-left">
-                                <h4 class="text-xl font-normal text-brand-orange mb-2">3D Printing Services</h4>
-                                <ul class="space-y-2 list-none">
-                                    <li class="flex items-start">
-                                        <span class="mr-2 text-brand-blue font-normal text-lg pt-0.5">✓</span> 
-                                        Printing custom parts, enclosures, or functional items by request.
-                                    </li>
-                                </ul>
-                            </div>
-
-                            <div class="text-left">
-                                <h4 class="text-xl font-normal text-brand-orange mb-2">Data & Training</h4>
-                                <ul class="space-y-2 list-none">
-                                    <li class="flex items-start">
-                                        <span class="mr-2 text-brand-blue font-normal text-lg pt-0.5">✓</span> 
-                                        Secure data backup and file recovery solutions.
-                                    </li>
-                                    <li class="flex items-start">
-                                        <span class="mr-2 text-brand-blue font-normal text-lg pt-0.5">✓</span> 
-                                        One-on-one training for new operating systems or devices.
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="bg-gray-800 p-8 rounded-xl shadow-2xl border border-gray-700 max-w-xl mx-auto">
-                    <h3 class="text-3xl font-normal text-white mb-4">Ready for an Estimate?</h3>
-                    <p class="text-lg text-gray-300 mb-6">Click the button below to reach out directly to your local tech handyman.</p>
-                    <button onclick="window.location.hash = '#/contact'" class="cta-button text-xl font-normal px-8 py-4 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300">
-                        Get an Estimate
-                    </button>
-                </div>
-            </div>
-        </section>
+                </div> </div> </section>
 
         <section id="faq" class="page-section pt-12">
             <div>
@@ -517,7 +568,6 @@
                 </div>
             </div>
         </section>
-
         <section id="contact" class="page-section pt-12">
             <div>
                 <h2 class="text-4xl font-normal mb-8 border-b-2 border-brand-blue pb-2 inline-block">Contact Us</h2>
@@ -553,31 +603,18 @@
                 </div>
             </div>
         </section>
-
-    </main>
-
-    <footer class="mt-12 py-8 bg-charcoal border-t border-gray-700">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            
-            <nav class="flex justify-center space-x-6 mb-4 text-sm font-normal">
-                <a href="#/home" class="text-gray-400 hover:text-brand-blue transition-colors">Home</a>
-                <a href="#/about" class="text-gray-400 hover:text-brand-blue transition-colors">About Us</a>
-                <a href="#/requests" class="text-gray-400 hover:text-brand-blue transition-colors">Services</a>
-                <a href="#/faq" class="text-gray-400 hover:text-brand-blue transition-colors">FAQ</a>
-                <a href="#/contact" class="text-gray-400 hover:text-brand-blue transition-colors">Contact Us</a>
-                <a href="mailto:support@iredellhometechsupport.com" class="text-gray-400 hover:text-brand-blue transition-colors">Email Support</a>
-            </nav>
-
-            <p class="text-gray-400">&copy; <span id="year"></span> Iredell Home Tech Support. All Rights Reserved.</p>
-            <p class="mt-2 text-sm text-gray-500">
-                Your personal home tech handyman serving Statesville and Iredell County, NC.
-            </p>
+        </main>
+    
+    <footer class="bg-gray-900 mt-auto py-8 border-t border-gray-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-500">
+            &copy; 2025 Iredell Home Tech Support. All rights reserved. Servicing Iredell County, NC.
         </div>
     </footer>
 
     <script>
         /**
          * Function to toggle FAQ answer visibility using the 'open' class for CSS transitions.
+         * This function is required for the content in the restored FAQ section.
          * @param {string} id - The ID of the FAQ answer div (e.g., 'faq-1-tip').
          */
         function toggleFaq(id) {
@@ -595,88 +632,69 @@
                 }
             }
         }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            document.getElementById('year').textContent = new Date().getFullYear();
-            
-            // --- Initial Load Logic: Check URL Hash ---
-            // Removes '#/' and defaults to 'home' if empty
-            const initialHash = window.location.hash.startsWith('#/') ? window.location.hash.substring(2) : 'home'; 
-            handleNavigation(initialHash); 
-            
-            // --- Hash Change Event Listener: Handle all navigation changes (clicks, back/forward buttons) ---
-            window.addEventListener('hashchange', () => {
-                const pageIdFromHash = window.location.hash.startsWith('#/') ? window.location.hash.substring(2) : 'home';
-                handleNavigation(pageIdFromHash); 
-            });
-        });
-
-        // Function to handle the mobile menu toggle
+        
+        // 1. Mobile Menu Toggle Logic
         function toggleMenu() {
-            const mobileMenu = document.getElementById('mobile-menu');
+            const menu = document.getElementById('mobile-menu');
+            const button = document.getElementById('mobile-menu-button');
             const iconOpen = document.getElementById('icon-open');
             const iconClose = document.getElementById('icon-close');
-            const button = document.getElementById('mobile-menu-button');
+
+            const isExpanded = menu.classList.toggle('hidden');
             
-            // Toggle the hidden class on the menu container
-            const isMenuOpen = mobileMenu.classList.toggle('hidden');
-
-            // Update ARIA attributes
-            button.setAttribute('aria-expanded', !isMenuOpen);
-
-            // Toggle the icons (Hamburger <-> X)
-            iconOpen.classList.toggle('hidden', !isMenuOpen);
-            iconClose.classList.toggle('hidden', isMenuOpen);
+            // Toggle the visibility of the hamburger/close icons
+            iconOpen.classList.toggle('hidden', !isExpanded);
+            iconClose.classList.toggle('hidden', isExpanded);
+            
+            // Update ARIA attribute for accessibility
+            button.setAttribute('aria-expanded', isExpanded ? 'true' : 'false');
         }
 
+        // 2. Simple Hash-Based Router Logic
+        function showPage(hash) {
+            // Get all page sections and nav links
+            const sections = document.querySelectorAll('.page-section');
+            const navLinks = document.querySelectorAll('.nav-link, .mobile-nav-link');
+            
+            // Clean up the hash (e.g., '#/home' -> 'home')
+            const pageId = hash.substring(2) || 'home'; 
 
-        // Function to handle page navigation and active states
-        function handleNavigation(pageId) {
-            // Default to 'home' if pageId is empty or undefined
-            const finalPageId = pageId || 'home'; 
-
-            // 1. Hide all sections
-            document.querySelectorAll('.page-section').forEach(section => {
+            // Hide all sections and remove active class from all links
+            sections.forEach(section => {
                 section.style.display = 'none';
             });
-
-            // 2. Show target section
-            const targetPage = document.getElementById(finalPageId);
-            if (targetPage) {
-                targetPage.style.display = 'block';
-                // Always scroll to top on navigation change
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            }
-            
-            // 3. Update active states for both desktop and mobile navigation
-            document.querySelectorAll('.nav-link, .mobile-nav-link').forEach(button => {
-                button.classList.remove('active');
+            navLinks.forEach(link => {
+                link.classList.remove('active');
             });
 
-            const targetNavDesktop = document.getElementById(`nav-${finalPageId}`);
-            if (targetNavDesktop) {
-                targetNavDesktop.classList.add('active');
+            // Show the target section
+            const targetSection = document.getElementById(pageId);
+            if (targetSection) {
+                targetSection.style.display = 'block';
             }
+            
+            // Set the active class on the corresponding navigation link
+            const desktopNavLink = document.getElementById('nav-' + pageId);
+            const mobileNavLink = document.getElementById('mobile-nav-' + pageId);
 
-            const targetNavMobile = document.getElementById(`mobile-nav-${finalPageId}`);
-            if (targetNavMobile) {
-                targetNavMobile.classList.add('active');
-            }
-
-            // 4. Manually send a page_view event to GA4 for SPA hash changes (Crucial for tracking all virtual pages)
-            if (typeof gtag === 'function' && targetPage) {
-                // Construct a clean path for GA4 based on the hash (e.g., '/about')
-                const path = '/' + finalPageId; 
-                gtag('event', 'page_view', {
-                    page_title: document.title, 
-                    page_path: path,
-                    page_location: window.location.href 
-                });
-                console.log(`GA4 Virtual Page View: ${path} logged.`);
-            }
+            if (desktopNavLink) desktopNavLink.classList.add('active');
+            if (mobileNavLink) mobileNavLink.classList.add('active');
+            
+            // Scroll to the top of the content area
+            document.getElementById('content').scrollIntoView({ behavior: 'smooth' });
         }
+
+        // Event listener for hash changes (e.g., clicking a navigation link or using browser back/forward)
+        window.addEventListener('hashchange', () => {
+            showPage(window.location.hash);
+        });
+
+        // Initial page load logic
+        document.addEventListener('DOMContentLoaded', () => {
+            // Default to the home page if no hash is present in the URL
+            const initialHash = window.location.hash || '#/home';
+            showPage(initialHash);
+        });
     </script>
 </body>
 </html>
-
-
