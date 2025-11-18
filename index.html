@@ -379,8 +379,8 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
-    // Function to switch pages
-    function route(event, pageId) {
+    // Function to switch pages and update URL using history.pushState()
+    function route(event, pageId, pushHistory = true) {
         if(event) event.preventDefault(); // Stop the link from jumping
 
         // 1. Remove 'active' class from all sections
@@ -392,28 +392,50 @@
         const target = document.getElementById(pageId);
         if (target) {
             target.classList.add('active');
-            // Scroll to top smoothly
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         // 3. Update Navbar Active State
         document.querySelectorAll('.nav-link').forEach(link => {
             link.classList.remove('active-link');
-            if(link.getAttribute('href') === '#' + pageId) {
+            // Check if the link's hash matches the pageId
+            if(link.getAttribute('href').replace('#', '') === pageId) {
                 link.classList.add('active-link');
             }
         });
 
-        // 4. Close Mobile Menu if open
+        // 4. Update the URL without reloading the page
+        if (pushHistory) {
+            // Check if the pageId is 'home', if so, use the root path '/'
+            const newPath = `#${pageId}`; 
+            
+            // history.pushState(stateObject, title, URL)
+            history.pushState({ page: pageId }, '', newPath);
+        }
+
+        // 5. Close Mobile Menu if open
         const navbarCollapse = document.querySelector('.navbar-collapse');
-        if (navbarCollapse.classList.contains('show')) {
+        if (navbarCollapse && navbarCollapse.classList.contains('show')) {
             new bootstrap.Collapse(navbarCollapse).hide();
         }
     }
 
+    // Handle Back/Forward button presses (popstate event)
+    window.addEventListener('popstate', (e) => {
+        // Retrieve the page ID from the URL hash or default to 'home'
+        const pageId = window.location.hash.replace('#', '') || 'home';
+        // Pass false for pushHistory to prevent creating a new history entry when navigating back
+        route(null, pageId, false); 
+    });
+
     // Handle Initial Load (check URL hash or default to home)
     window.addEventListener('DOMContentLoaded', () => {
+        // Ensure the browser uses the hash for routing on load
         const hash = window.location.hash.replace('#', '') || 'home';
+        // If the URL has no hash (like `yourdomain.com/`) redirect to `#home` for clean routing
+        if (!window.location.hash || window.location.hash === '#/') {
+             history.replaceState({ page: hash }, '', `#${hash}`);
+        }
         route(null, hash);
     });
 </script>
