@@ -57,6 +57,7 @@
         --bs-primary: #1196d2; 
         --bs-blue: #1196d2; 
         --brand-orange: #f29442; 
+        --brand-orange-50: rgba(242, 148, 66, 0.5); /* Semi-transparent border fix */
         --brand-charcoal: #3a3938; 
         --bs-body-bg: var(--brand-charcoal);
         --bs-body-color: #ffffff;
@@ -82,6 +83,11 @@
     .text-brand-orange { color: var(--brand-orange) !important; }
     .text-gray-300 { color: #d1d1d1 !important; } /* For light gray text */
     
+    /* FIX: Custom border color utility */
+    .border-brand-orange-50 {
+        border-color: var(--brand-orange-50) !important;
+    }
+
     /* Custom Gradient Text */
     .gradient-text-blue-orange {
         background-image: linear-gradient(to right, var(--bs-blue), var(--brand-orange));
@@ -155,7 +161,7 @@
 <header class="sticky-top bg-charcoal shadow-sm border-bottom border-secondary" style="top: 0; z-index: 10;">
     <div class="container-fluid p-3 d-flex justify-content-between align-items-center">
         
-        <button onclick="window.location.hash = '#/home'" class="btn btn-link text-white text-decoration-none d-flex align-items-center p-0" role="button">
+        <a href="#/home" class="btn btn-link text-white text-decoration-none d-flex align-items-center p-0" role="button">
             <img src="/3.0_no_text.PNG"
                 alt="Iredell Home Tech Support Logo and PC Repair Service"
                 class="w-10 h-10 me-2 rounded-3"
@@ -163,15 +169,15 @@
                 onerror="this.onerror=null; this.src='https://placehold.co/40x40/1196d2/ffffff?text=IH';"
                 title="Iredell Home Tech Support">
             <span class="gradient-text-blue-orange h5 mb-0 fw-normal">Iredell Home Tech Support</span>
-        </button>
+        </a>
 
         <nav class="d-none d-md-block navbar navbar-expand-lg navbar-dark">
             <div class="d-flex" style="gap: 1.5rem;">
-                <button id="nav-home" class="nav-link btn btn-link text-white fw-normal p-1 transition-colors" data-route="home" onclick="window.location.hash = '#/home'">Home</button>
-                <button id="nav-about" class="nav-link btn btn-link text-white fw-normal p-1 transition-colors" data-route="about" onclick="window.location.hash = '#/about'">About Us</button>
-                <button id="nav-requests" class="nav-link btn btn-link text-white fw-normal p-1 transition-colors" data-route="requests" onclick="window.location.hash = '#/requests'">Services</button>
-                <button id="nav-faq" class="nav-link btn btn-link text-white fw-normal p-1 transition-colors" data-route="faq" onclick="window.location.hash = '#/faq'">FAQ</button>
-                <button id="nav-contact" class="nav-link btn btn-link text-white fw-normal p-1 transition-colors" data-route="contact" onclick="window.location.hash = '#/contact'">Contact Us</button>
+                <a href="#/home" id="nav-home" class="nav-link btn btn-link text-white fw-normal p-1 transition-colors" data-route="home">Home</a>
+                <a href="#/about" id="nav-about" class="nav-link btn btn-link text-white fw-normal p-1 transition-colors" data-route="about">About Us</a>
+                <a href="#/requests" id="nav-requests" class="nav-link btn btn-link text-white fw-normal p-1 transition-colors" data-route="requests">Services</a>
+                <a href="#/faq" id="nav-faq" class="nav-link btn btn-link text-white fw-normal p-1 transition-colors" data-route="faq">FAQ</a>
+                <a href="#/contact" id="nav-contact" class="nav-link btn btn-link text-white fw-normal p-1 transition-colors" data-route="contact">Contact Us</a>
             </div>
         </nav>
 
@@ -182,11 +188,11 @@
     
     <div class="collapse d-md-none bg-charcoal w-100 shadow-lg border-top border-secondary" id="navbarNav">
         <div class="d-flex flex-column align-items-start p-3 space-y-1">
-            <button id="mobile-nav-home" class="mobile-nav-link btn btn-link text-white fw-normal w-100 text-start py-2 px-3 transition-colors" data-route="home" onclick="window.location.hash = '#/home'; new bootstrap.Collapse(document.getElementById('navbarNav')).hide();">Home</button>
-            <button id="mobile-nav-about" class="mobile-nav-link btn btn-link text-white fw-normal w-100 text-start py-2 px-3 transition-colors" data-route="about" onclick="window.location.hash = '#/about'; new bootstrap.Collapse(document.getElementById('navbarNav')).hide();">About Us</button>
-            <button id="mobile-nav-requests" class="mobile-nav-link btn btn-link text-white fw-normal w-100 text-start py-2 px-3 transition-colors" data-route="requests" onclick="window.location.hash = '#/requests'; new bootstrap.Collapse(document.getElementById('navbarNav')).hide();">Services</button>
-            <button id="mobile-nav-faq" class="mobile-nav-link btn btn-link text-white fw-normal w-100 text-start py-2 px-3 transition-colors" data-route="faq" onclick="window.location.hash = '#/faq'; new bootstrap.Collapse(document.getElementById('navbarNav')).hide();">FAQ</button>
-            <button id="mobile-nav-contact" class="mobile-nav-link btn btn-link text-white fw-normal w-100 text-start py-2 px-3 transition-colors" data-route="contact" onclick="window.location.hash = '#/contact'; new bootstrap.Collapse(document.getElementById('navbarNav')).hide();">Contact Us</button>
+            <a href="#/home" id="mobile-nav-home" class="mobile-nav-link btn btn-link text-white fw-normal w-100 text-start py-2 px-3 transition-colors" data-route="home" onclick="new bootstrap.Collapse(document.getElementById('navbarNav')).hide();">Home</a>
+            <a href="#/about" id="mobile-nav-about" class="mobile-nav-link btn btn-link text-white fw-normal w-100 text-start py-2 px-3 transition-colors" data-route="about" onclick="new bootstrap.Collapse(document.getElementById('navbarNav')).hide();">About Us</a>
+            <a href="#/requests" id="mobile-nav-requests" class="mobile-nav-link btn btn-link text-white fw-normal w-100 text-start py-2 px-3 transition-colors" data-route="requests" onclick="new bootstrap.Collapse(document.getElementById('navbarNav')).hide();">Services</a>
+            <a href="#/faq" id="mobile-nav-faq" class="mobile-nav-link btn btn-link text-white fw-normal w-100 text-start py-2 px-3 transition-colors" data-route="faq" onclick="new bootstrap.Collapse(document.getElementById('navbarNav')).hide();">FAQ</a>
+            <a href="#/contact" id="mobile-nav-contact" class="mobile-nav-link btn btn-link text-white fw-normal w-100 text-start py-2 px-3 transition-colors" data-route="contact" onclick="new bootstrap.Collapse(document.getElementById('navbarNav')).hide();">Contact Us</a>
         </div>
     </div>
 </header>
@@ -204,9 +210,9 @@
             <p class="text-gray-300 fs-6 mt-3">
                 Experiencing PC troubles, network glitches, or need help setting up new devices? We provide friendly, expert assistance right in your Iredell County home. Get personalized service without the hassle of store visits.
             </p>
-            <button onclick="window.location.hash = '#/requests'" class="cta-button btn btn-lg mt-4 fw-normal px-5 py-3 rounded-3 shadow-lg">
+            <a href="#/requests" class="cta-button btn btn-lg mt-4 fw-normal px-5 py-3 rounded-3 shadow-lg">
                 Get Your Tech Fixed Today
-            </button>
+            </a>
         </div>
         
         <div class="mt-5 w-100 bg-dark p-4 rounded-4 shadow-lg border border-secondary mx-auto" style="max-width: 500px;">
@@ -339,12 +345,12 @@
             </p>
 
             <div class="pt-4 pb-5">
-                <button onclick="window.location.hash = '#/contact'" class="cta-button btn btn-lg fw-normal px-5 py-3 rounded-3 shadow-lg">
+                <a href="#/contact" class="cta-button btn btn-lg fw-normal px-5 py-3 rounded-3 shadow-lg">
                     Contact Us for a Quote
-                </button>
+                </a>
             </div>
 
-            <div class="mx-auto bg-dark p-4 rounded-4 shadow-lg border border-brand-orange/50" style="max-width: 800px;">
+            <div class="mx-auto bg-dark p-4 rounded-4 shadow-lg border border-brand-orange-50" style="max-width: 800px;">
                 <h3 class="h4 fw-normal text-brand-orange mb-4 border-bottom border-secondary pb-2">Transparent Service Pricing</h3>
                 
                 <table class="table table-dark table-striped table-hover">
@@ -581,11 +587,13 @@
         let routeKey = routes[hash] ? hash : DEFAULT_ROUTE;
         let sectionId = routes[routeKey];
         
-        // Force default page on first load if no hash or invalid hash exists
+        // Improvement: Only set hash if it's incorrect, preventing a redundant hashchange trigger
         if (window.location.hash === '' || !routes[hash]) {
-            window.location.hash = `#/${DEFAULT_ROUTE}`;
-            // If we change the hash, the 'hashchange' listener will run this function again correctly.
-            return;
+             if (window.location.hash !== `#/${DEFAULT_ROUTE}`) {
+                window.location.hash = `#/${DEFAULT_ROUTE}`;
+                // Return here to let the hashchange event handle the display.
+                return;
+            }
         }
 
         // 2. Hide ALL page sections first
@@ -601,7 +609,8 @@
         }
 
         // 4. Update the active state in the navigation bar
-        const allNavLinks = document.querySelectorAll('button[data-route]');
+        // Updated selector to target both <a> and older <button> elements if any exist
+        const allNavLinks = document.querySelectorAll('[data-route]'); 
         allNavLinks.forEach(link => {
             link.classList.remove('active');
             if (link.getAttribute('data-route') === routeKey) {
