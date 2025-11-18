@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -117,7 +117,6 @@
         padding-top: 5rem; /* Standard spacing for content sections */
         padding-bottom: 8rem; 
         text-align: center;
-        /* Ensure that the home section, which is centered/full screen, has the right padding */
     }
     #home {
         padding-top: 5rem;
@@ -163,6 +162,25 @@
     .accordion-item {
         border: none;
         background-color: var(--bs-dark) !important;
+    }
+    
+    /* Embed Form Styling (for contact page) */
+    .embed-container {
+        position: relative;
+        padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+        height: 0;
+        overflow: hidden;
+        max-width: 100%;
+        background: var(--bs-dark);
+        border: 1px solid var(--brand-orange-50);
+        border-radius: .5rem;
+    }
+    .embed-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
     }
 </style>
 </head>
@@ -255,13 +273,58 @@
 
         <section id="services" class="page-section bg-dark">
             <div class="container">
-                <h2 class="display-5 fw-bold text-center mb-5 gradient-text-blue-orange">Our Expert Home Tech Services</h2>
+                <h2 class="display-5 fw-bold text-center mb-5 gradient-text-blue-orange">Our Expert Home Tech Services & Pricing</h2>
+
+                <div class="row justify-content-center mb-5">
+                    <div class="col-lg-10">
+                        <div class="card bg-charcoal p-4 p-md-5 border border-brand-orange-50 shadow-lg text-start">
+                            <h3 class="text-brand-orange mb-4 text-center">Transparent Pricing</h3>
+                            <div class="table-responsive">
+                                <table class="table table-dark table-hover text-white">
+                                    <thead>
+                                        <tr class="text-brand-blue">
+                                            <th scope="col">Service</th>
+                                            <th scope="col" class="text-center">Description</th>
+                                            <th scope="col" class="text-end">Pricing</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><span class="text-brand-blue fw-bold">Diagnostic / On-Site Visit</span></td>
+                                            <td class="text-gray-300">Initial assessment and consultation in your home.</td>
+                                            <td class="text-end fw-bold">$75 Flat Fee</td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="text-brand-blue fw-bold">Standard Repair / Hourly Rate</span></td>
+                                            <td class="text-gray-300">General troubleshooting, setup, or repairs after initial hour.</td>
+                                            <td class="text-end fw-bold">$90 per Hour</td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="text-brand-blue fw-bold">Virus/Malware Removal</span></td>
+                                            <td class="text-gray-300">Complete system cleanup, optimization, and security setup.</td>
+                                            <td class="text-end fw-bold">$150 Flat Rate</td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="text-brand-blue fw-bold">New PC/Mac Setup & Transfer</span></td>
+                                            <td class="text-gray-300">Transfer files, install software, and connect peripherals.</td>
+                                            <td class="text-end fw-bold">$120 Flat Rate</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <p class="small text-secondary mt-3 text-center">Note: Complex networking or custom server projects require a personalized quote. All prices are estimates and confirmed upon diagnostic completion.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="fw-bold text-center mb-4 text-white">Common Services</h3>
+                
                 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 text-start">
 
                     <div class="col">
                         <div class="card h-100 bg-charcoal text-white border border-brand-orange-50 shadow">
                             <div class="card-body">
-                                <h3 class="card-title text-brand-blue mb-3 fs-4">💻 PC & Mac Repair</h3>
+                                <h4 class="card-title text-brand-blue mb-3 fs-4">💻 PC & Mac Repair</h4>
                                 <p class="card-text text-gray-300">Fast, reliable fixes for slow computers, crashes, and hardware issues. We handle both Windows PCs and Apple Macs.</p>
                                 <ul class="list-unstyled text-gray-300 small">
                                     <li>• Slow Performance Optimization</li>
@@ -275,7 +338,7 @@
                     <div class="col">
                         <div class="card h-100 bg-charcoal text-white border border-brand-orange-50 shadow">
                             <div class="card-body">
-                                <h3 class="card-title text-brand-blue mb-3 fs-4">🛡️ Virus & Malware Removal</h3>
+                                <h4 class="card-title text-brand-blue mb-3 fs-4">🛡️ Virus & Malware Removal</h4>
                                 <p class="card-text text-gray-300">Deep scans and complete removal of all malicious software to restore your device's security and speed.</p>
                                 <ul class="list-unstyled text-gray-300 small">
                                     <li>• Security Audits & Protection Setup</li>
@@ -289,7 +352,7 @@
                     <div class="col">
                         <div class="card h-100 bg-charcoal text-white border border-brand-orange-50 shadow">
                             <div class="card-body">
-                                <h3 class="card-title text-brand-blue mb-3 fs-4">📶 Home Network & Wi-Fi</h3>
+                                <h4 class="card-title text-brand-blue mb-3 fs-4">📶 Home Network & Wi-Fi</h4>
                                 <p class="card-text text-gray-300">Eliminate dead zones and slow speeds. We set up reliable, fast, and secure home networks and extenders.</p>
                                 <ul class="list-unstyled text-gray-300 small">
                                     <li>• Router Configuration & Optimization</li>
@@ -303,7 +366,7 @@
                     <div class="col">
                         <div class="card h-100 bg-charcoal text-white border border-brand-orange-50 shadow">
                             <div class="card-body">
-                                <h3 class="card-title text-brand-blue mb-3 fs-4">📦 New Device Setup</h3>
+                                <h4 class="card-title text-brand-blue mb-3 fs-4">📦 New Device Setup</h4>
                                 <p class="card-text text-gray-300">Unbox, connect, and configure your new computers, smart TVs, or smart home gadgets. We make setup easy.</p>
                                 <ul class="list-unstyled text-gray-300 small">
                                     <li>• Smart TV and Streaming Setup</li>
@@ -317,7 +380,7 @@
                     <div class="col">
                         <div class="card h-100 bg-charcoal text-white border border-brand-orange-50 shadow">
                             <div class="card-body">
-                                <h3 class="card-title text-brand-blue mb-3 fs-4">☁️ Data Backup & Transfer</h3>
+                                <h4 class="card-title text-brand-blue mb-3 fs-4">☁️ Data Backup & Transfer</h4>
                                 <p class="card-text text-gray-300">Safeguard your precious files and photos. We set up automated local and cloud backup solutions.</p>
                                 <ul class="list-unstyled text-gray-300 small">
                                     <li>• Cloud Backup Integration (Google/iCloud)</li>
@@ -331,7 +394,7 @@
                     <div class="col">
                         <div class="card h-100 bg-charcoal text-white border border-brand-orange-50 shadow">
                             <div class="card-body">
-                                <h3 class="card-title text-brand-blue mb-3 fs-4">🏠 Smart Home & IoT</h3>
+                                <h4 class="card-title text-brand-blue mb-3 fs-4">🏠 Smart Home & IoT</h4>
                                 <p class="card-text text-gray-300">Connecting your smart lights, doorbells, and thermostats to work seamlessly together under one app.</p>
                                 <ul class="list-unstyled text-gray-300 small">
                                     <li>• Speaker and Assistant Setup (Alexa/Google)</li>
@@ -352,21 +415,28 @@
         <section id="about" class="page-section bg-charcoal">
             <div class="container">
                 <h2 class="display-5 fw-bold text-center mb-5 text-white">Why Choose Iredell Home Tech Support?</h2>
-                <div class="row align-items-center">
-                    <div class="col-lg-6 mb-4 mb-lg-0 text-start">
-                        <p class="lead text-brand-orange">Local Expertise, Personalized Service.</p>
-                        <p class="fs-5 text-gray-300">
-                            We're not a big box store or a nationwide chain. We are a **local Iredell County-based** tech support service dedicated to providing friendly, accessible, and high-quality assistance right where you need it: **in your home.**
+                
+                <div class="row align-items-center mb-5 pb-4 border-bottom border-brand-orange-50">
+                    <div class="col-lg-6 mb-4 mb-lg-0">
+                        <img src="https://via.placeholder.com/600x400?text=Local+Technician+Image" alt="Local technician working on a laptop in a home setting" class="img-fluid rounded shadow-lg border border-brand-orange-50">
+                    </div>
+                    <div class="col-lg-6 text-start">
+                        <h3 class="text-brand-orange mb-3">Our Story: Born From Local Need</h3>
+                        <p class="text-gray-300">
+                            Iredell Home Tech Support was founded by a local resident who grew tired of watching neighbors struggle with impersonal, inconvenient corporate tech support. Our mission is simple: **bring expert, friendly tech help directly to your door.**
                         </p>
                         <p class="text-gray-300">
-                            Our founder recognized the frustration of having to unplug a complex setup just to drive it across town to a shop. Our model is simple: **We come to you.** This allows us to see the problem in its native environment, whether it's a Wi-Fi dead zone, a smart home conflict, or a stubborn desktop PC.
-                        </p>
-                        <p class="text-gray-300">
-                            When you call us, you get a local expert committed to solving your problem, not selling you a replacement. We prioritize **education and long-term stability** over quick, temporary fixes.
+                            We believe that resolving a Wi-Fi issue requires seeing the house, and fixing a PC requires talking to the person who uses it. We’re committed to being the trusted, local tech partner for every home in Statesville, Mooresville, and surrounding Iredell communities.
                         </p>
                     </div>
-                    <div class="col-lg-6">
-                        <img src="https://via.placeholder.com/600x400?text=Local+Technician+Image" alt="Local technician working on a laptop in a home setting" class="img-fluid rounded shadow-lg border border-brand-orange-50">
+                </div>
+
+                <div class="row align-items-center">
+                    <div class="col-lg-12 text-center">
+                        <p class="lead text-brand-orange">Local Expertise, Personalized Service.</p>
+                        <p class="fs-5 text-gray-300 mx-auto" style="max-width: 800px;">
+                            We're not a big box store or a nationwide chain. We are a **local Iredell County-based** tech support service dedicated to providing friendly, accessible, and high-quality assistance.
+                        </p>
                     </div>
                 </div>
 
@@ -419,7 +489,7 @@
                         </h3>
                         <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
                             <div class="accordion-body text-gray-300">
-                                We offer transparent pricing, typically based on a **flat-rate fee** for common services (like virus removal or new PC setup) or an **hourly rate** for complex troubleshooting. We always provide an estimate before beginning work.
+                                We offer transparent pricing, typically based on a **flat-rate fee** for common services (like virus removal or new PC setup) or an **hourly rate** for complex troubleshooting. We always provide an estimate before beginning work. (See our <a href="#/services" class="text-brand-orange text-decoration-none">Services page</a> for details.)
                             </div>
                         </div>
                     </div>
@@ -463,36 +533,22 @@
             <div class="container">
                 <h2 class="display-5 fw-bold text-center mb-5 text-white">Get In Touch for Home Tech Help</h2>
                 <div class="row justify-content-center">
-                    <div class="col-lg-8">
+                    <div class="col-lg-10">
                         <div class="card bg-dark text-white p-4 p-lg-5 shadow-lg mx-auto" style="border-top: 3px solid var(--bs-blue);">
                             <p class="lead text-center text-gray-300 mb-4">
-                                The fastest way to get support is to call us directly, or send us a quick message below.
+                                Use the form below to submit a detailed request, or contact us directly for immediate assistance.
                             </p>
                             
-                            <form action="mailto:support@iredellhometechsupport.com" method="post" enctype="text/plain">
-                                <div class="mb-3">
-                                    <label for="name" class="form-label text-brand-orange">Your Name</label>
-                                    <input type="text" id="name" class="form-control bg-charcoal text-white border-brand-orange-50" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="email" class="form-label text-brand-orange">Email Address</label>
-                                    <input type="email" id="email" class="form-control bg-charcoal text-white border-brand-orange-50" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="phone" class="form-label text-brand-orange">Phone Number (Optional, but recommended)</label>
-                                    <input type="tel" id="phone" class="form-control bg-charcoal text-white border-brand-orange-50">
-                                </div>
-                                <div class="mb-4">
-                                    <label for="issue" class="form-label text-brand-orange">Describe Your Tech Issue</label>
-                                    <textarea id="issue" class="form-control bg-charcoal text-white border-brand-orange-50" rows="5" required></textarea>
-                                </div>
-                                <button type="submit" class="btn cta-button w-100 fs-5">
-                                    Send Support Request
-                                </button>
-                            </form>
+                            <div class="embed-container mb-5">
+                                <iframe 
+                                    src="https://forms.fillout.com/t/2iJpW2GzRz7Q" 
+                                    frameborder="0" 
+                                    allowfullscreen 
+                                    title="Contact Form">
+                                </iframe>
+                            </div>
 
                             <hr class="my-4 border-brand-orange-50">
-
                             <div class="text-center">
                                 <h4 class="text-brand-blue mb-3">Or Contact Us Directly</h4>
                                 <p class="mb-1 fs-5">
@@ -545,6 +601,7 @@
         function updateNavLinks(activeHash) {
             navLinks.forEach(link => {
                 link.classList.remove('active');
+                // Check against the full hash, including the leading '#/'
                 if (link.getAttribute('href') === activeHash) {
                     link.classList.add('active');
                 }
