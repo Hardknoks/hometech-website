@@ -62,6 +62,7 @@
         --bs-body-color: #ffffff;
         --bs-dark: #212529; /* Used for card/inner backgrounds */
         --bs-secondary: #6c757d; /* Used for light text/borders */
+        --bs-border-color: rgba(255, 255, 255, 0.1); /* For form input borders */
     }
 
     body {
@@ -144,6 +145,22 @@
     .accordion-item {
         border: none;
         background-color: var(--bs-dark) !important;
+    }
+
+    /* Form Styling for Dark Mode */
+    .form-control, .form-select {
+        background-color: #212529; /* Darker than body, same as cards */
+        color: #fff;
+        border-color: var(--bs-border-color);
+    }
+    .form-control:focus {
+        background-color: #212529;
+        color: #fff;
+        border-color: var(--bs-blue);
+        box-shadow: 0 0 0 0.25rem rgba(17, 150, 210, 0.25);
+    }
+    .form-label {
+        color: var(--bs-secondary);
     }
 </style>
 </head>
@@ -528,22 +545,45 @@
         </div>
         
         <div class="bg-dark p-5 rounded-4 shadow-lg mx-auto" style="max-width: 600px;">
-            <p class="lead text-white mb-4">Ready to schedule your service? Get in touch today!</p>
-            
-            <div class="d-flex flex-column align-items-center text-start">
-                <div class="mb-3 w-100">
-                    <h4 class="h5 fw-normal text-brand-blue">Call or Text:</h4>
-                    <p class="fs-4 fw-normal mb-0">
-                        <a href="tel:7042539390" class="text-decoration-none text-white hover:text-brand-orange">(704) 253-9390</a>
-                    </p>
+            <p class="lead text-white mb-4">
+                Ready to schedule your service or request a quote? Use the form below or contact us directly.
+            </p>
+
+            <form action="#" method="POST" class="text-start">
+                <div class="mb-3">
+                    <label for="nameInput" class="form-label">Full Name</label>
+                    <input type="text" class="form-control" id="nameInput" name="name" required>
+                </div>
+                <div class="mb-3">
+                    <label for="emailInput" class="form-label">Email Address</label>
+                    <input type="email" class="form-control" id="emailInput" name="email" required>
+                </div>
+                <div class="mb-3">
+                    <label for="phoneInput" class="form-label">Phone Number (Optional)</label>
+                    <input type="tel" class="form-control" id="phoneInput" name="phone">
+                </div>
+                <div class="mb-3">
+                    <label for="messageInput" class="form-label">Tell us about your tech issue or service request:</label>
+                    <textarea class="form-control" id="messageInput" name="message" rows="4" required></textarea>
                 </div>
                 
-                <div class="mb-3 w-100">
-                    <h4 class="h5 fw-normal text-brand-blue">Email:</h4>
-                    <p class="fs-5 mb-0">
-                        <a href="mailto:support@iredellhometechsupport.com" class="text-decoration-none text-white hover:text-brand-orange">support@iredellhometechsupport.com</a>
-                    </p>
-                </div>
+                <button type="submit" class="cta-button btn btn-lg mt-3 fw-normal w-100 py-3 rounded-3 shadow-lg">
+                    Send Service Request
+                </button>
+            </form>
+            
+            <hr class="my-5 border-secondary">
+
+            <div class="d-flex flex-column align-items-center text-center">
+                <h4 class="h5 fw-normal text-brand-blue">Call or Text:</h4>
+                <p class="fs-4 fw-normal mb-3">
+                    <a href="tel:7042539390" class="text-decoration-none text-white hover:text-brand-orange">(704) 253-9390</a>
+                </p>
+                
+                <h4 class="h5 fw-normal text-brand-blue">Email:</h4>
+                <p class="fs-5 mb-0">
+                    <a href="mailto:support@iredellhometechsupport.com" class="text-decoration-none text-white hover:text-brand-orange">support@iredellhometechsupport.com</a>
+                </p>
 
                 <p class="small text-secondary mt-4">We typically respond to inquiries within one business hour.</p>
             </div>
