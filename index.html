@@ -559,9 +559,59 @@
     </div>
 </footer>
 
-<script src="/router.js"></script>
-<script src="/faq.js"></script>
-<script src="/scripts.js"></script>
+<script>
+    const DEFAULT_ROUTE = 'home';
+
+    const routes = {
+        'home': 'home',
+        'about': 'about',
+        'requests': 'requests', 
+        'faq': 'faq',
+        'contact': 'contact'
+    };
+
+    function handleRouting() {
+        // 1. Determine the current page based on the URL hash
+        let hash = window.location.hash.substring(2); 
+        let routeKey = routes[hash] ? hash : DEFAULT_ROUTE;
+        let sectionId = routes[routeKey];
+        
+        // Force default page on first load if no hash or invalid hash exists
+        if (window.location.hash === '' || !routes[hash]) {
+            window.location.hash = `#/${DEFAULT_ROUTE}`;
+            // If we change the hash, the 'hashchange' listener will run this function again correctly.
+            return;
+        }
+
+        // 2. Hide ALL page sections first
+        const pageSections = document.querySelectorAll('.page-section');
+        pageSections.forEach(section => {
+            section.style.display = 'none';
+        });
+
+        // 3. Show ONLY the active page section
+        const activeSection = document.getElementById(sectionId);
+        if (activeSection) {
+            activeSection.style.display = 'block';
+        }
+
+        // 4. Update the active state in the navigation bar
+        const allNavLinks = document.querySelectorAll('button[data-route]');
+        allNavLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('data-route') === routeKey) {
+                link.classList.add('active');
+            }
+        });
+
+        // Scroll to the top of the page
+        window.scrollTo(0, 0);
+    }
+
+    // Attach listeners
+    window.addEventListener('hashchange', handleRouting);
+    document.addEventListener('DOMContentLoaded', handleRouting);
+</script>
 
 </body>
 </html>
