@@ -439,6 +439,15 @@
     <script src="/router.js"></script>
     <script src="/faq.js"></script>
     <script src="/scripts.js"></script>
+    
+    <script>
+        // Check if the handleRouting function exists (defined in router.js) and call it immediately
+        if (typeof handleRouting === 'function') {
+            handleRouting();
+        } else {
+            console.error("Router function 'handleRouting' not found. SPA navigation will fail.");
+        }
+    </script>
 
 </body>
 </html>
