@@ -1,4 +1,4 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -47,133 +47,99 @@
   gtag('config', 'G-3QTMG1C4J9');
 </script>
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-
+<script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
 
 <style>
-    /* Define custom variables for Bootstrap overrides and custom colors */
+    /* Define custom variables for easier color management */
     :root {
-        --bs-primary: #1196d2; 
-        --bs-blue: #1196d2; 
-        --brand-orange: #f29442; 
-        --brand-orange-50: rgba(242, 148, 66, 0.5); /* Semi-transparent border fix */
-        --brand-charcoal: #3a3938; 
-        --bs-body-bg: var(--brand-charcoal);
-        --bs-body-color: #ffffff;
-        --bs-dark: #212529; /* Used for card/inner backgrounds */
-        --bs-secondary: #6c757d; /* Used for light text/borders */
-        --bs-border-color: rgba(255, 255, 255, 0.1); /* For form input borders */
+        /* Primary Brand Colors */
+        --color-blue: #1196d2;
+        --color-orange: #f29442;
+
+        /* Neutral Background/Text Colors */
+        --color-charcoal: #3a3938; /* Main dark background */
+        --color-white: #ffffff;
     }
 
     body {
         font-family: 'Inter', sans-serif;
+        background-color: var(--color-charcoal);
+        color: var(--color-white); /* Default text color */
         min-height: 100vh;
         display: flex;
         flex-direction: column;
-        background-color: var(--brand-charcoal);
-        color: var(--bs-body-color);
     }
 
-    /* Custom helper classes */
-    .bg-charcoal { background-color: var(--brand-charcoal) !important; }
-    .bg-brand-blue { background-color: var(--bs-blue) !important; }
-    .text-brand-blue { color: var(--bs-blue) !important; }
-    .bg-brand-orange { background-color: var(--brand-orange) !important; }
-    .text-brand-orange { color: var(--brand-orange) !important; }
-    .text-gray-300 { color: #d1d1d1 !important; } /* For light gray text */
-    
-    /* FIX: Custom border color utility */
-    .border-brand-orange-50 {
-        border-color: var(--brand-orange-50) !important;
+    /* Styling for the main content sections (used for SPA routing) */
+    .page-section {
+        display: none; /* Hidden by default, shown by JavaScript router */
+        padding-bottom: 8rem; /* Space before the footer */
+        text-align: center;
     }
 
-    /* Custom Gradient Text */
+    /* Highlight for the active desktop navigation link */
+    .nav-link.active {
+        border-bottom: 2px solid var(--color-blue);
+        color: var(--color-blue);
+    }
+
+    /* Highlight for the active mobile navigation link */
+    .mobile-nav-link.active {
+        background-color: rgba(17, 150, 210, 0.2);
+        color: var(--color-blue);
+    }
+
+    /* Custom primary call-to-action button styling */
+    .cta-button {
+        background-color: var(--color-blue);
+        transition: background-color 0.3s, transform 0.1s;
+    }
+    .cta-button:hover {
+        background-color: #0d7ea8;
+        transform: translateY(-1px);
+    }
+
+    /* Gradient Text (for logo and key headings) */
     .gradient-text-blue-orange {
-        background-image: linear-gradient(to right, var(--bs-blue), var(--brand-orange));
+        background-image: linear-gradient(to right, var(--color-blue), var(--color-orange));
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
-        color: transparent; 
+        color: transparent;
     }
 
-    /* Custom CTA Button Styling */
-    .cta-button {
-        background-color: var(--bs-blue);
-        border-color: var(--bs-blue);
-        transition: background-color 0.3s, transform 0.1s, box-shadow 0.3s;
-        color: #fff;
+    /* Custom style for FAQ answer expansion (controlled by JS) */
+    .faq-answer {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease-in-out, padding-top 0.4s ease-in-out;
     }
-    .cta-button:hover {
-        background-color: #0d7ea8; 
-        border-color: #0d7ea8;
-        transform: translateY(-1px);
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    }
-    
-    /* 🔴 CRITICAL FIX: Ensure ALL page sections are hidden until the router runs */
-    .page-section {
-        display: none; 
-        padding-top: 5rem; /* Standard spacing for content sections */
-        padding-bottom: 8rem; 
-        text-align: center;
-    }
-    #home {
-        padding-top: 5rem;
-        min-height: 70vh;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        padding-bottom: 5rem;
+    .faq-answer.open {
+        max-height: 500px; /* Adjust as needed for content length */
+        padding-top: 1rem;
     }
 
-
-    /* Active link style for desktop nav */
-    .nav-link.active {
-        border-bottom: 2px solid var(--bs-blue);
-        color: var(--bs-blue) !important;
-    }
-
-    /* Active link style for mobile nav (similar to Tailwind's hover style) */
-    .mobile-nav-link.active {
-        background-color: rgba(17, 150, 210, 0.2);
-        color: var(--bs-blue) !important;
-        border-radius: .5rem;
-    }
-    .mobile-nav-link:hover {
-        background-color: var(--bs-dark) !important; 
-    }
-    
-    /* Accordion Fix: Ensure button background matches card background */
-    .accordion-button:not(.collapsed) {
-        background-color: var(--bs-dark) !important;
-        color: #fff !important;
-        box-shadow: none;
-    }
-    .accordion-button {
-        background-color: var(--bs-dark) !important;
-        color: #fff !important;
-        border-bottom: 1px solid var(--bs-secondary);
-    }
-    .accordion-button:focus {
-        box-shadow: none;
-    }
-    .accordion-item {
-        border: none;
-        background-color: var(--bs-dark) !important;
-    }
-    
-    /* Embed Form Styling (for contact page) */
+    /* Contact Form Embed Styling */
     .embed-container {
         position: relative;
-        padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+        padding-bottom: 120%; /* Adjusted for a tall form */
         height: 0;
         overflow: hidden;
         max-width: 100%;
-        background: var(--bs-dark);
-        border: 1px solid var(--brand-orange-50);
-        border-radius: .5rem;
+        background: #212529; /* Dark background for embed area */
+        border: 1px solid #f2944240;
+        border-radius: 0.75rem;
+    }
+    @media (min-width: 768px) {
+        .embed-container {
+            padding-bottom: 100%; /* Shorter on desktop */
+        }
+    }
+    @media (min-width: 1024px) {
+        .embed-container {
+            padding-bottom: 65%; /* Even shorter on large screens */
+        }
     }
     .embed-container iframe {
         position: absolute;
@@ -183,426 +149,541 @@
         height: 100%;
     }
 </style>
-</head>
-<body class="bg-charcoal text-white">
-
-    <div class="bg-brand-blue text-white py-2 d-none d-lg-block">
-        <div class="container d-flex justify-content-between align-items-center">
-            <small>Iredell County's Local Home Tech Handyman</small>
-            <small>
-                📞 (704) 253-9390 | 📧 support@iredellhometechsupport.com
-            </small>
-        </div>
-    </div>
-
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow-lg">
-        <div class="container">
-            <a class="navbar-brand fw-bold fs-4" href="#/home">
-                <img src="/3.0_no_text.PNG" alt="Iredell Home Tech Support Logo" height="30" class="d-inline-block align-text-top me-2">
-                Iredell Home Tech Support
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link text-white nav-link-route px-3" href="#/home">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white nav-link-route px-3" href="#/services">Services</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white nav-link-route px-3" href="#/about">About Us</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white nav-link-route px-3" href="#/faq">FAQ</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white nav-link-route px-3" href="#/contact">Contact</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    <main class="flex-grow-1">
-
-        <section id="home" class="page-section bg-charcoal">
-            <div class="container">
-                <div class="row align-items-center justify-content-center">
-                    <div class="col-lg-10 text-center">
-                        <div class="text-center mb-5" style="max-width: 800px; margin-left: auto; margin-right: auto;">
-                            <h1 class="display-3 display-lg-1 fw-normal lh-sm text-white">
-                                Your Go-To for <span class="gradient-text-blue-orange">Reliable Home Tech Support</span> in Iredell County
-                            </h1>
-                            <p class="lead text-gray-300 mt-4">
-                                Iredell Home Tech Support: **Your personal home tech handyman.**
-                            </p>
-                            <p class="fs-5 text-gray-300">
-                                Experiencing PC troubles, network glitches, or need help setting up new devices? We provide **friendly, expert assistance** right in your Iredell County home. Get personalized service without the hassle of store visits.
-                            </p>
-                        </div>
-                        
-                        <div class="card bg-dark text-white p-4 p-lg-5 shadow-lg mx-auto" style="max-width: 500px; border-top: 3px solid var(--brand-orange);">
-                            <h2 class="card-title mb-4 fs-3 text-brand-orange">Ready for Help?</h2>
-                            <form action="mailto:support@iredellhometechsupport.com" method="post" enctype="text/plain">
-                                <div class="mb-3">
-                                    <input type="text" class="form-control bg-charcoal text-white border-brand-orange-50" placeholder="Your Name" required>
-                                </div>
-                                <div class="mb-3">
-                                    <input type="email" class="form-control bg-charcoal text-white border-brand-orange-50" placeholder="Your Email" required>
-                                </div>
-                                <div class="mb-3">
-                                    <textarea class="form-control bg-charcoal text-white border-brand-orange-50" rows="3" placeholder="Describe your issue briefly..." required></textarea>
-                                </div>
-                                <button type="submit" class="btn cta-button w-100 fs-5">
-                                    Get Quick Support
-                                </button>
-                                <p class="mt-3 mb-0 text-secondary">
-                                    <a href="tel:7042539390" class="text-white text-decoration-none hover-text-brand-orange">
-                                        ...or call us now: (704) 253-9390
-                                    </a>
-                                </p>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="services" class="page-section bg-dark">
-            <div class="container">
-                <h2 class="display-5 fw-bold text-center mb-5 gradient-text-blue-orange">Our Expert Home Tech Services & Pricing</h2>
-
-                <div class="row justify-content-center mb-5">
-                    <div class="col-lg-10">
-                        <div class="card bg-charcoal p-4 p-md-5 border border-brand-orange-50 shadow-lg text-start">
-                            <h3 class="text-brand-orange mb-4 text-center">Transparent Pricing</h3>
-                            <div class="table-responsive">
-                                <table class="table table-dark table-hover text-white">
-                                    <thead>
-                                        <tr class="text-brand-blue">
-                                            <th scope="col">Service</th>
-                                            <th scope="col" class="text-center">Description</th>
-                                            <th scope="col" class="text-end">Pricing</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td><span class="text-brand-blue fw-bold">Diagnostic / On-Site Visit</span></td>
-                                            <td class="text-gray-300">Initial assessment and consultation in your home.</td>
-                                            <td class="text-end fw-bold">$75 Flat Fee</td>
-                                        </tr>
-                                        <tr>
-                                            <td><span class="text-brand-blue fw-bold">Standard Repair / Hourly Rate</span></td>
-                                            <td class="text-gray-300">General troubleshooting, setup, or repairs after initial hour.</td>
-                                            <td class="text-end fw-bold">$90 per Hour</td>
-                                        </tr>
-                                        <tr>
-                                            <td><span class="text-brand-blue fw-bold">Virus/Malware Removal</span></td>
-                                            <td class="text-gray-300">Complete system cleanup, optimization, and security setup.</td>
-                                            <td class="text-end fw-bold">$150 Flat Rate</td>
-                                        </tr>
-                                        <tr>
-                                            <td><span class="text-brand-blue fw-bold">New PC/Mac Setup & Transfer</span></td>
-                                            <td class="text-gray-300">Transfer files, install software, and connect peripherals.</td>
-                                            <td class="text-end fw-bold">$120 Flat Rate</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <p class="small text-secondary mt-3 text-center">Note: Complex networking or custom server projects require a personalized quote. All prices are estimates and confirmed upon diagnostic completion.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <h3 class="fw-bold text-center mb-4 text-white">Common Services</h3>
-                
-                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 text-start">
-
-                    <div class="col">
-                        <div class="card h-100 bg-charcoal text-white border border-brand-orange-50 shadow">
-                            <div class="card-body">
-                                <h4 class="card-title text-brand-blue mb-3 fs-4">💻 PC & Mac Repair</h4>
-                                <p class="card-text text-gray-300">Fast, reliable fixes for slow computers, crashes, and hardware issues. We handle both Windows PCs and Apple Macs.</p>
-                                <ul class="list-unstyled text-gray-300 small">
-                                    <li>• Slow Performance Optimization</li>
-                                    <li>• Hardware Upgrades (RAM, SSD)</li>
-                                    <li>• Operating System Restoration</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col">
-                        <div class="card h-100 bg-charcoal text-white border border-brand-orange-50 shadow">
-                            <div class="card-body">
-                                <h4 class="card-title text-brand-blue mb-3 fs-4">🛡️ Virus & Malware Removal</h4>
-                                <p class="card-text text-gray-300">Deep scans and complete removal of all malicious software to restore your device's security and speed.</p>
-                                <ul class="list-unstyled text-gray-300 small">
-                                    <li>• Security Audits & Protection Setup</li>
-                                    <li>• Browser Hijack and Adware Removal</li>
-                                    <li>• Data Recovery (Post-Infection)</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col">
-                        <div class="card h-100 bg-charcoal text-white border border-brand-orange-50 shadow">
-                            <div class="card-body">
-                                <h4 class="card-title text-brand-blue mb-3 fs-4">📶 Home Network & Wi-Fi</h4>
-                                <p class="card-text text-gray-300">Eliminate dead zones and slow speeds. We set up reliable, fast, and secure home networks and extenders.</p>
-                                <ul class="list-unstyled text-gray-300 small">
-                                    <li>• Router Configuration & Optimization</li>
-                                    <li>• Range Extenders & Mesh Systems</li>
-                                    <li>• Printer & Shared Device Setup</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="col">
-                        <div class="card h-100 bg-charcoal text-white border border-brand-orange-50 shadow">
-                            <div class="card-body">
-                                <h4 class="card-title text-brand-blue mb-3 fs-4">📦 New Device Setup</h4>
-                                <p class="card-text text-gray-300">Unbox, connect, and configure your new computers, smart TVs, or smart home gadgets. We make setup easy.</p>
-                                <ul class="list-unstyled text-gray-300 small">
-                                    <li>• Smart TV and Streaming Setup</li>
-                                    <li>• Tablet and Phone Synchronization</li>
-                                    <li>• User Profile & Backup Configuration</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col">
-                        <div class="card h-100 bg-charcoal text-white border border-brand-orange-50 shadow">
-                            <div class="card-body">
-                                <h4 class="card-title text-brand-blue mb-3 fs-4">☁️ Data Backup & Transfer</h4>
-                                <p class="card-text text-gray-300">Safeguard your precious files and photos. We set up automated local and cloud backup solutions.</p>
-                                <ul class="list-unstyled text-gray-300 small">
-                                    <li>• Cloud Backup Integration (Google/iCloud)</li>
-                                    <li>• External Drive Setup (NAS/USB)</li>
-                                    <li>• Data Migration to New Devices</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col">
-                        <div class="card h-100 bg-charcoal text-white border border-brand-orange-50 shadow">
-                            <div class="card-body">
-                                <h4 class="card-title text-brand-blue mb-3 fs-4">🏠 Smart Home & IoT</h4>
-                                <p class="card-text text-gray-300">Connecting your smart lights, doorbells, and thermostats to work seamlessly together under one app.</p>
-                                <ul class="list-unstyled text-gray-300 small">
-                                    <li>• Speaker and Assistant Setup (Alexa/Google)</li>
-                                    <li>• Security Camera Installation</li>
-                                    <li>• Home Automation Routines</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="text-center mt-5">
-                    <a href="#/contact" class="btn cta-button btn-lg shadow-lg">Request a Service Call Today</a>
-                </div>
-            </div>
-        </section>
-
-        <section id="about" class="page-section bg-charcoal">
-            <div class="container">
-                <h2 class="display-5 fw-bold text-center mb-5 text-white">Why Choose Iredell Home Tech Support?</h2>
-                
-                <div class="row align-items-center mb-5 pb-4 border-bottom border-brand-orange-50">
-                    <div class="col-lg-6 mb-4 mb-lg-0">
-                        <img src="https://via.placeholder.com/600x400?text=Local+Technician+Image" alt="Local technician working on a laptop in a home setting" class="img-fluid rounded shadow-lg border border-brand-orange-50">
-                    </div>
-                    <div class="col-lg-6 text-start">
-                        <h3 class="text-brand-orange mb-3">Our Story: Born From Local Need</h3>
-                        <p class="text-gray-300">
-                            Iredell Home Tech Support was founded by a local resident who grew tired of watching neighbors struggle with impersonal, inconvenient corporate tech support. Our mission is simple: **bring expert, friendly tech help directly to your door.**
-                        </p>
-                        <p class="text-gray-300">
-                            We believe that resolving a Wi-Fi issue requires seeing the house, and fixing a PC requires talking to the person who uses it. We’re committed to being the trusted, local tech partner for every home in Statesville, Mooresville, and surrounding Iredell communities.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="row align-items-center">
-                    <div class="col-lg-12 text-center">
-                        <p class="lead text-brand-orange">Local Expertise, Personalized Service.</p>
-                        <p class="fs-5 text-gray-300 mx-auto" style="max-width: 800px;">
-                            We're not a big box store or a nationwide chain. We are a **local Iredell County-based** tech support service dedicated to providing friendly, accessible, and high-quality assistance.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="row mt-5 pt-4 border-top border-secondary-subtle">
-                    <div class="col-md-4 mb-4">
-                        <div class="p-3 border-start border-brand-blue border-3 text-start">
-                            <h4 class="text-brand-blue">On-Site Convenience</h4>
-                            <p class="text-gray-300 small mb-0">No unhooking cables or long waits. We service Statesville, Mooresville, Troutman, Harmony, and all of Iredell County.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-4">
-                        <div class="p-3 border-start border-brand-blue border-3 text-start">
-                            <h4 class="text-brand-blue">Expert & Friendly</h4>
-                            <p class="text-gray-300 small mb-0">Our certified technicians explain things in plain English, ensuring you understand the fix and how to prevent future issues.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-4">
-                        <div class="p-3 border-start border-brand-blue border-3 text-start">
-                            <h4 class="text-brand-blue">Transparent Pricing</h4>
-                            <p class="text-gray-300 small mb-0">We offer clear, hourly, and flat-rate options. You'll always know the cost before we start the work.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="faq" class="page-section bg-dark">
-            <div class="container">
-                <h2 class="display-5 fw-bold text-center mb-5 gradient-text-blue-orange">Frequently Asked Questions</h2>
-                <div class="accordion text-start mx-auto" id="faqAccordion" style="max-width: 800px;">
-                    
-                    <div class="accordion-item">
-                        <h3 class="accordion-header" id="headingOne">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                                What areas do you service?
-                            </button>
-                        </h3>
-                        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
-                            <div class="accordion-body text-gray-300">
-                                We proudly serve all of **Iredell County**, North Carolina, including Statesville, Mooresville, Troutman, Harmony, and surrounding areas. We come directly to your home or small office.
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="accordion-item">
-                        <h3 class="accordion-header" id="headingTwo">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                What is your pricing model?
-                            </button>
-                        </h3>
-                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
-                            <div class="accordion-body text-gray-300">
-                                We offer transparent pricing, typically based on a **flat-rate fee** for common services (like virus removal or new PC setup) or an **hourly rate** for complex troubleshooting. We always provide an estimate before beginning work. (See our <a href="#/services" class="text-brand-orange text-decoration-none">Services page</a> for details.)
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="accordion-item">
-                        <h3 class="accordion-header" id="headingThree">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                Do I have to drop my computer off?
-                            </button>
-                        </h3>
-                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
-                            <div class="accordion-body text-gray-300">
-                                **No!** That's our specialty. We provide **on-site support** right in your home. This is essential for fixing network issues and setting up complex devices, as we can see your whole system in its actual environment.
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="accordion-item">
-                        <h3 class="accordion-header" id="headingFour">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                                Can you help me with my new Smart TV setup?
-                            </button>
-                        </h3>
-                        <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#faqAccordion">
-                            <div class="accordion-body text-gray-300">
-                                Absolutely. We can unbox, connect it to your Wi-Fi, set up streaming apps (Netflix, Hulu, etc.), connect it to your soundbar or home theater, and even show you how to use the remote and smart features.
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="text-center mt-5">
-                    <p class="lead text-gray-300">Didn't find your answer?</p>
-                    <a href="#/contact" class="btn cta-button btn-lg shadow">Ask an Expert</a>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact" class="page-section bg-charcoal">
-            <div class="container">
-                <h2 class="display-5 fw-bold text-center mb-5 text-white">Get In Touch for Home Tech Help</h2>
-                <div class="row justify-content-center">
-                    <div class="col-lg-10">
-                        <div class="card bg-dark text-white p-4 p-lg-5 shadow-lg mx-auto" style="border-top: 3px solid var(--bs-blue);">
-                            <p class="lead text-center text-gray-300 mb-4">
-                                Use the form below to submit a detailed request, or contact us directly for immediate assistance.
-                            </p>
-                            
-                            <div class="embed-container mb-5">
-                                <iframe 
-                                    src="https://forms.fillout.com/t/2iJpW2GzRz7Q" 
-                                    frameborder="0" 
-                                    allowfullscreen 
-                                    title="Contact Form">
-                                </iframe>
-                            </div>
-
-                            <hr class="my-4 border-brand-orange-50">
-                            <div class="text-center">
-                                <h4 class="text-brand-blue mb-3">Or Contact Us Directly</h4>
-                                <p class="mb-1 fs-5">
-                                    <span class="fw-bold">Phone:</span> <a href="tel:7042539390" class="text-white text-decoration-none">(704) 253-9390</a>
-                                </p>
-                                <p class="fs-5">
-                                    <span class="fw-bold">Email:</span> <a href="mailto:support@iredellhometechsupport.com" class="text-white text-decoration-none">support@iredellhometechsupport.com</a>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <footer class="bg-dark text-white py-4 mt-auto border-top border-secondary-subtle">
-        <div class="container text-center">
-            <div class="row align-items-center">
-                <div class="col-md-4 text-md-start mb-3 mb-md-0">
-                    <p class="mb-0 small">&copy; 2025 Iredell Home Tech Support</p>
-                </div>
-                <div class="col-md-4 mb-3 mb-md-0">
-                    <a href="#/home" class="text-white text-decoration-none fw-bold me-3">Home</a>
-                    <a href="#/services" class="text-white text-decoration-none me-3">Services</a>
-                    <a href="#/contact" class="text-white text-decoration-none">Contact</a>
-                </div>
-                <div class="col-md-4 text-md-end">
-                    <p class="mb-0 small">Serving Iredell County, NC</p>
-                </div>
-            </div>
-        </div>
-    </footer>
-
 
 <script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    'brand-blue': '#1196d2',
+                    'brand-orange': '#f29442',
+                    'charcoal': '#3a3938',
+                }
+            }
+        }
+    }
+</script>
+</head>
+<body class="bg-charcoal">
+
+<header class="sticky top-0 z-10 bg-charcoal/90 shadow-lg border-b border-gray-700">
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+        <button onclick="window.location.hash = '#/home'" class="flex items-center text-2xl font-normal tracking-tight text-white focus:outline-none">
+            <img src="/3.0_no_text.PNG"
+                alt="Iredell Home Tech Support Logo and PC Repair Service"
+                class="w-10 h-10 mr-2 rounded-lg"
+                onerror="this.onerror=null; this.src='https://placehold.co/40x40/1196d2/ffffff?text=IH';"
+                title="Iredell Home Tech Support">
+
+            <span class="gradient-text-blue-orange">Iredell Home Tech Support</span>
+        </button>
+
+        <nav class="hidden md:flex space-x-4">
+            <button id="nav-home" class="nav-link text-lg font-normal py-1 px-3 transition-colors duration-200 text-white hover:text-brand-blue" onclick="window.location.hash = '#/home'">Home</button>
+            <button id="nav-about" class="nav-link text-lg font-normal py-1 px-3 transition-colors duration-200 text-white hover:text-brand-blue" onclick="window.location.hash = '#/about'">About Us</button>
+            <button id="nav-requests" class="nav-link text-lg font-normal py-1 px-3 transition-colors duration-200 text-white hover:text-brand-blue" onclick="window.location.hash = '#/requests'">Services</button>
+            <button id="nav-faq" class="nav-link text-lg font-normal py-1 px-3 transition-colors duration-200 text-white hover:text-brand-blue" onclick="window.location.hash = '#/faq'">FAQ</button>
+            <button id="nav-contact" class="nav-link text-lg font-normal py-1 px-3 transition-colors duration-200 text-white hover:text-brand-blue" onclick="window.location.hash = '#/contact'">Contact Us</button>
+        </nav>
+
+        <button id="mobile-menu-button" class="md:hidden text-white hover:text-brand-blue transition-colors focus:outline-none p-2 rounded-md" aria-label="Toggle navigation" aria-controls="mobile-menu" aria-expanded="false" onclick="toggleMenu()">
+            <svg id="icon-open" class="h-6 w-6 block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+            </svg>
+            <svg id="icon-close" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button>
+    </div>
+
+    <div id="mobile-menu" class="hidden md:hidden bg-charcoal absolute w-full shadow-xl border-t border-gray-700 z-10">
+        <div class="px-4 pt-2 pb-3 space-y-1 flex flex-col items-start">
+            <button id="mobile-nav-home" class="mobile-nav-link text-lg font-normal py-2 px-3 transition-colors duration-200 text-white hover:bg-gray-700 hover:text-brand-blue w-full text-left rounded-lg" onclick="window.location.hash = '#/home'; toggleMenu();">Home</button>
+            <button id="mobile-nav-about" class="mobile-nav-link text-lg font-normal py-2 px-3 transition-colors duration-200 text-white hover:bg-gray-700 hover:text-brand-blue w-full text-left rounded-lg" onclick="window.location.hash = '#/about'; toggleMenu();">About Us</button>
+            <button id="mobile-nav-requests" class="mobile-nav-link text-lg font-normal py-2 px-3 transition-colors duration-200 text-white hover:bg-gray-700 hover:text-brand-blue w-full text-left rounded-lg" onclick="window.location.hash = '#/requests'; toggleMenu();">Services</button>
+            <button id="mobile-nav-faq" class="mobile-nav-link text-lg font-normal py-2 px-3 transition-colors duration-200 text-white hover:bg-gray-700 hover:text-brand-blue w-full text-left rounded-lg" onclick="window.location.hash = '#/faq'; toggleMenu();">FAQ</button>
+            <button id="mobile-nav-contact" class="mobile-nav-link text-lg font-normal py-2 px-3 transition-colors duration-200 text-white hover:bg-gray-700 hover:text-brand-blue w-full text-left rounded-lg" onclick="window.location.hash = '#/contact'; toggleMenu();">Contact Us</button>
+        </div>
+    </div>
+</header>
+
+<main id="content" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex-grow">
+
+    <section id="home" class="page-section pt-16 flex flex-col items-center justify-center min-h-[70vh]">
+        <div class="max-w-4xl space-y-6">
+            <h1 class="text-5xl md:text-6xl lg:text-7xl font-normal leading-tight text-white">
+                Your Go-To for <span class="gradient-text-blue-orange">Reliable Home Tech Support</span> in Iredell County
+            </h1>
+            <p class="text-2xl font-normal mt-4 text-white">
+                <span class="text-brand-blue">Iredell Home Tech Support:</span> Your personal home tech handyman.
+            </p>
+            <p class="text-gray-300 text-lg">
+                Experiencing PC troubles, network glitches, or need help setting up new devices? We provide friendly, expert assistance right in your Iredell County home. Get personalized service without the hassle of store visits.
+            </p>
+            <button onclick="window.location.hash = '#/requests'" class="cta-button text-xl font-normal px-8 py-3 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300">
+                Get Your Tech Fixed Today
+            </button>
+        </div>
+
+        <div class="mt-12 w-full max-w-lg bg-gray-800 p-6 rounded-xl shadow-xl border border-gray-700 mx-auto">
+            <h2 class="text-xl font-normal text-brand-orange mb-3">Service & Contact</h2>
+            <div class="space-y-3">
+                <div class="flex flex-col sm:flex-row sm:justify-center sm:items-center gap-3 text-lg text-gray-300">
+                    <p class="flex items-center justify-center">
+                        <span class="text-brand-blue mr-2">📞</span>
+                        <a href="tel:7042539390" class="hover:text-brand-orange">(704) 253-9390</a>
+                    </p>
+                    <p class="flex items-center justify-center">
+                        <span class="text-brand-blue mr-2">📍</span>
+                        Statesville, NC
+                    </p>
+                </div>
+                <div class="flex justify-center">
+                    <p class="flex items-center text-lg text-gray-300">
+                        <span class="text-brand-blue mr-2">📧</span>
+                        <a href="mailto:support@iredellhometechsupport.com" class="hover:text-brand-orange text-center">support@iredellhometechsupport.com</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="page-section pt-12">
+        <div>
+            <h2 class="text-4xl font-normal mb-8 border-b-2 border-brand-blue pb-2 inline-block">About Iredell Home Tech Support</h2>
+        </div>
+
+        <div class="bg-gray-800 p-8 rounded-xl shadow-xl space-y-6 border border-gray-700 mb-10 max-w-4xl mx-auto">
+            <p class="text-lg">
+                Iredell Home Tech Support was founded with a simple mission: to provide personalized, trustworthy, and convenient tech assistance to our neighbors across Iredell County. We understand the frustrations that come with tech issues, and our goal is to offer clear, effective solutions without the jargon or hefty price tags of larger corporate services.
+            </p>
+            <p class="text-lg pt-2 text-brand-orange font-normal">
+                Get the personal, friendly service of a local handyman backed by the precision and accountability of professional cybersecurity experts.
+            </p>
+        </div>
+
+        <h3 class="text-3xl font-normal text-brand-blue mb-6">Meet the Co-Founders</h3>
+
+        <div class="grid lg:grid-cols-2 gap-10 max-w-4xl mx-auto">
+            
+            <div class="bg-gray-800 p-8 rounded-xl shadow-2xl border-t-4 border-brand-blue h-full flex flex-col items-center">
+                <div class="flex items-center space-x-4 mb-4">
+                    <div class="w-16 h-16 bg-brand-blue rounded-full flex items-center justify-center text-3xl font-normal text-white">VR</div>
+                    <div>
+                        <h4 class="text-2xl font-normal text-white">Valentin Roman</h4>
+                        <p class="text-brand-orange font-normal">Co-Founder, Cybersecurity Professional</p>
+                    </div>
+                </div>
+
+                <div class="space-y-4 text-gray-300 flex-grow text-left">
+                    <p class="mt-4">
+                        As a Co-Founder of Iredell Home Tech Support, **Valentin Roman** brings a rare and powerful combination of hands-on technical expertise and proven customer-first operational leadership right to your door.
+                    </p>
+                    <p>
+                        Valentin is not your typical technician. For over eight years, he led successful teams, building systems for efficiency, clear communication, and accountability. This background ensures that every service call you make is handled with the professionalism and dependability established in his extensive management career.
+                    </p>
+                    <p>
+                        More than just a seasoned manager, Valentin is a highly trained Cybersecurity Professional, holding credentials including CompTIA Security+ and ISC² Certified in Cybersecurity (CC). His high-level training ensures every solution you receive is not just a quick fix, but a secure, precisely implemented, and long-lasting result.
+                    </p>
+
+                    <h5 class="text-xl font-normal text-brand-blue pt-4">Why this matters to you:</h5>
+                    <ul class="space-y-2 text-gray-300 list-none">
+                        <li class="flex items-start">
+                            <span class="mr-2 text-brand-orange font-normal text-lg pt-0.5">✓</span>
+                            **Guaranteed Reliability:** His experience running efficient teams means every process is designed for dependability—so you get faster, better service.
+                        </li>
+                        <li class="flex items-start">
+                            <span class="mr-2 text-brand-orange font-normal text-lg pt-0.5">✓</span>
+                            **Secure Solutions:** His active cybersecurity certifications mean your home network is handled with a focus on modern security and incident prevention—going beyond what a typical tech can offer.
+                        </li>
+                        <li class="flex items-start">
+                            <span class="mr-2 text-brand-orange font-normal text-lg pt-0.5">✓</span>
+                            **Local Accountability:** As a co-founder based right here in Statesville, NC, he is personally invested in providing the best, most trustworthy service to his Iredell County neighbors.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="bg-gray-800 p-8 rounded-xl shadow-2xl border-t-4 border-brand-orange h-full flex flex-col items-center">
+                <div class="flex items-center space-x-4 mb-4">
+                    <div class="w-16 h-16 bg-brand-orange rounded-full flex items-center justify-center text-3xl font-normal text-white">EH</div>
+                    <div>
+                        <h4 class="text-2xl font-normal text-white">Enmanuel Huenchunir</h4>
+                        <p class="text-brand-blue font-normal">Co-Founder, Technical Solutions Specialist</p>
+                    </div>
+                </div>
+
+                <div class="space-y-4 text-gray-300 flex-grow text-left">
+                    <p class="mt-4">
+                        As a Co-Founder of Iredell Home Tech Support, **Enmanuel Huenchunir** brings an exceptionally rare combination of hands-on construction knowledge and modern software engineering expertise. Enmanuel is not your typical technician. For over a decade, he built a career in high-pressure operational environments, from leading logistics teams to managing complex deliveries in hazardous zones.
+                    </p>
+                    <p>
+                        This background instills a powerful commitment to 100% safety compliance, real-time problem solving, and meeting deadlines—ensuring your job is handled with unmatched discipline and precision. More than just a seasoned operator, Enmanuel is a second-year Software Engineering student with skills in Java, Python, C++, and SQL.
+                    </p>
+
+                    <h5 class="text-xl font-normal text-brand-orange pt-4">Why this matters to you:</h5>
+                    <ul class="space-y-2 text-gray-300 list-none">
+                        <li class="flex items-start">
+                            <span class="mr-2 text-brand-blue font-normal text-lg pt-0.5">✓</span>
+                            **True "Full-Service" Solutions:** His unique blend of software engineering and formal construction training means he can handle the complete job—from configuring your smart-home network to safely and professionally installing the physical hardware.
+                        </li>
+                        <li class="flex items-start">
+                            <span class="mr-2 text-brand-blue font-normal text-lg pt-0.5">✓</span>
+                            **Guaranteed Reliability:** A decade of experience in complex logistics, operating heavy machinery, and maintaining a perfect safety record means he brings a professional, disciplined, and safe approach to every project in your home.
+                        </li>
+                        <li class="flex items-start">
+                            <span class="mr-2 text-brand-blue font-normal text-lg pt-0.5">✓</span>
+                            **Local Accountability:** As a co-founder based right here in Troutman, NC, he is personally invested in providing the best, most trustworthy, bilingual (English/Spanish) service to his Iredell County neighbors.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="requests" class="page-section pt-12">
+        <div>
+            <h2 class="text-4xl font-normal mb-8 border-b-2 border-brand-blue pb-2 inline-block">Comprehensive On-Site Tech Services in Iredell County</h2>
+        </div>
+
+        <div class="space-y-12">
+
+            <p class="text-xl text-gray-300 max-w-4xl mx-auto">
+                We cover everything from device tune-ups to complex network builds. We are your one-stop shop for professional home tech solutions serving Statesville, Mooresville, Troutman, and surrounding Iredell County areas.
+            </p>
+
+            <div class="pt-4 pb-8">
+                <button onclick="window.location.hash = '#/contact'" class="cta-button text-xl font-normal px-8 py-4 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300">
+                    Contact Us for a Quote
+                </button>
+            </div>
+            <div class="max-w-4xl mx-auto bg-gray-900 p-6 rounded-xl shadow-2xl border border-brand-orange/50">
+                <h3 class="text-3xl font-normal text-brand-orange mb-6">Transparent Service Pricing</h3>
+
+                <table class="min-w-full divide-y divide-gray-700">
+                    <thead class="bg-gray-800">
+                        <tr>
+                            <th colspan="2" scope="col" class="px-6 py-3 text-left text-xl font-normal text-brand-blue uppercase tracking-wider border-b border-brand-blue">
+                                HOURLY & MINIMUM RATES
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-charcoal divide-y divide-gray-700">
+                        <tr class="hover:bg-gray-700 transition-colors">
+                            <td class="px-6 py-4 whitespace-nowrap text-left text-lg font-normal text-white">
+                                Standard Hourly Rate (On-Site / Custom Work)
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-right text-lg text-brand-orange font-bold">
+                                $75 per hour
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-gray-700 transition-colors">
+                            <td class="px-6 py-4 whitespace-nowrap text-left text-lg font-normal text-white">
+                                On-Site Minimum Fee (Trip Charge + 1 Hour)
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-right text-lg text-brand-orange font-bold">
+                                $115 Flat Fee
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-gray-700 transition-colors">
+                            <td class="px-6 py-4 whitespace-nowrap text-left text-lg font-normal text-white">
+                                Remote Support Rate
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-right text-lg text-brand-orange font-bold">
+                                $60 per hour
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-gray-700 transition-colors">
+                            <td class="px-6 py-4 whitespace-nowrap text-left text-lg font-normal text-white">
+                                Drop-Off Diagnostic Fee
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-right text-lg text-brand-orange font-bold">
+                                $45 Flat Fee
+                            </td>
+                        </tr>
+
+                        <tr class="bg-gray-800">
+                            <th colspan="2" scope="col" class="px-6 py-3 text-left text-xl font-normal text-brand-blue uppercase tracking-wider border-y border-brand-blue">
+                                STANDARD FLAT-RATE SERVICES
+                            </th>
+                        </tr>
+
+                        <tr class="hover:bg-gray-700 transition-colors">
+                            <td class="px-6 py-4 whitespace-nowrap text-left text-lg font-normal text-white">
+                                Deep Virus/Malware/Spyware Removal
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-right text-lg text-white font-bold">
+                                $135
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-gray-700 transition-colors">
+                            <td class="px-6 py-4 whitespace-nowrap text-left text-lg font-normal text-white">
+                                Complete PC Tune-Up & Optimization
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-right text-lg text-white font-bold">
+                                $115
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-gray-700 transition-colors">
+                            <td class="px-6 py-4 whitespace-nowrap text-left text-lg font-normal text-white">
+                                Operating System (OS) Install/Reinstall
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-right text-lg text-white font-bold">
+                                $125
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-gray-700 transition-colors">
+                            <td class="px-6 py-4 whitespace-nowrap text-left text-lg font-normal text-white">
+                                New PC Setup & Software Installation
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-right text-lg text-white font-bold">
+                                $95
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-gray-700 transition-colors">
+                            <td class="px-6 py-4 whitespace-nowrap text-left text-lg font-normal text-white">
+                                Hardware Diagnostics & Installation
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-right text-lg text-white font-bold">
+                                $75 Flat Labor Fee + Parts
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-gray-700 transition-colors">
+                            <td class="px-6 py-4 whitespace-nowrap text-left text-lg font-normal text-white">
+                                Data Transfer / File Migration
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-right text-lg text-white font-bold">
+                                $85
+                            </td>
+                        </tr>
+
+                        <tr class="bg-gray-800">
+                            <th colspan="2" scope="col" class="px-6 py-3 text-left text-xl font-normal text-brand-blue uppercase tracking-wider border-y border-brand-blue">
+                                HOME NETWORKING & SPECIALIZED SUPPORT
+                            </th>
+                        </tr>
+
+                        <tr class="hover:bg-gray-700 transition-colors">
+                            <td class="px-6 py-4 whitespace-nowrap text-left text-lg font-normal text-white">
+                                Home Network / Wi-Fi Optimization
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-right text-lg text-white font-bold">
+                                $115 (First hour, then $75/hr)
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-gray-700 transition-colors">
+                            <td class="px-6 py-4 whitespace-nowrap text-left text-lg font-normal text-white">
+                                Home Security (Cameras/Doorbells) Setup
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-right text-lg text-white font-bold">
+                                $95 per device
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-gray-700 transition-colors">
+                            <td class="px-6 py-4 whitespace-nowrap text-left text-lg font-normal text-white">
+                                NAS (Network Attached Storage) Setup
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-right text-lg text-white font-bold">
+                                $150 Flat Labor Fee
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-gray-700 transition-colors">
+                            <td class="px-6 py-4 whitespace-nowrap text-left text-lg font-normal text-white">
+                                Custom PC Build / Gaming PC Build
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-right text-lg text-white font-bold">
+                                $185 Flat Labor Fee + Parts
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-gray-700 transition-colors">
+                            <td class="px-6 py-4 whitespace-nowrap text-left text-lg font-normal text-white">
+                                One-on-One Tech Training / Consulting
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-right text-lg text-white font-bold">
+                                $75 per hour
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-gray-700 transition-colors">
+                            <td class="px-6 py-4 whitespace-nowrap text-left text-lg font-normal text-white">
+                                3D Printing Services
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-right text-lg text-white font-bold">
+                                Quoted by the Job (Base fee $15)
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="text-sm text-gray-500 mt-4 text-left">
+                    *Flat-rate services include diagnostics and labor. All other on-site work is billed at the Standard Hourly Rate after the minimum fee is met. Prices are estimates and may vary based on complexity.
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-8 max-w-4xl mx-auto">
+
+                <div class="bg-gray-800 p-8 rounded-xl shadow-2xl border-t-4 border-brand-blue h-full flex flex-col">
+                    <span class="text-4xl text-brand-orange mb-4">⚙️</span>
+                    <h3 class="text-3xl font-normal text-white mb-4">PC Repair, Performance, & Custom Builds</h3>
+                    <p class="text-gray-300 mb-6 text-left">
+                        Maximize your computer's speed and security. We handle all aspects of personal computing, from maintenance to building your dream gaming rig.
+                    </p>
+                    </div>
+
+                <div class="bg-gray-800 p-8 rounded-xl shadow-2xl border-t-4 border-brand-orange h-full flex flex-col">
+                    <span class="text-4xl text-brand-blue mb-4">🏠</span>
+                    <h3 class="text-3xl font-normal text-white mb-4">Home Networking & Smart Home Setup</h3>
+                    <p class="text-gray-300 mb-6 text-left">
+                        Set up a reliable Wi-Fi network, troubleshoot connectivity issues, or get your smart devices (like security cameras and doorbells) working perfectly.
+                    </p>
+                </div>
+
+            </div> </div> </section>
+
+    <section id="faq" class="page-section pt-12">
+        <div>
+            <h2 class="text-4xl font-normal mb-8 border-b-2 border-brand-blue pb-2 inline-block">Quick Troubleshooting Tips (FAQ)</h2>
+        </div>
+
+        <div class="max-w-4xl mx-auto space-y-8">
+            <p class="text-xl text-gray-300">
+                These simple checks can often resolve minor issues instantly, saving you time and the need for a service call. If these steps do not work, please contact us!
+            </p>
+
+            <div class="bg-gray-800 rounded-xl shadow-md border border-gray-700 mx-auto max-w-2xl">
+                <button onclick="toggleFaq('faq-1-tip')" class="w-full text-left p-4 flex justify-between items-center text-xl font-normal text-white hover:text-brand-orange transition-colors">
+                    1. My device is acting strangely, unresponsive, or an indicator light is blinking unexpectedly. What should I do?
+                    <span id="icon-1-tip" class="text-2xl transform transition-transform duration-300">+</span>
+                </button>
+                <div id="faq-1-tip" class="faq-answer px-6 text-gray-300">
+                    <div class="pb-6 pt-2">
+                        <p class="mb-4 text-left">
+                            This is the most common fix for temporary glitches across almost all devices: **Power it Off and On Again.** For a computer, do a full shutdown, wait 30 seconds, and restart. For a modem or router, unplug it for 60 seconds and then plug it back in. This simple step often clears temporary memory errors and re-establishes network connections.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-gray-800 rounded-xl shadow-md border border-gray-700 mx-auto max-w-2xl">
+                <button onclick="toggleFaq('faq-2-tip')" class="w-full text-left p-4 flex justify-between items-center text-xl font-normal text-white hover:text-brand-orange transition-colors">
+                    2. My Wi-Fi is slow or not reaching certain rooms. How can I improve my signal?
+                    <span id="icon-2-tip" class="text-2xl transform transition-transform duration-300">+</span>
+                </button>
+                <div id="faq-2-tip" class="faq-answer px-6 text-gray-300">
+                    <div class="pb-6 pt-2">
+                        <p class="mb-4 text-left">
+                            **Move Your Router:** Place your router in the center of your house, off the floor, and away from thick walls, metal objects (like refrigerators), and large mirrors. If your house is large, consider investing in a **Mesh Wi-Fi System** or **Wi-Fi Extender** to cover dead zones. We specialize in setting these up for maximum speed and coverage.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-gray-800 rounded-xl shadow-md border border-gray-700 mx-auto max-w-2xl">
+                <button onclick="toggleFaq('faq-3-tip')" class="w-full text-left p-4 flex justify-between items-center text-xl font-normal text-white hover:text-brand-orange transition-colors">
+                    3. My computer suddenly has pop-ups and runs very slowly. Do I have a virus?
+                    <span id="icon-3-tip" class="text-2xl transform transition-transform duration-300">+</span>
+                </button>
+                <div id="faq-3-tip" class="faq-answer px-6 text-gray-300">
+                    <div class="pb-6 pt-2">
+                        <p class="mb-4 text-left">
+                            It's highly likely you have some form of **malware or adware**. **Do NOT click any pop-ups** claiming to fix your computer, as they are often part of the infection. Immediately disconnect from the internet (turn off Wi-Fi or unplug the cable) and run a full scan using any reputable antivirus software you have installed. If the problem persists, this is one of our flat-rate services—we can remove the threat and install better protection.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-gray-800 rounded-xl shadow-md border border-gray-700 mx-auto max-w-2xl">
+                <button onclick="toggleFaq('faq-4-tip')" class="w-full text-left p-4 flex justify-between items-center text-xl font-normal text-white hover:text-brand-orange transition-colors">
+                    4. What is the most important thing I can do to protect my data?
+                    <span id="icon-4-tip" class="text-2xl transform transition-transform duration-300">+</span>
+                </button>
+                <div id="faq-4-tip" class="faq-answer px-6 text-gray-300">
+                    <div class="pb-6 pt-2">
+                        <p class="mb-4 text-left">
+                            **Implement a reliable backup strategy.** The most valuable thing on your computer is your personal data (photos, documents, etc.). We recommend the "3-2-1 rule": three copies of your data, on two different media types, with one copy off-site (cloud). Setting up an automated backup system is inexpensive insurance against hardware failure or cyberattack.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <section id="contact" class="page-section pt-12">
+        <div>
+            <h2 class="text-4xl font-normal mb-8 border-b-2 border-brand-orange pb-2 inline-block">Request On-Site Service Now</h2>
+        </div>
+
+        <div class="max-w-4xl mx-auto space-y-8">
+            <p class="text-xl text-gray-300">
+                To get started, please fill out our secure service request form below. We will contact you within **one business day** to schedule your on-site service appointment in Iredell County.
+            </p>
+
+            <div class="embed-container bg-gray-900 shadow-2xl">
+                <iframe 
+                    src="https://forms.fillout.com/t/2iJpW2GzRz7Q" 
+                    frameborder="0" 
+                    allowfullscreen 
+                    title="Iredell Home Tech Support Service Request Form">
+                </iframe>
+            </div>
+            
+            <hr class="border-gray-700">
+
+            <div class="mt-8">
+                <h3 class="text-2xl font-normal text-brand-blue mb-4">Direct Contact Information</h3>
+                <div class="flex flex-col md:flex-row justify-center space-y-2 md:space-y-0 md:space-x-8 text-lg">
+                    <p class="flex items-center justify-center">
+                        <span class="text-brand-orange mr-2">📞</span>
+                        <a href="tel:7042539390" class="hover:text-brand-orange text-white text-decoration-none font-medium">(704) 253-9390</a>
+                    </p>
+                    <p class="flex items-center justify-center">
+                        <span class="text-brand-orange mr-2">📧</span>
+                        <a href="mailto:support@iredellhometechsupport.com" class="hover:text-brand-orange text-white text-decoration-none font-medium">support@iredellhometechsupport.com</a>
+                    </p>
+                </div>
+                <p class="text-base text-gray-500 mt-4">
+                    Our hours are Monday - Friday, 9:00 AM to 5:00 PM. Weekend appointments available by request.
+                </p>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer class="bg-gray-900 border-t border-gray-700 py-6 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm text-gray-400">
+        <p>&copy; 2025 Iredell Home Tech Support. All rights reserved.</p>
+        <div class="mt-2 space-x-4">
+            <a href="#/home" class="hover:text-brand-blue">Home</a>
+            <a href="#/services" class="hover:text-brand-blue">Services</a>
+            <a href="#/contact" class="hover:text-brand-blue">Contact</a>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // ----------------------------------------------------
+    // JAVASCRIPT FOR SINGLE-PAGE APPLICATION (SPA) ROUTING
+    // ----------------------------------------------------
+
     document.addEventListener('DOMContentLoaded', function() {
         const routes = {
             'home': 'home',
-            'services': 'services',
             'about': 'about',
+            'requests': 'requests', // Corresponds to the "Services" section
             'faq': 'faq',
             'contact': 'contact'
         };
         const DEFAULT_ROUTE = 'home';
-        const navLinks = document.querySelectorAll('.nav-link-route');
-        const navbarCollapse = document.getElementById('navbarNav');
-
+        const navLinks = document.querySelectorAll('.nav-link');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+        
+        // --- Navigation Helper Functions ---
         function updateNavLinks(activeHash) {
-            navLinks.forEach(link => {
+            const allLinks = [...navLinks, ...mobileNavLinks];
+            allLinks.forEach(link => {
                 link.classList.remove('active');
-                // Check against the full hash, including the leading '#/'
-                if (link.getAttribute('href') === activeHash) {
+                if (link.getAttribute('onclick') && link.getAttribute('onclick').includes(activeHash)) {
                     link.classList.add('active');
                 }
             });
@@ -617,7 +698,6 @@
             // 1. Correct the hash if it is missing or invalid, then re-read it.
             if (window.location.hash === '' || !routes[hash]) {
                 window.location.hash = targetHash;
-                // Re-calculate the variables based on the new (correct) hash
                 hash = window.location.hash.substring(2); 
                 routeKey = routes[hash] ? hash : DEFAULT_ROUTE;
                 sectionId = routes[routeKey];
@@ -633,27 +713,50 @@
             // 3. Show ONLY the active page section
             const activeSection = document.getElementById(sectionId);
             if (activeSection) {
-                activeSection.style.display = 'block';
+                activeSection.style.display = 'flex';
+                // Scroll to the top of the content area for a clean page load feel
+                document.getElementById('content').scrollTo({ top: 0, behavior: 'instant' });
             }
             
             // 4. Update the navigation bar active state
             updateNavLinks(targetHash);
         }
+        
+        // --- Mobile Menu Toggle ---
+        window.toggleMenu = function() {
+            const menu = document.getElementById('mobile-menu');
+            const openIcon = document.getElementById('icon-open');
+            const closeIcon = document.getElementById('icon-close');
+            const isExpanded = menu.classList.contains('hidden');
+
+            if (isExpanded) {
+                menu.classList.remove('hidden');
+                openIcon.classList.add('hidden');
+                closeIcon.classList.remove('hidden');
+            } else {
+                menu.classList.add('hidden');
+                openIcon.classList.remove('hidden');
+                closeIcon.classList.add('hidden');
+            }
+        }
+        
+        // --- FAQ Toggle Logic ---
+        window.toggleFaq = function(id) {
+            const answer = document.getElementById(id);
+            const icon = document.getElementById(`icon-${id.split('-')[1]}-tip`);
+
+            if (answer.classList.contains('open')) {
+                answer.classList.remove('open');
+                icon.style.transform = 'rotate(0deg)';
+            } else {
+                answer.classList.add('open');
+                icon.style.transform = 'rotate(45deg)';
+            }
+        };
 
         // Event listeners for routing
         window.addEventListener('hashchange', handleRouting);
         window.addEventListener('load', handleRouting); // Run once on page load
-
-        // Close the mobile menu on click (only necessary for mobile view)
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                // Use Bootstrap's native collapse method to hide the menu
-                const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse) || new bootstrap.Collapse(navbarCollapse, {toggle: false});
-                if (navbarCollapse.classList.contains('show')) {
-                    bsCollapse.hide();
-                }
-            });
-        });
     });
 </script>
 
