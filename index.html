@@ -3,41 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Iredell Home Tech Support | PC Repair & IT Service in Statesville, NC</title>
-    <meta name="description" content="Expert on-site home tech support in Iredell County, NC. We provide PC repair, virus removal, Wi-Fi setup, and new device installation right to your door.">
+    <title>Iredell Home Tech Support | PC Repair & IT Service</title>
+    <meta name="description" content="Expert on-site home tech support in Iredell County, NC.">
     <link rel="icon" type="image/png" href="/3.0_no_text.PNG">
 
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "name": "Iredell Home Tech Support",
-      "image": "https://iredellhometechsupport.com/3.0_no_text.PNG",
-      "url": "https://iredellhometechsupport.com/",
-      "address": { "@type": "PostalAddress", "addressLocality": "Statesville", "addressRegion": "NC", "addressCountry": "US" },
-      "telephone": "(704) 253-9390",
-      "email": "support@iredellhometechsupport.com",
-      "priceRange": "$$",
-      "serviceType": ["PC Repair", "Virus Removal", "Home Networking", "Smart Home Setup", "Custom PC Builds"],
-      "areaServed": { "@type": "State", "name": "Iredell County, NC" }
-    }
-    </script>
-
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3QTMG1C4J9"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-3QTMG1C4J9');
-    </script>
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
     <style>
-        /* 2. CUSTOM BRAND OVERRIDES */
+        /* --- THEME COLORS --- */
         :root {
             --brand-blue: #1196d2;
             --brand-orange: #f29442;
@@ -49,33 +23,50 @@
             font-family: 'Inter', sans-serif;
             background-color: var(--brand-charcoal);
             color: #ffffff;
-            padding-top: 70px; /* Offset for sticky navbar */
+            padding-top: 80px; /* Space for fixed navbar */
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
-        /* Section Spacing */
-        section {
-            padding-top: 4rem;
-            padding-bottom: 4rem;
+        /* --- PAGE ROUTING LOGIC (THE MAGIC) --- */
+        .page-section {
+            display: none; /* Hide everything by default */
+            animation: fadeIn 0.4s ease-in-out;
+        }
+        .page-section.active {
+            display: block; /* Only show the active one */
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Text Colors Utility */
+        /* --- COMPONENTS --- */
+        .navbar {
+            background-color: rgba(58, 57, 56, 0.98);
+            border-bottom: 1px solid #4b5563;
+        }
+        .nav-link { color: white !important; margin: 0 5px; transition: 0.2s; }
+        .nav-link:hover, .nav-link.active-link { color: var(--brand-blue) !important; }
+        
         .text-brand-blue { color: var(--brand-blue) !important; }
         .text-brand-orange { color: var(--brand-orange) !important; }
-        .bg-charcoal { background-color: var(--brand-charcoal); }
         
-        /* Links */
-        a { text-decoration: none; }
-        a:hover { color: var(--brand-orange); }
-
-        /* Gradient Text */
         .gradient-text {
             background: linear-gradient(to right, var(--brand-blue), var(--brand-orange));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            font-weight: 600;
+            font-weight: 700;
         }
 
-        /* Custom Buttons */
+        .custom-card {
+            background-color: var(--brand-dark-card);
+            border: 1px solid #4b5563;
+            border-radius: 1rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+        }
+
         .cta-button {
             background-color: var(--brand-blue);
             color: white;
@@ -86,55 +77,23 @@
             background-color: #0d7ea8;
             transform: translateY(-2px);
             color: white;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
         }
 
-        /* Navbar Customization */
-        .navbar {
-            background-color: rgba(58, 57, 56, 0.95); /* Charcoal with opacity */
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid #4b5563;
-        }
-        .nav-link {
-            color: white !important;
-            font-size: 1.1rem;
-            transition: color 0.2s;
-        }
-        .nav-link:hover {
-            color: var(--brand-blue) !important;
-        }
-
-        /* Card Styling */
-        .custom-card {
-            background-color: var(--brand-dark-card);
-            border: 1px solid #4b5563;
-            border-radius: 0.75rem;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
-        }
-
-        /* Table Styling */
-        .table-dark {
-            --bs-table-bg: transparent;
-        }
+        /* Table Styles */
+        .table-dark { --bs-table-bg: transparent; }
         tr { vertical-align: middle; }
-
-        /* Accordion (FAQ) Overrides for Dark Mode */
-        .accordion-item {
-            background-color: var(--brand-dark-card);
+        
+        /* Form Styles */
+        .form-control {
+            background-color: #2c3035;
             border: 1px solid #4b5563;
             color: white;
         }
-        .accordion-button {
-            background-color: var(--brand-dark-card);
+        .form-control:focus {
+            background-color: #2c3035;
             color: white;
-        }
-        .accordion-button:not(.collapsed) {
-            background-color: rgba(17, 150, 210, 0.2); /* Blue tint when open */
-            color: white;
-            box-shadow: none;
-        }
-        .accordion-button::after {
-            filter: invert(1); /* Make arrow white */
+            border-color: var(--brand-blue);
+            box-shadow: 0 0 0 0.25rem rgba(17, 150, 210, 0.25);
         }
     </style>
 </head>
@@ -142,237 +101,210 @@
 
 <nav class="navbar navbar-expand-lg fixed-top shadow-lg">
     <div class="container">
-        <a class="navbar-brand d-flex align-items-center" href="#home">
-            <img src="/3.0_no_text.PNG" 
-                 alt="Logo" 
-                 width="40" height="40" 
-                 class="rounded me-2"
-                 onerror="this.src='https://placehold.co/40x40/1196d2/ffffff?text=IH'">
-            <span class="gradient-text fs-4">Iredell Home Tech Support</span>
+        <a class="navbar-brand d-flex align-items-center" href="#home" onclick="route(event, 'home')">
+            <img src="/3.0_no_text.PNG" alt="Logo" width="40" height="40" class="rounded me-2" onerror="this.src='https://placehold.co/40x40/1196d2/ffffff?text=IH'">
+            <span class="gradient-text fs-4">Iredell Home Tech</span>
         </a>
-
         <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="white" class="bi bi-list" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
-            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="white" class="bi bi-list" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/></svg>
         </button>
-
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
             <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="#about">About Us</a></li>
-                <li class="nav-item"><a class="nav-link" href="#requests">Services</a></li>
-                <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
-                <li class="nav-item"><a class="nav-link" href="#contact">Contact Us</a></li>
+                <li class="nav-item"><a class="nav-link" href="#home" onclick="route(event, 'home')">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="#about" onclick="route(event, 'about')">About Us</a></li>
+                <li class="nav-item"><a class="nav-link" href="#services" onclick="route(event, 'services')">Services</a></li>
+                <li class="nav-item"><a class="nav-link" href="#faq" onclick="route(event, 'faq')">FAQ</a></li>
+                <li class="nav-item"><a class="nav-link" href="#contact" onclick="route(event, 'contact')">Contact Us</a></li>
             </ul>
         </div>
     </div>
 </nav>
 
-<main class="container">
+<main class="container py-4 flex-grow-1">
 
-    <section id="home" class="d-flex flex-column align-items-center justify-content-center text-center min-vh-75">
-        <div class="col-lg-10 mx-auto">
-            <h1 class="display-3 fw-normal mb-4">
-                Your Go-To for <span class="gradient-text">Reliable Home Tech Support</span> in Iredell County
-            </h1>
-            <p class="fs-3 fw-normal text-white">
-                <span class="text-brand-blue">Iredell Home Tech Support:</span> Your personal home tech handyman.
-            </p>
-            <p class="text-secondary fs-5 mb-5">
-                Experiencing PC troubles, network glitches, or need help setting up new devices? We provide friendly, expert assistance right in your Iredell County home. Get personalized service without the hassle of store visits.
-            </p>
-            <a href="#requests" class="btn cta-button btn-lg px-5 py-3 rounded-4 fs-5 mb-5">
-                Get Your Tech Fixed Today
-            </a>
-
-            <div class="custom-card p-4 mx-auto" style="max-width: 600px;">
-                <h2 class="h5 text-brand-orange mb-3">Service & Contact</h2>
-                <div class="d-flex flex-column flex-md-row justify-content-center gap-md-4 gap-2 text-secondary fs-5">
-                    <div><span class="text-brand-blue me-2">📞</span><a href="tel:7042539390" class="text-secondary text-decoration-none hover-orange">(704) 253-9390</a></div>
-                    <div><span class="text-brand-blue me-2">📍</span>Statesville, NC</div>
-                </div>
-                <div class="mt-2">
-                    <span class="text-brand-blue me-2">📧</span><a href="mailto:support@iredellhometechsupport.com" class="text-secondary text-decoration-none hover-orange">support@iredellhometechsupport.com</a>
+    <section id="home" class="page-section active">
+        <div class="d-flex flex-column align-items-center justify-content-center text-center min-vh-75 pt-5">
+            <div class="col-lg-10 mx-auto">
+                <h1 class="display-3 fw-bold mb-4">
+                    Your Go-To for <span class="gradient-text">Reliable Home Tech Support</span>
+                </h1>
+                <p class="fs-4 fw-normal mb-4">
+                    <span class="text-brand-blue">Iredell Home Tech Support:</span> Your personal home tech handyman.
+                </p>
+                <p class="text-secondary fs-5 mb-5">
+                    Experiencing PC troubles, network glitches, or need help setting up new devices? We provide friendly, expert assistance right in your Iredell County home.
+                </p>
+                <a href="#services" onclick="route(event, 'services')" class="btn cta-button btn-lg px-5 py-3 rounded-4 fs-5 shadow-lg">
+                    Get Your Tech Fixed Today
+                </a>
+                
+                <div class="row mt-5 g-4 justify-content-center">
+                    <div class="col-md-5">
+                        <div class="custom-card p-3 d-flex align-items-center justify-content-center">
+                            <span class="fs-4 me-2">📞</span>
+                            <a href="tel:7042539390" class="text-white text-decoration-none fs-5 hover-orange">(704) 253-9390</a>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="custom-card p-3 d-flex align-items-center justify-content-center">
+                            <span class="fs-4 me-2">📧</span>
+                            <a href="mailto:support@iredellhometechsupport.com" class="text-white text-decoration-none fs-5 hover-orange">Email Support</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="about">
+    <section id="about" class="page-section">
         <div class="text-center mb-5">
-            <h2 class="display-5 d-inline-block border-bottom border-3 border-info pb-2">About Iredell Home Tech Support</h2>
+            <h2 class="display-5 border-bottom border-3 border-info d-inline-block pb-2">About Us</h2>
         </div>
-
+        
         <div class="custom-card p-4 p-md-5 mb-5 mx-auto col-lg-10">
-            <p class="fs-5">
-                Iredell Home Tech Support was founded with a simple mission: to provide personalized, trustworthy, and convenient tech assistance to our neighbors across Iredell County. We understand the frustrations that come with tech issues, and our goal is to offer clear, effective solutions without the jargon or hefty price tags of larger corporate services.
-            </p>
-            <p class="fs-5 pt-2 text-brand-orange">
-                Get the personal, friendly service of a local handyman backed by the precision and accountability of professional cybersecurity experts.
-            </p>
+            <p class="fs-5">Iredell Home Tech Support was founded to provide personalized, trustworthy tech assistance to our neighbors. We offer clear solutions without corporate jargon.</p>
         </div>
 
-        <h3 class="text-center text-brand-blue mb-5">Meet the Co-Founders</h3>
-
-        <div class="row g-5 justify-content-center">
+        <div class="row g-5">
             <div class="col-lg-6">
                 <div class="custom-card p-4 h-100 border-top border-4 border-info">
                     <div class="d-flex align-items-center mb-4">
-                        <div class="rounded-circle bg-info d-flex align-items-center justify-content-center text-white fs-3 me-3" style="width: 64px; height: 64px;">VR</div>
+                        <div class="rounded-circle bg-info d-flex align-items-center justify-content-center text-white fs-3 me-3" style="width: 60px; height: 60px;">VR</div>
                         <div>
                             <h4 class="mb-0">Valentin Roman</h4>
-                            <small class="text-brand-orange">Co-Founder, Cybersecurity Professional</small>
+                            <small class="text-brand-orange">Co-Founder, Cybersecurity Pro</small>
                         </div>
                     </div>
-                    <div class="text-secondary">
-                        <p>As a Co-Founder, Valentin Roman brings a rare and powerful combination of hands-on technical expertise and proven customer-first operational leadership right to your door.</p>
-                        <p>Valentin is not your typical technician. For over eight years, he led successful teams, building systems for efficiency. He is also a highly trained Cybersecurity Professional (CompTIA Security+, ISC² CC).</p>
-                        
-                        <h5 class="text-brand-blue mt-4">Why this matters to you:</h5>
-                        <ul class="list-unstyled">
-                            <li class="mb-2"><span class="text-brand-orange me-2">✓</span><strong>Guaranteed Reliability:</strong> Efficient processes mean faster service.</li>
-                            <li class="mb-2"><span class="text-brand-orange me-2">✓</span><strong>Secure Solutions:</strong> Modern security focus on every job.</li>
-                            <li class="mb-2"><span class="text-brand-orange me-2">✓</span><strong>Local Accountability:</strong> Personally invested in Statesville.</li>
-                        </ul>
-                    </div>
+                    <p class="text-secondary">Valentin brings 8+ years of operational leadership and active Cybersecurity certifications (CompTIA Security+, ISC² CC) to ensure your home network is secure and efficient.</p>
                 </div>
             </div>
-
             <div class="col-lg-6">
-                <div class="custom-card p-4 h-100 border-top border-4 border-warning" style="border-color: var(--brand-orange) !important;">
+                <div class="custom-card p-4 h-100 border-top border-4" style="border-color: var(--brand-orange) !important;">
                     <div class="d-flex align-items-center mb-4">
-                        <div class="rounded-circle d-flex align-items-center justify-content-center text-white fs-3 me-3" style="width: 64px; height: 64px; background-color: var(--brand-orange);">EH</div>
+                        <div class="rounded-circle d-flex align-items-center justify-content-center text-white fs-3 me-3" style="width: 60px; height: 60px; background-color: var(--brand-orange);">EH</div>
                         <div>
                             <h4 class="mb-0">Enmanuel Huenchunir</h4>
-                            <small class="text-brand-blue">Co-Founder, Technical Solutions Specialist</small>
+                            <small class="text-brand-blue">Co-Founder, Software Engineer</small>
                         </div>
                     </div>
-                    <div class="text-secondary">
-                        <p>Enmanuel brings an exceptionally rare combination of hands-on construction knowledge and modern software engineering expertise. He has over a decade of experience in high-pressure operational environments.</p>
-                        <p>He is also a second-year Software Engineering student with skills in Java, Python, C++, and SQL.</p>
-
-                        <h5 class="text-brand-orange mt-4">Why this matters to you:</h5>
-                        <ul class="list-unstyled">
-                            <li class="mb-2"><span class="text-brand-blue me-2">✓</span><strong>Full-Service Solutions:</strong> From software config to hardware install.</li>
-                            <li class="mb-2"><span class="text-brand-blue me-2">✓</span><strong>Guaranteed Reliability:</strong> Disciplined, safe approach to every project.</li>
-                            <li class="mb-2"><span class="text-brand-blue me-2">✓</span><strong>Local Accountability:</strong> Bilingual (English/Spanish) service based in Troutman.</li>
-                        </ul>
-                    </div>
+                    <p class="text-secondary">Enmanuel combines hands-on construction safety experience with modern Software Engineering skills (Java, Python, C++) to provide true full-service solutions from wire to code.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="requests">
+    <section id="services" class="page-section">
         <div class="text-center mb-5">
-            <h2 class="display-5 d-inline-block border-bottom border-3 border-info pb-2">Comprehensive On-Site Services</h2>
-            <p class="text-secondary fs-4 mt-4 max-w-4xl mx-auto">
-                We cover everything from device tune-ups to complex network builds. Serving Statesville, Mooresville, and Troutman.
-            </p>
-            <a href="#contact" class="btn cta-button btn-lg px-5 py-3 rounded-4 mt-3">Contact Us for a Quote</a>
+            <h2 class="display-5 border-bottom border-3 border-info d-inline-block pb-2">Services & Pricing</h2>
         </div>
 
         <div class="custom-card p-0 overflow-hidden shadow-lg mb-5">
-            <div class="p-4 border-bottom border-secondary">
-                <h3 class="text-brand-orange mb-0">Transparent Service Pricing</h3>
-            </div>
             <div class="table-responsive">
                 <table class="table table-dark table-striped table-hover mb-0">
-                    <thead>
-                        <tr>
-                            <th colspan="2" class="text-brand-blue fs-5 ps-4 py-3 border-bottom border-info">HOURLY & MINIMUM RATES</th>
-                        </tr>
+                    <thead class="bg-dark">
+                        <tr><th colspan="2" class="text-brand-blue fs-5 ps-4 py-3">HOURLY & MINIMUM RATES</th></tr>
                     </thead>
                     <tbody>
-                        <tr><td class="ps-4 py-3">Standard Hourly Rate</td><td class="text-end pe-4 text-brand-orange fw-bold">$75 per hour</td></tr>
-                        <tr><td class="ps-4 py-3">On-Site Minimum Fee (Trip Charge + 1 Hour)</td><td class="text-end pe-4 text-brand-orange fw-bold">$115 Flat Fee</td></tr>
-                        <tr><td class="ps-4 py-3">Remote Support Rate</td><td class="text-end pe-4 text-brand-orange fw-bold">$60 per hour</td></tr>
-                        <tr><td class="ps-4 py-3">Drop-Off Diagnostic Fee</td><td class="text-end pe-4 text-brand-orange fw-bold">$45 Flat Fee</td></tr>
+                        <tr><td class="ps-4">Standard Hourly Rate</td><td class="text-end pe-4 text-brand-orange fw-bold">$75/hr</td></tr>
+                        <tr><td class="ps-4">On-Site Minimum (Trip + 1 Hr)</td><td class="text-end pe-4 text-brand-orange fw-bold">$115 Flat</td></tr>
                         
-                        <tr><th colspan="2" class="text-brand-blue fs-5 ps-4 py-3 border-top border-bottom border-info">STANDARD FLAT-RATE SERVICES</th></tr>
-                        
-                        <tr><td class="ps-4 py-3">Deep Virus/Malware Removal</td><td class="text-end pe-4 fw-bold">$135</td></tr>
-                        <tr><td class="ps-4 py-3">Complete PC Tune-Up</td><td class="text-end pe-4 fw-bold">$115</td></tr>
-                        <tr><td class="ps-4 py-3">OS Install/Reinstall</td><td class="text-end pe-4 fw-bold">$125</td></tr>
-                        <tr><td class="ps-4 py-3">New PC Setup</td><td class="text-end pe-4 fw-bold">$95</td></tr>
-                        <tr><td class="ps-4 py-3">Hardware Diagnostics & Install</td><td class="text-end pe-4 fw-bold">$75 + Parts</td></tr>
-                        <tr><td class="ps-4 py-3">Data Transfer</td><td class="text-end pe-4 fw-bold">$85</td></tr>
-
-                        <tr><th colspan="2" class="text-brand-blue fs-5 ps-4 py-3 border-top border-bottom border-info">HOME NETWORKING & SPECIALIZED</th></tr>
-                        
-                        <tr><td class="ps-4 py-3">Network / Wi-Fi Optimization</td><td class="text-end pe-4 fw-bold">$115 (1st hr)</td></tr>
-                        <tr><td class="ps-4 py-3">Security Cam/Doorbell Setup</td><td class="text-end pe-4 fw-bold">$95 / device</td></tr>
-                        <tr><td class="ps-4 py-3">Custom Gaming PC Build</td><td class="text-end pe-4 fw-bold">$185 + Parts</td></tr>
+                        <tr><th colspan="2" class="text-brand-blue fs-5 ps-4 py-3 border-top">FLAT-RATE SERVICES</th></tr>
+                        <tr><td class="ps-4">Virus Removal</td><td class="text-end pe-4 fw-bold">$135</td></tr>
+                        <tr><td class="ps-4">PC Tune-Up</td><td class="text-end pe-4 fw-bold">$115</td></tr>
+                        <tr><td class="ps-4">New PC Setup</td><td class="text-end pe-4 fw-bold">$95</td></tr>
+                        <tr><td class="ps-4">Custom Gaming PC Build</td><td class="text-end pe-4 fw-bold">$185 + Parts</td></tr>
                     </tbody>
                 </table>
             </div>
-            <div class="p-3 bg-dark text-secondary small">
-                *Prices are estimates and may vary based on complexity.
-            </div>
         </div>
+        <div class="text-center">
+            <a href="#contact" onclick="route(event, 'contact')" class="btn cta-button btn-lg px-5 rounded-4">Contact for Quote</a>
+        </div>
+    </section>
 
-        <div class="row g-4">
-            <div class="col-md-6">
-                <div class="custom-card p-4 h-100 border-top border-4 border-info">
-                    <span class="fs-1 text-brand-orange">⚙️</span>
-                    <h3 class="text-white mt-3">PC Repair & Custom Builds</h3>
-                    <p class="text-secondary">Maximize your computer's speed and security. We handle all aspects of personal computing.</p>
+    <section id="faq" class="page-section">
+        <div class="text-center mb-5">
+            <h2 class="display-5 border-bottom border-3 border-info d-inline-block pb-2">FAQ</h2>
+        </div>
+        <div class="accordion col-lg-8 mx-auto" id="faqAccordion">
+            <div class="accordion-item bg-dark border-secondary mb-3 rounded">
+                <h2 class="accordion-header">
+                    <button class="accordion-button bg-dark text-white" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                        Device acting unresponsive or strange lights?
+                    </button>
+                </h2>
+                <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body text-secondary">
+                        <strong>Perform a power cycle.</strong> Turn it off, unplug it, wait 30 seconds, and plug it back in. This fixes 80% of temporary glitches.
+                    </div>
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class="custom-card p-4 h-100 border-top border-4" style="border-color: var(--brand-orange) !important;">
-                    <span class="fs-1 text-brand-blue">🏠</span>
-                    <h3 class="text-white mt-3">Home Networking</h3>
-                    <p class="text-secondary">Set up a reliable Wi-Fi network, troubleshoot connectivity issues, or get smart devices working.</p>
+            <div class="accordion-item bg-dark border-secondary mb-3 rounded">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed bg-dark text-white" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                        Internet slow or not working?
+                    </button>
+                </h2>
+                <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body text-secondary">
+                        Unplug the power cable from your router/modem, wait 60 seconds, and plug it back in. Wait 5 minutes for the system to reboot.
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="faq">
+    <section id="contact" class="page-section">
         <div class="text-center mb-5">
-            <h2 class="display-5 d-inline-block border-bottom border-3 border-info pb-2">Quick Troubleshooting Tips (FAQ)</h2>
-            <p class="text-secondary fs-4 mt-3">Simple checks that might save you a service call.</p>
+            <h2 class="display-5 border-bottom border-3 border-info d-inline-block pb-2">Contact Us</h2>
+            <p class="text-secondary fs-5 mt-2">Ready to get your tech fixed? Reach out below.</p>
         </div>
 
-        <div class="col-lg-8 mx-auto">
-            <div class="accordion" id="faqAccordion">
-                <div class="accordion-item mb-3 rounded overflow-hidden">
-                    <h2 class="accordion-header">
-                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
-                            1. My device is acting strangely, unresponsive, or blinking?
-                        </button>
-                    </h2>
-                    <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
-                        <div class="accordion-body text-secondary">
-                            <strong>Perform a power cycle.</strong> This clears temporary software errors. Turn it off, unplug it, wait 30 seconds, and plug it back in.
+        <div class="row g-5">
+            <div class="col-lg-6">
+                <div class="custom-card p-4 h-100">
+                    <h3 class="h4 text-white mb-4">Send a Message</h3>
+                    <form>
+                        <div class="mb-3">
+                            <label class="form-label text-secondary">Name</label>
+                            <input type="text" class="form-control" placeholder="John Doe">
                         </div>
-                    </div>
+                        <div class="mb-3">
+                            <label class="form-label text-secondary">Email</label>
+                            <input type="email" class="form-control" placeholder="name@example.com">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label text-secondary">Phone</label>
+                            <input type="tel" class="form-control" placeholder="(704) 555-0123">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label text-secondary">How can we help?</label>
+                            <textarea class="form-control" rows="4" placeholder="Describe your issue..."></textarea>
+                        </div>
+                        <button type="submit" class="btn cta-button w-100 py-2 fw-bold">Send Request</button>
+                    </form>
                 </div>
+            </div>
 
-                <div class="accordion-item mb-3 rounded overflow-hidden">
-                    <h2 class="accordion-header">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
-                            2. My Internet is slow or not working?
-                        </button>
-                    </h2>
-                    <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                        <div class="accordion-body text-secondary">
-                            Check your router modem. Unplug the power cable from the back of the router, wait 60 seconds, and plug it back in. Wait 5 minutes for it to reboot.
-                        </div>
+            <div class="col-lg-6">
+                <div class="d-flex flex-column gap-4 h-100">
+                    <div class="custom-card p-4 flex-grow-1 d-flex flex-column justify-content-center align-items-center text-center">
+                        <span class="display-4 mb-3">📞</span>
+                        <h4 class="text-brand-blue">Call Us</h4>
+                        <p class="text-secondary">Available Mon-Fri, 9am - 6pm</p>
+                        <a href="tel:7042539390" class="fs-4 text-white text-decoration-none fw-bold">(704) 253-9390</a>
                     </div>
-                </div>
-                 <div class="accordion-item mb-3 rounded overflow-hidden">
-                    <h2 class="accordion-header">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
-                            3. I think I have a virus?
-                        </button>
-                    </h2>
-                    <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                        <div class="accordion-body text-secondary">
-                           Disconnect the computer from the internet immediately (unplug ethernet or turn off Wi-Fi). Do not log into bank accounts. Contact us immediately for a deep clean.
-                        </div>
+                    
+                    <div class="custom-card p-4 flex-grow-1 d-flex flex-column justify-content-center align-items-center text-center">
+                        <span class="display-4 mb-3">📧</span>
+                        <h4 class="text-brand-orange">Email Us</h4>
+                        <p class="text-secondary">We usually respond within 2 hours.</p>
+                        <a href="mailto:support@iredellhometechsupport.com" class="fs-5 text-white text-decoration-none">support@iredellhometechsupport.com</a>
+                    </div>
+
+                    <div class="custom-card p-4 text-center">
+                        <h4 class="text-white">Service Area</h4>
+                        <p class="text-secondary mb-0">Statesville • Troutman • Mooresville • Harmony</p>
                     </div>
                 </div>
             </div>
@@ -381,7 +313,51 @@
 
 </main>
 
+<footer class="bg-dark border-top border-secondary py-4 mt-auto text-center text-secondary">
+    <small>&copy; 2024 Iredell Home Tech Support. All rights reserved.</small>
+</footer>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    // Function to switch pages
+    function route(event, pageId) {
+        if(event) event.preventDefault(); // Stop the link from jumping
+
+        // 1. Remove 'active' class from all sections
+        document.querySelectorAll('.page-section').forEach(section => {
+            section.classList.remove('active');
+        });
+
+        // 2. Add 'active' class to the target section
+        const target = document.getElementById(pageId);
+        if (target) {
+            target.classList.add('active');
+            // Scroll to top smoothly
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // 3. Update Navbar Active State
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.classList.remove('active-link');
+            if(link.getAttribute('href') === '#' + pageId) {
+                link.classList.add('active-link');
+            }
+        });
+
+        // 4. Close Mobile Menu if open
+        const navbarCollapse = document.querySelector('.navbar-collapse');
+        if (navbarCollapse.classList.contains('show')) {
+            new bootstrap.Collapse(navbarCollapse).hide();
+        }
+    }
+
+    // Handle Initial Load (check URL hash or default to home)
+    window.addEventListener('DOMContentLoaded', () => {
+        const hash = window.location.hash.replace('#', '') || 'home';
+        route(null, hash);
+    });
+</script>
 
 </body>
 </html>
