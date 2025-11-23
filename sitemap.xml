@@ -11,7 +11,7 @@
 
     <!-- About Us Page (using clean routing) -->
     <url>
-        <loc>https://iredellhometechsupport.com/about</loc>
+        <loc>https://iredellhometechsupport.com/#about</loc>
         <lastmod>2025-11-07</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
@@ -19,7 +19,7 @@
 
     <!-- Services Page (using clean routing) -->
     <url>
-        <loc>https://iredellhometechsupport.com/services</loc>
+        <loc>https://iredellhometechsupport.com/#services</loc>
         <lastmod>2025-11-07</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
@@ -27,7 +27,7 @@
 
     <!-- Contact Page (using clean routing) -->
     <url>
-        <loc>https://iredellhometechsupport.com/contact</loc>
+        <loc>https://iredellhometechsupport.com/#contact</loc>
         <lastmod>2025-11-07</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
@@ -35,7 +35,7 @@
 
     <!-- Blog / Articles Page (using clean routing) -->
     <url>
-        <loc>https://iredellhometechsupport.com/blog</loc>
+        <loc>https://iredellhometechsupport.com/#faq</loc>
         <lastmod>2025-11-07</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
